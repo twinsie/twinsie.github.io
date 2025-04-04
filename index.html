@@ -3,20 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Website</title>
+    <title>My Life Timeline</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            background-color: #f4f4f4; 
+            margin: 0;
+		/*	background-image: url('images/background.jpg'); Replace with your image path
+            background-size: cover;  Stretches to cover entire screen 
+            background-position: center;  Centers the image 
+            background-repeat: no-repeat;  Prevents repeating 
+            background-attachment: fixed;  Keeps it fixed while scrolling 
+            min-height: 100vh;  Ensures body covers full viewport height */
         }
-        h1 {
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background-color: #333;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .year-block {
+            margin: -360px 0 20px; /* Negative top margin to overlap, positive bottom for spacing */
+            width: 45%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .year-block:first-child {
+            margin-top: 20px; /* Reset top margin for the first block */
+        }
+        .year-block:nth-child(even) {
+            align-items: flex-start;
+            margin-left: 50%;
+        }
+        .year-block:nth-child(odd) {
+            margin-right: 50%;
+        }
+        .year-block::before {
+            content: "";
+            position: absolute;
+            height: 2px;
+            background-color: #333;
+            top: 45px;
+            z-index: 1;
+        }
+        .year-block:nth-child(odd)::before {
+            right: 0;
+            left: 100%;
+        }
+        .year-block:nth-child(even)::before {
+            left: 0;
+            right: 100%;
+        }
+        .year-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 10px;
+        }
+        .event {
+            margin: 10px 0;
+            padding: 10px;
+            max-width: 300px;
+            max-height: 400px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .event.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .event h2 {
+            margin: 0;
+            color: #333;
+            flex-shrink: 0;
+        }
+        .event img {
+            width: 100%;
+            height: auto;
+            max-width: 280px;
+            max-height: 300px;
+            margin-top: 10px;
+            object-fit: contain;
+            flex-shrink: 1;
+        }
+        .event p {
+            margin: 5px 0 0;
+            flex-shrink: 0;
+        }
+        .event a {
+            text-decoration: none;
+            color: blue;
+            flex-shrink: 0;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        #content {
+            display: none;
+        }
+        #access-denied {
+            display: none;
+            color: red;
+            font-size: 18px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            text-align: left;
+        }
+        .modal-content h2 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .modal-content .location {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .modal-content .description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .slideshow img.active {
+            opacity: 1;
+        }
+        .slideshow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .prev-btn {
+            left: 10px;
+        }
+        .next-btn {
+            right: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
             color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Simple Website No. 2</h1>
-    <p>This is a test site hosted on GitHub Pages.</p>
+    <h1>My Life Timeline</h1>
+    <div id="content">
+        <div class="timeline">
+            <!-- Timeline content populated by JS -->
+        </div>
+    </div>
+    <div id="access-denied">Access Denied: Incorrect Password</div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2 id="modal-title"></h2>
+            <p id="modal-location" class="location"></p>
+            <p id="modal-description" class="description"></p>
+            <div class="slideshow">
+                <!-- Slides populated by JS -->
+            </div>
+            <button class="slideshow-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+            <button class="slideshow-btn next-btn" onclick="changeSlide(1)">❯</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const enablePassword = false; // Toggle this: true = password on, false = password off
+			const correctPassword = "123";
+            const contentDiv = document.getElementById("content");
+            const accessDeniedDiv = document.getElementById("access-denied");
+
+            if (enablePassword) {
+                const userPassword = prompt("Please enter the password to view this timeline:");
+                if (userPassword === correctPassword) {
+                    contentDiv.style.display = "block";
+                    loadTimeline();
+                } else {
+                    accessDeniedDiv.style.display = "block";
+                }
+            } else {
+                contentDiv.style.display = "block";
+                loadTimeline();
+            }
+
+            function loadTimeline() {
+                const timeline = document.querySelector(".timeline");
+                const eventsData = {
+                    2011: [
+                        { 
+                            title: "Started High School", 
+                            image: "images/2011-1.jpg", 
+                            location: "My Hometown", 
+                            description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                            images: ["images/2011-1.jpg", "images/2011-1-1.jpg", "images/2011-1-2.jpg", "images/2011-1-3.jpg", "images/2011-1-4.jpg", "images/2011-1-5.jpg", "images/2011-1-6.jpg"]
+                        },
+                        { 
+                            title: "First Vacation", 
+                            image: "images/2011-2.jpg", 
+                            location: "Somewhere Fun", 
+                            description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
+                            images: ["images/2011-2.jpg", "images/2011-2-extra1.jpg", "images/2011-2-extra2.jpg"]
+                        }
+                    ],
+                    2015: [
+                        { 
+                            title: "Graduated High School", 
+                            image: "images/2015-1.jpg", 
+                            location: "School", 
+                            description: "Graduating high school in 2015 was a huge milestone. After years of hard work, I walked across the stage with pride, surrounded by friends and family.",
+                            images: ["images/2015-1.jpg", "images/2015-1-extra1.jpg", "images/2015-1-extra2.jpg"]
+                        },
+                        { 
+                            title: "Got My First Job", 
+                            image: "images/2015-2.jpg", 
+                            location: "Workplace", 
+                            description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
+                            images: ["images/2015-2.jpg", "images/2015-2-extra1.jpg", "images/2015-2-extra2.jpg"]
+                        }
+                    ],
+                    2020: [
+                        { 
+                            title: "Moved to a New City", 
+                            image: "images/2020-1.jpg", 
+                            location: "New City", 
+                            description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
+                            images: ["images/2020-1.jpg", "images/2020-1-extra1.jpg", "images/2020-1-extra2.jpg"]
+                        },
+                        { 
+                            title: "Adopted a Pet", 
+                            image: "images/2020-2.jpg", 
+                            location: "Home", 
+                            description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
+                            images: ["images/2020-2.jpg", "images/2020-2-extra1.jpg", "images/2020-2-extra2.jpg"]
+                        }
+                    ]
+                };
+
+                let yearIndex = 0;
+                for (let year in eventsData) {
+                    let yearBlock = document.createElement("div");
+                    yearBlock.className = "year-block";
+                    let yearTitle = document.createElement("div");
+                    yearTitle.className = "year-title";
+                    yearTitle.textContent = year;
+                    yearBlock.appendChild(yearTitle);
+                    
+                    eventsData[year].forEach((event, index) => {
+                        let eventDiv = document.createElement("div");
+                        eventDiv.className = "event";
+                        eventDiv.innerHTML = `
+                            <h2>${event.title}</h2>
+                            <img src="${event.image}" alt="${year} Event">
+                            <p>Location: ${event.location}</p>
+                            <a onclick="showModal('${year}', ${index})">View More</a>
+                        `;
+                        yearBlock.appendChild(eventDiv);
+                    });
+                    
+                    timeline.appendChild(yearBlock);
+                    yearIndex++;
+                }
+
+                window.eventsData = eventsData;
+
+                function checkVisibility() {
+                    document.querySelectorAll(".event").forEach(event => {
+                        const rect = event.getBoundingClientRect();
+                        if (rect.top < window.innerHeight * 0.8) {
+                            event.classList.add("show");
+                        }
+                    });
+                }
+                window.addEventListener("scroll", checkVisibility);
+                checkVisibility();
+            }
+        });
+
+        let currentSlide = 0;
+        let currentImages = [];
+
+        function showModal(year, index) {
+            const event = window.eventsData[year][index];
+            const modal = document.getElementById("modal");
+            const modalTitle = document.getElementById("modal-title");
+            const modalLocation = document.getElementById("modal-location");
+            const modalDescription = document.getElementById("modal-description");
+            const slideshow = document.querySelector(".slideshow");
+
+            modalTitle.textContent = event.title;
+            modalLocation.textContent = `Location: ${event.location}`;
+            modalDescription.textContent = event.description;
+            currentImages = event.images;
+            currentSlide = 0;
+
+            slideshow.innerHTML = "";
+            currentImages.forEach((imgSrc, i) => {
+                const img = document.createElement("img");
+                img.src = imgSrc;
+                img.alt = `${event.title} Slide ${i + 1}`;
+                if (i === 0) img.classList.add("active");
+                slideshow.appendChild(img);
+            });
+
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll(".slideshow img");
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + direction + currentImages.length) % currentImages.length;
+            slides[currentSlide].classList.add("active");
+        }
+
+        document.getElementById("modal").addEventListener("click", function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 </body>
 </html>
