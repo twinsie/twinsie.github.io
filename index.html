@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="images/icon/favicon3.png">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Keith & Chris Adventures</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             text-align: center;
             padding: 20px;
             background-color: #f4f4f4;
             margin: 0;
+        }
+		h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #7E102C;
+            font-size: 2.5em;
+        }
+        h2, h3, .year-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #58423F;
+        }
+        h2#trip-subtitle {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin: 15px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+        }
+        .year-title {
+            font-size: 24px;
         }
         .trip-selector {
             margin: 20px 0;
@@ -58,10 +81,10 @@
         #france-btn {
             background-image: url('images/icon/france.png'); /* Replace with 'eiffel_tower.jpg' if preferred */
         }
-        #portugal-btn {
+        #philly-btn {
             background-image: url('images/portugal_flag.jpg'); /* Replace with 'belem_tower.jpg' if preferred */
         }
-        #philly-btn {
+        #europe-btn {
             background-image: url('images/icon/philly.jpg'); /* Replace with 'philly_skyline.jpg' if preferred */
         }
         .timeline {
@@ -120,7 +143,6 @@
         .year-title {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
             background: #fff;
             padding: 5px 10px;
             border-radius: 5px;
@@ -149,9 +171,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .event h2 {
+		.event h3 {
             margin: 0;
-            color: #333;
             flex-shrink: 0;
         }
         .event img {
@@ -166,20 +187,25 @@
         .event p {
             margin: 5px 0 0;
             flex-shrink: 0;
+			font-weight: 400;
+            color: #58423F;
         }
         .event a {
             text-decoration: none;
-            color: blue;
+			color: #58423F;
             flex-shrink: 0;
             margin-top: 5px;
             cursor: pointer;
+        }
+		.event a:hover {
+            color: #7E102C;
         }
         #content {
             display: none;
         }
         #access-denied {
             display: none;
-            color: red;
+            color: #7E102C;
             font-size: 18px;
         }
         .modal {
@@ -214,12 +240,15 @@
         }
         .modal-content .location {
             font-style: italic;
-            color: #666;
+            color: #E1D4C1;
             margin-bottom: 15px;
+            font-weight: 400;
         }
         .modal-content .description {
             margin-bottom: 20px;
             line-height: 1.6;
+			font-weight: 400;
+            color: #58423F;
         }
         .slideshow {
             position: relative;
@@ -263,6 +292,7 @@
             z-index: 3;
             opacity: 0.7;
             transition: opacity 0.3s ease;
+			font-family: 'Montserrat', sans-serif;
         }
         .slideshow:hover .slideshow-btn {
             opacity: 1;
@@ -281,19 +311,45 @@
             cursor: pointer;
             background: none;
             border: none;
-            color: #333;
+            color: #58423F;
             z-index: 4;
+			font-family: 'Montserrat', sans-serif;
+        }
+		#back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
+			font-family: 'Montserrat', sans-serif;
+        }
+        #back-to-top:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        #back-to-top.show {
+            display: block;
         }
     </style>
 </head>
 <body>
     <h1>Keith & Chris Adventures</h1>
-    <h2 id="trip-subtitle">Keith & Chris, June 2025</h2>
     <div class="trip-selector">
         <button id="france-btn" class="trip-btn active" data-trip="france"><span>France</span></button>
-        <button id="portugal-btn" class="trip-btn" data-trip="portugal"><span>Portugal</span></button>
-        <button id="philly-btn" class="trip-btn" data-trip="philly"><span>Philly</span></button>
+        <button id="philly-btn" class="trip-btn" data-trip="philly"><span>Philadelphia</span></button>
+        <button id="europe-btn" class="trip-btn" data-trip="europe"><span>Europe</span></button>
     </div>
+	<h2 id="trip-subtitle">Keith & Chris, June 2025</h2>
     <div id="content">
         <div class="timeline">
             <!-- Timeline content populated by JS -->
@@ -315,6 +371,8 @@
         </div>
     </div>
 
+	<button id="back-to-top" title="Back to Top">↑</button>
+	
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const enablePassword = false;
@@ -350,25 +408,25 @@
 
                 const tripsData = {
                     france: {
-                        subtitle: "Keith & Chris, June 2025",
+                        subtitle: "From Paris to Côte d'Azur, August 2024",
                         events: {
-                            "Day 1": [
+                            "Before Trip": [
                                 { 
-                                    title: "Started High School", 
+                                    title: "At JFK Airport", 
                                     image: "images/2011-1.JPG", 
                                     location: "My Hometown", 
                                     description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
                                     images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
                                 },
                                 { 
-                                    title: "First Vacation", 
+                                    title: "On the plane", 
                                     image: "images/2011-2.JPG", 
                                     location: "Somewhere Fun", 
                                     description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
                                     images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
                                 }
                             ],
-                            "Day 2": [
+                            "Day 1": [
                                 { 
                                     title: "Graduated High School", 
                                     image: "images/2015-1.JPG", 
@@ -409,7 +467,7 @@
                             ]
                         }
                     },
-                    portugal: {
+                    philly: {
                         subtitle: "Keith & Chris, July 2025",
                         events: {
                             "Day 1": [
@@ -446,7 +504,7 @@
                             ]
                         }
                     },
-                    philly: {
+                    europe: {
                         subtitle: "Keith & Chris, August 2025",
                         events: {
                             "Day 1": [
@@ -502,7 +560,7 @@
                         let eventDiv = document.createElement("div");
                         eventDiv.className = "event";
                         eventDiv.innerHTML = `
-                            <h2>${event.title}</h2>
+                            <h3>${event.title}</h3>
                             <img src="${event.image}" alt="${year} Event">
                             <p>Location: ${event.location}</p>
                             <a onclick="showModal('${year}', ${index}, '${trip}')">View More</a>
@@ -527,6 +585,20 @@
                 window.addEventListener("scroll", checkVisibility);
                 checkVisibility();
             }
+			
+			// Back to Top Button Logic
+            const backToTopButton = document.getElementById("back-to-top");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 100) {
+                    backToTopButton.classList.add("show");
+                } else {
+                    backToTopButton.classList.remove("show");
+                }
+            });
+
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
         });
 
         let currentSlide = 0;
