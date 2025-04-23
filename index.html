@@ -38,10 +38,13 @@
         }
         .trip-selector {
             margin: 20px 0;
+			display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
         .trip-btn {
             padding: 15px 25px;
-            margin: 0 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -86,6 +89,13 @@
         }
         #europe-btn {
             background-image: url('images/icon/philly.jpg'); /* Replace with 'philly_skyline.jpg' if preferred */
+        }
+		@media (max-width: 600px) {
+            .trip-btn {
+                min-width: 100px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
         }
         .timeline {
             display: flex;
