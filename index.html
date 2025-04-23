@@ -183,6 +183,7 @@
             margin-top: 10px;
             object-fit: contain;
             flex-shrink: 1;
+			cursor: pointer;
         }
         .event p {
             margin: 5px 0 0;
@@ -196,6 +197,7 @@
             flex-shrink: 0;
             margin-top: 5px;
             cursor: pointer;
+			font-weight: bold;
         }
 		.event a:hover {
             color: #7E102C;
@@ -236,7 +238,6 @@
         }
         .modal-content h2 {
             margin: 0 0 10px;
-            color: #333;
         }
         .modal-content .location {
             font-style: italic;
@@ -258,6 +259,7 @@
             overflow: hidden;
             border-radius: 4px;
             flex-grow: 1;
+			touch-action: pan-y;
         }
         .slideshow img,
         .slideshow video {
@@ -561,7 +563,7 @@
                         eventDiv.className = "event";
                         eventDiv.innerHTML = `
                             <h3>${event.title}</h3>
-                            <img src="${event.image}" alt="${year} Event">
+                            <img src="${event.image}" alt="${year} Event" onclick="showModal('${year}', ${index}, '${trip}')">
                             <p>Location: ${event.location}</p>
                             <a onclick="showModal('${year}', ${index}, '${trip}')">View More</a>
                         `;
@@ -637,6 +639,27 @@
                 element.alt = `${event.title} Slide ${i + 1}`;
                 if (i === 0) element.classList.add("active");
                 slideshow.appendChild(element);
+            });
+			
+			// Add swipe functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const minSwipeDistance = 50;
+
+            slideshow.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            slideshow.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDistance = touchEndX - touchStartX;
+                if (Math.abs(swipeDistance) >= minSwipeDistance) {
+                    if (swipeDistance < 0) {
+                        changeSlide(1); // Swipe left -> next slide
+                    } else {
+                        changeSlide(-1); // Swipe right -> previous slide
+                    }
+                }
             });
 
             modal.style.display = "flex";
