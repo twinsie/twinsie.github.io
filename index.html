@@ -3,20 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Life Timeline</title>
+	<link rel="icon" type="image/x-icon" href="images/icon/favicon3.png">
+    <title>Keith & Chris Adventures</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: #f4f4f4; 
+            background-color: #f4f4f4;
             margin: 0;
-		/*	background-image: url('images/background.JPG'); Replace with your image path
-            background-size: cover;  Stretches to cover entire screen 
-            background-position: center;  Centers the image 
-            background-repeat: no-repeat;  Prevents repeating 
-            background-attachment: fixed;  Keeps it fixed while scrolling 
-            min-height: 100vh;  Ensures body covers full viewport height */
+        }
+        .trip-selector {
+            margin: 20px 0;
+        }
+        .trip-btn {
+            padding: 15px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-width: 120px;
+        }
+        .trip-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay for text readability */
+            z-index: 1;
+        }
+        .trip-btn span {
+            position: relative;
+            z-index: 2; /* Text above overlay */
+        }
+        .trip-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .trip-btn.active {
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+            transform: scale(1.1);
+        }
+        #france-btn {
+            background-image: url('images/icon/france.png'); /* Replace with 'eiffel_tower.jpg' if preferred */
+        }
+        #portugal-btn {
+            background-image: url('images/portugal_flag.jpg'); /* Replace with 'belem_tower.jpg' if preferred */
+        }
+        #philly-btn {
+            background-image: url('images/icon/philly.jpg'); /* Replace with 'philly_skyline.jpg' if preferred */
         }
         .timeline {
             display: flex;
@@ -38,7 +84,7 @@
             z-index: 0;
         }
         .year-block {
-            margin: -360px 0 20px; /* Negative top margin to overlap, positive bottom for spacing */
+            margin: -360px 0 20px;
             width: 45%;
             position: relative;
             display: flex;
@@ -46,7 +92,7 @@
             align-items: flex-end;
         }
         .year-block:first-child {
-            margin-top: 20px; /* Reset top margin for the first block */
+            margin-top: 20px;
         }
         .year-block:nth-child(even) {
             align-items: flex-start;
@@ -152,14 +198,14 @@
             background: white;
             padding: 20px;
             border-radius: 8px;
-            width: 80vw; /* 80% of viewport width */
-            max-width: 900px; /* Upper limit */
-            height: 80vh; /* 80% of viewport height */
-            max-height: 700px; /* Upper limit */
+            width: 80vw;
+            max-width: 900px;
+            height: 80vh;
+            max-height: 700px;
             overflow-y: auto;
             position: relative;
             text-align: left;
-			display: flex;
+            display: flex;
             flex-direction: column;
         }
         .modal-content h2 {
@@ -178,35 +224,31 @@
         .slideshow {
             position: relative;
             width: 100%;
-            height: 50vh; /* 50% of viewport height, adjustable */
-            max-height: 500px; /* Upper limit */
+            height: 50vh;
+            max-height: 500px;
             overflow: hidden;
             border-radius: 4px;
-            flex-grow: 1; /* Allows it to take remaining space */
+            flex-grow: 1;
         }
         .slideshow img,
         .slideshow video {
-		controls;
-  		playsinline; 
-  		webkit-playsinline; 
             width: 100%;
             height: 100%;
-		muted;
             object-fit: contain;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-			z-index: 1; /* Ensure media is below buttons but above background */
+            z-index: 1;
         }
         .slideshow img.active,
         .slideshow video.active {
             opacity: 1;
-			z-index: 2; /* Bring video controls above buttons on hover */
+            z-index: 2;
         }
         .slideshow video {
-            background: #000; /* Black background for video consistency */
+            background: #000;
         }
         .slideshow-btn {
             position: absolute;
@@ -218,12 +260,12 @@
             padding: 10px;
             cursor: pointer;
             font-size: 18px;
-			z-index: 3; /* Keep buttons above video controls */
+            z-index: 3;
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
-		.slideshow:hover .slideshow-btn {
-            opacity: 1; /* Show buttons more clearly on hover */
+        .slideshow:hover .slideshow-btn {
+            opacity: 1;
         }
         .prev-btn {
             left: 10px;
@@ -240,13 +282,18 @@
             background: none;
             border: none;
             color: #333;
-			z-index: 4; /* Above everything in modal */
+            z-index: 4;
         }
     </style>
 </head>
 <body>
-    <h1>Norther, Western and Central Europe in One Trip!</h1>
-	<h2>Keith & Chris, June 2025</h2>
+    <h1>Keith & Chris Adventures</h1>
+    <h2 id="trip-subtitle">Keith & Chris, June 2025</h2>
+    <div class="trip-selector">
+        <button id="france-btn" class="trip-btn active" data-trip="france"><span>France</span></button>
+        <button id="portugal-btn" class="trip-btn" data-trip="portugal"><span>Portugal</span></button>
+        <button id="philly-btn" class="trip-btn" data-trip="philly"><span>Philly</span></button>
+    </div>
     <div id="content">
         <div class="timeline">
             <!-- Timeline content populated by JS -->
@@ -270,8 +317,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const enablePassword = false; // Toggle this: true = password on, false = password off
-			const correctPassword = "123";
+            const enablePassword = false;
+            const correctPassword = "123";
             const contentDiv = document.getElementById("content");
             const accessDeniedDiv = document.getElementById("access-denied");
 
@@ -279,82 +326,169 @@
                 const userPassword = prompt("Please enter the password to view this timeline:");
                 if (userPassword === correctPassword) {
                     contentDiv.style.display = "block";
-                    loadTimeline();
+                    loadTimeline('france');
                 } else {
                     accessDeniedDiv.style.display = "block";
                 }
             } else {
                 contentDiv.style.display = "block";
-                loadTimeline();
+                loadTimeline('france');
             }
 
-            function loadTimeline() {
+            const tripButtons = document.querySelectorAll('.trip-btn');
+            tripButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tripButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    loadTimeline(this.dataset.trip);
+                });
+            });
+
+            function loadTimeline(trip) {
                 const timeline = document.querySelector(".timeline");
-                const eventsData = {
-                    "Day 1": [
-                        { 
-                            title: "Started High School", 
-                            image: "images/2011-1.JPG", 
-                            location: "My Hometown", 
-                            description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
-                            images: ["images/2011-1.JPG", "images/IMG_25000.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
-                        },
-                        { 
-                            title: "First Vacation", 
-                            image: "images/2011-2.JPG", 
-                            location: "Somewhere Fun", 
-                            description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
-                            images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
+                timeline.innerHTML = ""; // Clear existing timeline
+
+                const tripsData = {
+                    france: {
+                        subtitle: "Keith & Chris, June 2025",
+                        events: {
+                            "Day 1": [
+                                { 
+                                    title: "Started High School", 
+                                    image: "images/2011-1.JPG", 
+                                    location: "My Hometown", 
+                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                                    images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
+                                },
+                                { 
+                                    title: "First Vacation", 
+                                    image: "images/2011-2.JPG", 
+                                    location: "Somewhere Fun", 
+                                    description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
+                                    images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
+                                }
+                            ],
+                            "Day 2": [
+                                { 
+                                    title: "Graduated High School", 
+                                    image: "images/2015-1.JPG", 
+                                    location: "School", 
+                                    description: "Graduating high school in 2015 was a huge milestone. After years of hard work, I walked across the stage with pride, surrounded by friends and family.",
+                                    images: ["images/2015-1.JPG", "images/2015-1-extra1.JPG", "images/2015-1-extra2.JPG"]
+                                },
+                                { 
+                                    title: "Got My First Job", 
+                                    image: "images/2015-2.JPG", 
+                                    location: "Workplace", 
+                                    description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
+                                    images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
+                                },
+                                { 
+                                    title: "Got My First Job", 
+                                    image: "images/2015-2.JPG", 
+                                    location: "Workplace", 
+                                    description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
+                                    images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
+                                }
+                            ],
+                            "Day 3": [
+                                { 
+                                    title: "Moved to a New City", 
+                                    image: "images/2020-1.JPG", 
+                                    location: "New City", 
+                                    description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
+                                    images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
+                                },
+                                { 
+                                    title: "Adopted a Pet", 
+                                    image: "images/2020-2.JPG", 
+                                    location: "Home", 
+                                    description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
+                                    images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
+                                }
+                            ]
                         }
-                    ],
-                    "Day 2": [
-                        { 
-                            title: "Graduated High School", 
-                            image: "images/2015-1.JPG", 
-                            location: "School", 
-                            description: "Graduating high school in 2015 was a huge milestone. After years of hard work, I walked across the stage with pride, surrounded by friends and family.",
-                            images: ["images/2015-1.JPG", "images/2015-1-extra1.JPG", "images/2015-1-extra2.JPG"]
-                        },
-                        { 
-                            title: "Got My First Job", 
-                            image: "images/2015-2.JPG", 
-                            location: "Workplace", 
-                            description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
-                            images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
-                        },
-                        { 
-                            title: "Got My First Job", 
-                            image: "images/2015-2.JPG", 
-                            location: "Workplace", 
-                            description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
-                            images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
-                        },
-                        { 
-                            title: "Got My First Job", 
-                            image: "images/2015-2.JPG", 
-                            location: "Workplace", 
-                            description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
-                            images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
+                    },
+                    portugal: {
+                        subtitle: "Keith & Chris, July 2025",
+                        events: {
+                            "Day 1": [
+                                { 
+                                    title: "Started High School", 
+                                    image: "images/2011-1.JPG", 
+                                    location: "My Hometown", 
+                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                                    images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
+                                },
+                                { 
+                                    title: "First Vacation", 
+                                    image: "images/2011-2.JPG", 
+                                    location: "Somewhere Fun", 
+                                    description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
+                                    images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
+                                }
+                            ],
+                            "Day 2": [
+                                { 
+                                    title: "Moved to a New City", 
+                                    image: "images/2020-1.JPG", 
+                                    location: "New City", 
+                                    description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
+                                    images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
+                                },
+                                { 
+                                    title: "Adopted a Pet", 
+                                    image: "images/2020-2.JPG", 
+                                    location: "Home", 
+                                    description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
+                                    images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
+                                }
+                            ]
                         }
-                    ],
-                    "Day 3": [
-                        { 
-                            title: "Moved to a New City", 
-                            image: "images/2020-1.JPG", 
-                            location: "New City", 
-                            description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
-                            images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
-                        },
-                        { 
-                            title: "Adopted a Pet", 
-                            image: "images/2020-2.JPG", 
-                            location: "Home", 
-                            description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
-                            images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
+                    },
+                    philly: {
+                        subtitle: "Keith & Chris, August 2025",
+                        events: {
+                            "Day 1": [
+                                { 
+                                    title: "Started High School", 
+                                    image: "images/2011-1.JPG", 
+                                    location: "My Hometown", 
+                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                                    images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
+                                },
+                                { 
+                                    title: "First Vacation", 
+                                    image: "images/2011-2.JPG", 
+                                    location: "Somewhere Fun", 
+                                    description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
+                                    images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
+                                }
+                            ],
+                            "Day 2": [
+                                { 
+                                    title: "Moved to a New City", 
+                                    image: "images/2020-1.JPG", 
+                                    location: "New City", 
+                                    description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
+                                    images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
+                                },
+                                { 
+                                    title: "Adopted a Pet", 
+                                    image: "images/2020-2.JPG", 
+                                    location: "Home", 
+                                    description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
+                                    images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
+                                }
+                            ]
                         }
-                    ]
+                    }
                 };
 
+                const tripData = tripsData[trip];
+                document.getElementById("trip-subtitle").textContent = tripData.subtitle;
+
+                const eventsData = tripData.events;
                 let yearIndex = 0;
                 for (let year in eventsData) {
                     let yearBlock = document.createElement("div");
@@ -371,7 +505,7 @@
                             <h2>${event.title}</h2>
                             <img src="${event.image}" alt="${year} Event">
                             <p>Location: ${event.location}</p>
-                            <a onclick="showModal('${year}', ${index})">View More</a>
+                            <a onclick="showModal('${year}', ${index}, '${trip}')">View More</a>
                         `;
                         yearBlock.appendChild(eventDiv);
                     });
@@ -380,7 +514,7 @@
                     yearIndex++;
                 }
 
-                window.eventsData = eventsData;
+                window.tripsData = tripsData;
 
                 function checkVisibility() {
                     document.querySelectorAll(".event").forEach(event => {
@@ -397,9 +531,10 @@
 
         let currentSlide = 0;
         let currentImages = [];
+        let currentTrip = 'france';
 
-        function showModal(year, index) {
-            const event = window.eventsData[year][index];
+        function showModal(year, index, trip) {
+            const event = window.tripsData[trip].events[year][index];
             const modal = document.getElementById("modal");
             const modalTitle = document.getElementById("modal-title");
             const modalLocation = document.getElementById("modal-location");
@@ -411,6 +546,7 @@
             modalDescription.textContent = event.description;
             currentImages = event.images;
             currentSlide = 0;
+            currentTrip = trip;
 
             slideshow.innerHTML = "";
             currentImages.forEach((src, i) => {
@@ -418,10 +554,10 @@
                 if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MOV')) {
                     element = document.createElement("video");
                     element.src = src;
-                    element.controls = true; // Adds play/pause controls
-                    element.autoplay = (i === 0); // Auto-play first video
-                    element.muted = true; // Muted to avoid autoplay restrictions
-                    element.loop = true; // Loops the short clip
+                    element.controls = true;
+                    element.autoplay = (i === 0);
+                    element.muted = true;
+                    element.loop = true;
                 } else {
                     element = document.createElement("img");
                     element.src = src;
@@ -439,7 +575,6 @@
             const modal = document.getElementById("modal");
             modal.style.display = "none";
             document.body.style.overflow = "auto";
-            // Pause all videos when closing
             document.querySelectorAll(".slideshow video").forEach(video => video.pause());
         }
 
