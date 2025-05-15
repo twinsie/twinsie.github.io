@@ -71,6 +71,36 @@
             font-weight: 700;
             color: #7E102C;
             font-size: 3.5em;
+			opacity: 1;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+			transition: font-size 0.3s ease;
+        }
+		h1.shrunk {
+			font-size: 2.0em;
+			background: rgba(242, 242, 242, 0.8);
+		}
+		@media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            h1.shrunk {
+                font-size: 1.2em;
+            }
+            .background-layer,
+            .fade-layer {
+                height: 250px;
+                top: 0;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            h1 {
+                transition: none;
+            }
+            body.bg-default {
+                animation: none;
+            }
         }
         h2{
             font-family: 'Ma Shan Zheng', serif;
@@ -329,7 +359,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             position: sticky; /*relative*/
-			top: 20px; /* Adjust based on your header height */
+			top: 40px; /* Adjust based on your header height */
 			z-index: 3; /* Ensure it stays above other elements */
             margin-bottom: 10px;
 			box-shadow: 0 0 8px rgba(179, 179, 179, 0.7); /* Glow effect matching timeline color */
@@ -599,7 +629,7 @@
 <body>
 	<div class="background-layer bg-france"></div>
     <div class="fade-layer"></div>
-    <h1>罗家的旅行</h1>
+    <h1 id="site-title">罗家的旅行</h1>
     <div class="trip-selector-container">
         <div class="fade-left"></div>
         <button class="scroll-btn left-btn" aria-label="Scroll left">←</button>
@@ -656,7 +686,30 @@
 			const tripSelector = document.querySelector('.trip-selector');
             const leftBtn = document.querySelector('.scroll-btn.left-btn');
             const rightBtn = document.querySelector('.scroll-btn.right-btn');
-            
+            const siteTitle = document.getElementById('site-title');
+            let currentTrip = 'france';
+			
+			// Sticky title, year title, and gradient scroll handler
+            function handleTitleScroll() {
+                const isShrunk = window.scrollY > 0;
+                siteTitle.classList.toggle('shrunk', isShrunk);
+                document.querySelectorAll('.year-title').forEach(yearTitle => {
+                    yearTitle.classList.toggle('shrunk', isShrunk);
+                });
+                // Apply gradient only when shrunk and no trip is selected
+                document.body.classList.toggle('bg-default', isShrunk && !currentTrip);
+            }
+			
+			// Debounce scroll event
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(handleTitleScroll, 10);
+            });
+			
+			// Initial check
+            handleTitleScroll();
+
             // Scroll arrow and fade functionality
             function updateScrollButtons() {
                 const isAtStart = tripSelector.scrollLeft <= 1;
@@ -1248,7 +1301,7 @@
             function loadTimeline(trip) {
                 const timeline = document.querySelector(".timeline");
                 timeline.innerHTML = ""; // Clear existing timeline
-
+				currentTrip = trip;
                 const tripData = tripsData[trip];
                 typewriterEffect(document.getElementById("trip-subtitle"), tripData.subtitle);
 	
