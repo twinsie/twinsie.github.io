@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="images/icon/favicon3.png">
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -10,44 +11,186 @@
     <title>罗家的旅行</title>
     <style>
         body {
-            font-family: "Noto Serif SC", serif;
+            font-family: 'Noto Serif SC', serif;
             text-align: center;
             padding: 20px;
-            background-color: #f4f4f4;
-            margin: 0;
+            /*background-color: #f4f4f4;*/
+			margin: 0;
+            background-color: #f2f2f2; /* Solid background when image disappears */
+            position: relative;
+            opacity: 1; /* Ensure content is fully opaque */
+            z-index: 0;
+        }
+		/* Default background (gradient animation) */
+        body.bg-default {
+            background: linear-gradient(45deg, #f2f2f2, #cccccc, #f2f2f2, #cccccc, #f2f2f2, #cccccc, #f2f2f2, #cccccc);
+            background-size: 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+		/* Background image layer (scrolls with page, transparent) */
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px; /* Covers header; adjust if needed */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6; /* Transparent/muted background image */
+            z-index: -2;
+            transition: background-image 500ms ease-in-out;
+        }
+        .background-layer.bg-france {
+            background-image: url('images/icon/france-bg.jpg');
+        }
+        .background-layer.bg-philly {
+            background-image: url('images/icon/philly-bg.jpg');
+        }
+        .background-layer.bg-europe {
+            background-image: url('images/icon/europe-bg.jpg');
+        }
+        /* Fade-out gradient at bottom of background layer */
+        .fade-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px; /* Matches background-layer */
+            background-image: linear-gradient(
+                to bottom,
+                rgba(242, 242, 242, 0) 0%,
+                rgba(242, 242, 242, 0.5) 50%,
+                rgba(242, 242, 242, 1) 100%
+            );
+            z-index: -1;
         }
 		h1 {
-            font-family: "Long Cang", cursive;
+            font-family: 'Long Cang', cursive;
             font-weight: 700;
             color: #7E102C;
-            font-size: 2.5em;
+            font-size: 3.5em;
         }
-        h2, h3{
-            font-family: "Noto Serif SC", serif;
+        h2{
+            font-family: 'Noto Serif SC', serif;
             font-weight: 700;
             color: #58423F;
+        }
+        h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+            color: #58423F;
+            font-size: 1.0em;
         }
         h2#trip-subtitle {
             font-size: 1.5em;
             font-weight: 400;
             margin: 15px 0 20px;
         }
-        h3 {
-            font-size: 1.2em;
+		.trip-selector-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 1200px;
+            opacity: 1;
+            z-index: 1;
         }
         .trip-selector {
-            margin: 20px 0;
-			display: flex;
-            flex-wrap: wrap;
+            display: flex;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            scroll-behavior: smooth;
+            padding: 0 35px;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
             justify-content: center;
             gap: 10px;
+            width: auto;
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            box-sizing: content-box;
+        }
+		/* Styles for the fading effect */
+        .trip-selector::-webkit-scrollbar {
+            display: none;
+        }
+        .fade-left, .fade-right {
+            position: absolute;
+            top: 0;
+            width: 85px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            display: none;
+        }
+        .fade-left.visible, .fade-right.visible {
+            display: block;
+        }
+        .fade-left {
+            left: 0;
+        }
+        .fade-right {
+            right: 0;
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(94, 62, 59, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 3;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            display: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .scroll-btn:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .scroll-btn:focus {
+            outline: 2px solid #7E102C;
+            outline-offset: 2px;
+        }
+        .scroll-btn.visible {
+            display: block;
+        }
+        .scroll-btn.left-btn {
+            left: 0;
+        }
+        .scroll-btn.right-btn {
+            right: 0;
+        }
+        @media (max-width: 600px) {
+            .background-layer,
+            .fade-layer {
+                height: 250px;
+            }
+            .trip-selector {
+                padding: 0 25px;
+            }
+            .fade-left, .fade-right {
+                width: 25px;
+            }
+            .scroll-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
         }
         .trip-btn {
-            padding: 15px 25px;
+            padding: 10px 15px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 13px;
             font-weight: bold;
             color: white;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -56,8 +199,23 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            min-width: 120px;
+            min-width: 90px;
+            flex-shrink: 0;
+            opacity: 0;            
+            animation: fadeIn 0.5s ease-out forwards;
         }
+        #france-btn { background-image: url('images/icon/france.png'); animation-delay: 0.2s; }
+        #philly-btn { background-image: url('images/icon/philly.png'); animation-delay: 0.4s; }
+        #europe-btn { background-image: url('images/icon/europe.png'); animation-delay: 0.6s; }
+        #italy-btn { background-image: url('images/icon/italy.png'); animation-delay: 0.8s; }
+        #japan-btn { background-image: url('images/icon/japan.png'); animation-delay: 1.0s; }
+        #australia-btn { background-image: url('images/icon/australia.png'); animation-delay: 1.2s; }
+        #canada-btn { background-image: url('images/icon/canada.png'); animation-delay: 1.4s; }
+        #brazil-btn { background-image: url('images/icon/brazil.png'); animation-delay: 1.6s; }
+        #iceland-btn { background-image: url('images/icon/iceland.png'); animation-delay: 1.8s; }
+        #thailand-btn { background-image: url('images/icon/thailand.png'); animation-delay: 2.0s; }
+        
+        
         .trip-btn::before {
             content: "";
             position: absolute;
@@ -80,15 +238,6 @@
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
             transform: scale(1.1);
         }
-        #france-btn {
-            background-image: url('images/icon/france.png'); /* Replace with 'eiffel_tower.jpg' if preferred */
-        }
-        #philly-btn {
-            background-image: url('images/icon/philly.png'); /* Replace with 'belem_tower.jpg' if preferred */
-        }
-        #europe-btn {
-            background-image: url('images/icon/europe.png'); /* Replace with 'philly_skyline.jpg' if preferred */
-        }
 		@media (max-width: 600px) {
             .trip-btn {
                 min-width: 100px;
@@ -105,6 +254,14 @@
             .modal-content .description {
                 margin-top: 2px;
 				margin-bottom: 10px;
+            }
+			.slide-indicator {
+                font-size: 12px;
+                margin-top: 8px;
+            }
+			.background-layer,
+            .fade-layer {
+                height: 400px; /* Adjust for smaller screens */
             }
         }
         .timeline {
@@ -164,20 +321,36 @@
 			font-family: 'Quintessential', serif;
 			font-weight: 400;
 			font-style: italic;
-            font-size: 24px;
+            font-size: 20px;
 			color: #58423F;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: sticky; /*relative*/
+			top: 20px; /* Adjust based on your header height */
+			z-index: 3; /* Ensure it stays above other elements */
+            margin-bottom: 10px;
+			box-shadow: 0 0 8px rgba(179, 179, 179, 0.7); /* Glow effect matching timeline color */
+        }
+		.the-end {
+            font-family: 'Quintessential', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 24px;
+            color: #58423F;
             background: #fff;
             padding: 5px 10px;
             border-radius: 5px;
             position: relative;
             z-index: 2;
-            margin-bottom: 10px;
+            margin: 20px auto;
+            text-align: center;
         }
         .event {
             margin: 10px 0;
             padding: 10px;
-            max-width: 300px;
-            max-height: 400px;
+            max-width: 400px;
+            max-height: 500px;
             position: relative;
             opacity: 0;
             transform: translateY(20px);
@@ -201,8 +374,8 @@
         .event img {
             width: 100%;
             height: auto;
-            max-width: 280px;
-            max-height: 300px;
+            max-width: 380px;
+            max-height: 400px;
             margin-top: 10px;
             object-fit: contain;
             flex-shrink: 1;
@@ -214,6 +387,7 @@
 			font-weight: 400;
             color: #58423F;
 			font-style: italic;
+			font-size: 0.8em;
         }
         .event a {
             text-decoration: none;
@@ -235,7 +409,9 @@
             font-size: 18px;
         }
         .modal {
-            display: none;
+			display: flex;
+            visibility: hidden;
+			opacity: 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -245,7 +421,14 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+			transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+		/*	backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px); */
         }
+		.modal.modal-open {
+			visibility: visible;
+			opacity: 1;
+		}
         .modal-content {
             background: white;
             padding: 20px;
@@ -259,7 +442,14 @@
             text-align: left;
             display: flex;
             flex-direction: column;
+			opacity: 0;
+			transform: scale(0.95);
+			transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
         }
+		.modal.modal-open .modal-content {
+			opacity: 1;
+			transform: scale(1);
+		}
         .modal-content h2 {
             margin: 0 0 10px;
         }
@@ -328,7 +518,11 @@
         }
         .next-btn {
             right: 10px;
-        }
+        }		
+		.slideshow-btn:focus {
+			outline: 2px solid #7E102C;
+			outline-offset: 2px;
+		}
         .close-btn {
             position: absolute;
             top: 10px;
@@ -341,17 +535,24 @@
             z-index: 4;
 			font-family: 'Montserrat', sans-serif;
         }
+		.slide-indicator {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 14px;
+			color: #58423F;
+			text-align: center;
+			margin-top: 10px;
+			margin-bottom: 0;
+		}
 		#back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #333;
+         /*   background-color: #333; */
             color: white;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
+            width: 80px;
+            height: 80px;
             cursor: pointer;
             display: none;
             opacity: 0.7;
@@ -359,23 +560,63 @@
             z-index: 1000;
 			font-family: 'Montserrat', sans-serif;
         }
+		#back-to-top img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
         #back-to-top:hover {
             opacity: 1;
             transform: scale(1.1);
         }
+
         #back-to-top.show {
             display: block;
+        }
+		.typing-cursor {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #58423F;
+            animation: blink 0.7s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+		@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+	<div class="background-layer bg-france"></div>
+    <div class="fade-layer"></div>
     <h1>罗家的旅行</h1>
-    <div class="trip-selector">
-        <button id="france-btn" class="trip-btn active" data-trip="france"><span>伊朗</span></button>
-        <button id="philly-btn" class="trip-btn" data-trip="philly"><span>福建</span></button>
-        <button id="europe-btn" class="trip-btn" data-trip="europe"><span>Europe</span></button>
+    <div class="trip-selector-container">
+        <div class="fade-left"></div>
+        <button class="scroll-btn left-btn" aria-label="Scroll left">←</button>
+        <div class="trip-selector">
+            <button id="france-btn" class="trip-btn active" data-trip="france"><span>新西兰</span></button>
+            <button id="philly-btn" class="trip-btn" data-trip="philly"><span>Philadelphia</span></button>
+            <button id="europe-btn" class="trip-btn" data-trip="europe"><span>Europe</span></button>
+            <button id="italy-btn" class="trip-btn" data-trip="italy"><span>Italy</span></button>
+            <button id="japan-btn" class="trip-btn" data-trip="japan"><span>Japan</span></button>
+            <button id="australia-btn" class="trip-btn" data-trip="australia"><span>Australia</span></button>
+            <button id="canada-btn" class="trip-btn" data-trip="canada"><span>Canada</span></button>
+            <button id="brazil-btn" class="trip-btn" data-trip="brazil"><span>Brazil</span></button>
+            <button id="iceland-btn" class="trip-btn" data-trip="iceland"><span>Iceland</span></button>
+            <button id="thailand-btn" class="trip-btn" data-trip="thailand"><span>Thailand</span></button>
+        </div>
+        <button class="scroll-btn right-btn" aria-label="Scroll right">→</button>
+        <div class="fade-right"></div>        
     </div>
-	<h2 id="trip-subtitle">伊朗3周行</h2>
+	<h2 id="trip-subtitle">新西兰南北岛</h2>
     <div id="content">
         <div class="timeline">
             <!-- Timeline content populated by JS -->
@@ -391,13 +632,17 @@
             <p id="modal-description" class="description"></p>
             <div class="slideshow">
                 <!-- Slides populated by JS -->
+
             </div>
-            <button class="slideshow-btn prev-btn" onclick="changeSlide(-1)">❮</button>
-            <button class="slideshow-btn next-btn" onclick="changeSlide(1)">❯</button>
+			<p id="slide-indicator" class="slide-indicator"></p>
+            <button class="slideshow-btn prev-btn" onclick="changeSlide(-1)"><</button>
+			<button class="slideshow-btn next-btn" onclick="changeSlide(1)">></button>
         </div>
     </div>
 
-	<button id="back-to-top" title="Back to Top">↑</button>
+	<button id="back-to-top" title="Back to Top">
+		<img src="images/icon/back-to-top.png" alt="Back to Top">
+	</button>
 	
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -405,74 +650,479 @@
             const correctPassword = "123";
             const contentDiv = document.getElementById("content");
             const accessDeniedDiv = document.getElementById("access-denied");
-
-            if (enablePassword) {
-                const userPassword = prompt("Please enter the password to view this timeline:");
-                if (userPassword === correctPassword) {
-                    contentDiv.style.display = "block";
-                    loadTimeline('france');
-                } else {
-                    accessDeniedDiv.style.display = "block";
-                }
-            } else {
-                contentDiv.style.display = "block";
-                loadTimeline('france');
+			const backgroundLayer = document.querySelector('.background-layer');
+			const tripSelector = document.querySelector('.trip-selector');
+            const leftBtn = document.querySelector('.scroll-btn.left-btn');
+            const rightBtn = document.querySelector('.scroll-btn.right-btn');
+            
+            // Scroll arrow and fade functionality
+            function updateScrollButtons() {
+                const isAtStart = tripSelector.scrollLeft <= 1;
+                const isAtEnd = tripSelector.scrollLeft + tripSelector.clientWidth >= tripSelector.scrollWidth - 1;
+                const isScrollable = tripSelector.scrollWidth > tripSelector.clientWidth + 2;
+                leftBtn.classList.toggle('visible', !isAtStart && isScrollable);
+                rightBtn.classList.toggle('visible', !isAtEnd && isScrollable);
+                document.querySelector('.fade-left').classList.toggle('visible', !isAtStart && isScrollable);
+                document.querySelector('.fade-right').classList.toggle('visible', !isAtEnd && isScrollable);
+                tripSelector.style.justifyContent = isScrollable ? 'flex-start' : 'center';
+                console.log('isScrollable:', isScrollable, 'scrollWidth:', tripSelector.scrollWidth, 'clientWidth:', tripSelector.clientWidth);
+                console.log('Arrow visibility:', leftBtn.classList.contains('visible'), rightBtn.classList.contains('visible'));
+                console.log('Fade visibility:', document.querySelector('.fade-left').classList.contains('visible'), document.querySelector('.fade-right').classList.contains('visible'));
+                console.log('Justify-content:', tripSelector.style.justifyContent || getComputedStyle(tripSelector).justifyContent);
             }
-
-            const tripButtons = document.querySelectorAll('.trip-btn');
-            tripButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    tripButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    loadTimeline(this.dataset.trip);
-                });
+            
+            leftBtn.addEventListener('click', () => {
+                tripSelector.scrollBy({ left: -200, behavior: 'smooth' });
+                setTimeout(updateScrollButtons, 300);
             });
 
-            function loadTimeline(trip) {
-                const timeline = document.querySelector(".timeline");
-                timeline.innerHTML = ""; // Clear existing timeline
+            rightBtn.addEventListener('click', () => {
+                tripSelector.scrollBy({ left: 200, behavior: 'smooth' });
+                setTimeout(updateScrollButtons, 300);
+            });
+            
+            tripSelector.addEventListener('scroll', updateScrollButtons);
+            window.addEventListener('resize', updateScrollButtons);
+            setTimeout(updateScrollButtons, 100); // Initial check after load
 
-                const tripsData = {
+            // Keyboard support for arrows
+            tripSelector.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    tripSelector.scrollBy({ left: -200, behavior: 'smooth' });
+                    setTimeout(updateScrollButtons, 300);
+                } else if (e.key === 'ArrowRight') {
+                    tripSelector.scrollBy({ left: 200, behavior: 'smooth' });
+                    setTimeout(updateScrollButtons, 300);
+                }
+            });
+            
+			function typewriterEffect(element, text, speed = 80) {
+                element.innerHTML = '';
+                let i = 0;
+                const type = () => {
+                    if (i < text.length) {
+                        element.innerHTML = text.slice(0, i + 1) + '<span class="typing-cursor">_</span>';
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        element.innerHTML = text + '<span class="typing-cursor">_</span>';
+                    }
+                };
+                type();
+            }
+			
+			const tripsData = {
                     france: {
-                        subtitle: "在伊朗自由行3周",
+                        subtitle: "新西兰南北岛, Aug. 2024",
+						backgroundImage: "bg-france",
                         events: {
-                            "开始行程": [
+                            "出发日": [
                                 { 
-                                    title: "测试", 
-                                    image: "images/2011-1.JPG", 
-                                    location: "测试", 
-                                    description: "测试测试. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
-                                    images: ["images/2011-1.JPG", "images/IMG_25000.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
+                                    title: "各自飞", 
+                                    image: "images/france-0-1-5.HEIC", 
+                                    location: "Auckland Airport", 
+                                    description: "我们前往了新西兰，各自从不同的地方出发，在奥克兰汇合。",
+                                    images: ["images/france-0-1-1.HEIC", "images/france-0-1-2.HEIC", "images/france-0-1-3.HEIC", "images/france-0-1-4.HEIC", "images/france-0-1-5.HEIC", "images/france-0-1-6.HEIC"]
                                 },
                                 { 
-                                    title: "On the plane", 
+                                    title: "In the Air", 
+                                    image: "images/france-0-2-2.jpg", 
+                                    location: "Over the Atlantic Ocean", 
+                                    description: "Scoring these bargain business class tickets wasn’t easy—but totally worth it. We soaked it all in (and even squeezed in five minutes of work before takeoff!).",
+                                    images: ["images/france-0-2-1.HEIC", "images/france-0-2-2.jpg", "images/france-0-2-3.HEIC", "images/france-0-2-4.HEIC", "images/france-0-2-5.HEIC", "images/france-0-2-6.HEIC", "images/france-0-2-7.HEIC"]
+                                }
+                            ],
+                            "Day 1": [
+                                { 
+                                    title: "Hello, Paris!", 
+                                    image: "images/france-1-1-1.HEIC", 
+                                    location: "Au Père Fouettard", 
+                                    description: "We made it to Paris! A little jetlagged, a lot hungry—so of course, our first stop was food. Let the adventure begin!",
+                                    images: ["images/france-1-1-1.HEIC", "images/france-1-1-2.HEIC", "images/france-1-1-3.HEIC", "images/france-1-1-4.HEIC"]
+                                },
+                                { 
+                                    title: "Olympics Party!", 
+                                    image: "images/france-1-2-4.HEIC", 
+                                    location: "Hôtel de Ville", 
+                                    description: "We stumbled upon an Olympics block party—such a fun surprise! So much energy and excitement!",
+                                    images: ["images/france-1-2-1.mp4", "images/france-1-2-2.HEIC", "images/france-1-2-3.mp4", "images/france-1-2-4.HEIC"]
+                                },
+                                { 
+                                    title: "Evening Along the Seine", 
+                                    image: "images/france-1-3-3.HEIC", 
+                                    location: "The Right Bank", 
+                                    description: "After the Olympics party, we took a stroll along the Seine—just in time for a beautiful sunset.",
+                                    images: ["images/france-1-3-1.HEIC", "images/france-1-3-2.HEIC", "images/france-1-3-3.HEIC", "images/france-1-3-4.HEIC", "images/france-1-3-5.HEIC", "images/france-1-3-6.HEIC", "images/france-1-3-7.HEIC", "images/france-1-3-8.HEIC", "images/france-1-3-9.HEIC", "images/france-1-3-10.HEIC"]
+                                },
+                                { 
+                                    title: "Ice Cream Finale", 
+                                    image: "images/france-1-4-2.HEIC", 
+                                    location: "Glace Bachir", 
+                                    description: "Wrapped up the night with a <i>massive</i> ice cream we had zero chance of finishing. No surprise—we’d been eating all day!",
+                                    images: ["images/france-1-4-1.HEIC", "images/france-1-4-2.HEIC"]
+                                }
+                            ],
+                            "Day 2": [
+                                { 
+                                    title: "First Morning in Paris!", 
+                                    image: "images/france-2-1-1.HEIC", 
+                                    location: "A. Lacroix Pâtissier", 
+                                    description: "Our Airbnb is in a beautiful spot. We grabbed a quick bite at a charming patisserie on the Left Bank before heading to the train station for Versailles.",
+                                    images: ["images/france-2-1-1.HEIC", "images/france-2-1-2.HEIC", "images/france-2-1-3.HEIC", "images/france-2-1-4.HEIC"]
+                                },
+                                { 
+                                    title: "Stunning Versailles", 
+                                    image: "images/france-2-2-2.HEIC", 
+                                    location: "Versailles", 
+                                    description: "Versailles was absolutely massive and stunning—every hallway, chandelier, and fountain felt like something out of a dream. The sheer scale of it all was hard to believe, and we couldn’t stop saying 'wow' around every corner.",
+                                    images: ["images/france-2-2-1.HEIC", "images/france-2-2-2.HEIC", "images/france-2-2-3.HEIC", "images/france-2-2-4.HEIC", "images/france-2-2-5.HEIC", "images/france-2-2-6.HEIC", "images/france-2-2-7.HEIC", "images/france-2-2-8.HEIC", "images/france-2-2-9.HEIC", "images/france-2-2-10.HEIC", "images/france-2-2-11.HEIC", "images/france-2-2-12.HEIC", "images/france-2-2-13.HEIC"]
+                                },
+                                { 
+                                    title: "Beyond the Palace", 
+                                    image: "images/france-2-3-5.HEIC", 
+                                    location: "Jardins du Versailles", 
+                                    description: "The Gardens of Versailles is huge—way too much to cover on foot, and all the golf carts were already rented out! We grabbed a bite, took a quick nap in the shade, and then made our way back to Paris.",
+                                    images: ["images/france-2-3-1.HEIC", "images/france-2-3-2.HEIC", "images/france-2-3-3.HEIC", "images/france-2-3-4.HEIC", "images/france-2-3-5.HEIC", "images/france-2-3-6.HEIC", "images/france-2-3-7.HEIC", "images/france-2-3-8.HEIC"]
+                                },
+                                { 
+                                    title: "Posing at the Eiffel", 
+                                    image: "images/france-2-4-1.HEIC", 
+                                    location: "Rue Buenos-Ayres", 
+                                    description: "We got off at the Tour Eiffel station—because striking a pose at that viral photo spot is basically mandatory, right? Chris made Keith to crouch way down to get the perfect low-angle shot… now his back’s paying the price. Oops—but the pics turned out great!",
+                                    images: ["images/france-2-4-1.HEIC", "images/france-2-4-2.HEIC", "images/france-2-4-3.mp4", "images/france-2-4-4.HEIC", "images/france-2-4-5.HEIC", "images/france-2-4-6.HEIC", "images/france-2-4-7.HEIC", "images/france-2-4-8.HEIC"]
+                                },
+                                { 
+                                    title: "Street-Side Dinner", 
+                                    image: "images/france-2-5-2.HEIC", 
+                                    location: "La Fontaine de Mars", 
+                                    description: "After a long day, it was finally time for a proper dinner. There’s just something so enjoyable about dining streetside in Europe—this is what life’s all about. Fun fact: 99% of the time Keith’s holding a drink for a photo… it’s actually Chris’s. He’s all about the prop, not the sip!",
+                                    images: ["images/france-2-5-0.HEIC", "images/france-2-5-1.HEIC", "images/france-2-5-2.HEIC", "images/france-2-5-3.HEIC", "images/france-2-5-4.HEIC", "images/france-2-5-5.HEIC", "images/france-2-5-6.HEIC"]
+                                },
+                                { 
+                                    title: "Paris After Dark", 
+                                    image: "images/france-2-6-3.HEIC", 
+                                    location: "Av. des Champs-Élysées", 
+                                    description: "A quiet night stroll—time to slow the pace, breathe deep, and let Paris work its magic under the lights.",
+                                    images: ["images/france-2-6-1.HEIC", "images/france-2-6-2.HEIC", "images/france-2-6-3.HEIC", "images/france-2-6-4.HEIC", "images/france-2-6-5.HEIC", "images/france-2-6-6.HEIC", "images/france-2-6-7.HEIC", "images/france-2-6-8.HEIC", "images/france-2-6-9.HEIC", "images/france-2-6-10.HEIC"]
+                                }
+                            ],
+                            "Day 3": [
+                                { 
+                                    title: "Trip Favorite", 
+                                    image: "images/france-3-1-6.HEIC", 
+                                    location: "Le Petit Bouillon Pharamond", 
+                                    description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
+                                    images: ["images/france-3-1-1.HEIC", "images/france-3-1-2.HEIC", "images/france-3-1-3.HEIC", "images/france-3-1-4.HEIC", "images/france-3-1-5.HEIC", "images/france-3-1-6.HEIC"]
+                                },
+                                { 
+                                    title: "LV Dream", 
+                                    image: "images/france-3-2-3.HEIC", 
+                                    location: "LV DREAM", 
+                                    description: "Visited the Louis Vuitton exhibition. Not really our thing, but it was free and we had time to kill—so hey, why not?",
+                                    images: ["images/france-3-2-1.HEIC", "images/france-3-2-2.HEIC", "images/france-3-2-3.HEIC", "images/france-3-2-4.HEIC"]
+                                },
+                                { 
+                                    title: "Stained Glass Wonder", 
+                                    image: "images/france-3-3-3.HEIC", 
+                                    location: "Sainte-Chapelle", 
+                                    description: "Keith’s favorite spot—he insisted we go, insisted on covering the fare… and honestly, it was absolutely stunning. We also stopped by the Palais de Justice de Paris next door—there wasn’t much to see inside, so we just snapped a few photos and moved on.",
+                                    images: ["images/france-3-3-1.mp4", "images/france-3-3-2.HEIC", "images/france-3-3-3.HEIC", "images/france-3-3-4.HEIC", "images/france-3-3-5.HEIC", "images/france-3-3-6.HEIC", "images/france-3-3-7.HEIC", "images/france-3-3-8.HEIC", "images/france-3-3-9.HEIC", "images/france-3-3-10.HEIC", "images/france-3-3-11.HEIC"]
+                                },
+                                { 
+                                    title: "Rooftop Views", 
+                                    image: "images/france-3-4-3.HEIC", 
+                                    location: "Galeries Lafayette Haussmann", 
+                                    description: "The rooftop at Galeries Lafayette is one of the best hangout spots—unbeatable views and the perfect place to snack and chill.",
+                                    images: ["images/france-3-4-1.HEIC", "images/france-3-4-2.HEIC", "images/france-3-4-3.HEIC", "images/france-3-4-4.mp4", "images/france-3-4-5.HEIC", "images/france-3-4-6.HEIC", "images/france-3-4-7.HEIC", "images/france-3-4-8.HEIC"]
+                                },
+                                { 
+                                    title: "Montmartre at Sunset", 
+                                    image: "images/france-3-5-2.HEIC", 
+                                    location: "Basilique du Sacré-Cœur de Montmartre", 
+                                    description: "As sunset approached, we made our way up to Montmartre for the perfect view. The church is beautiful, and the crowd up there—so eclectic and full of character.",
+                                    images: ["images/france-3-5-1.HEIC", "images/france-3-5-2.HEIC", "images/france-3-5-3.HEIC", "images/france-3-5-4.HEIC", "images/france-3-5-5.mp4", "images/france-3-5-6.mp4", "images/france-3-5-7.HEIC", "images/france-3-5-8.HEIC", 
+]
+                                },
+                                { 
+                                    title: "Late Night Dinner", 
+                                    image: "images/france-3-6-6.HEIC", 
+                                    location: "Montmartre", 
+                                    description: "Didn’t expect the mountaintop to be this alive on a work night! Keith had to take a long work call, and Chris got a little <i>hangry</i>—but luckily, Keith always knows how to crack him up. Walking down to the Metro Line 4 was a bit sketchy—definitely a 'never again' moment!",
+                                    images: ["images/france-3-6-1.mp4", "images/france-3-6-2.HEIC", "images/france-3-6-3.HEIC", "images/france-3-6-4.HEIC", "images/france-3-6-5.HEIC", "images/france-3-6-6.HEIC", "images/france-3-6-7.HEIC", "images/france-3-6-8.HEIC"]
+                                }
+                            ],
+                            "Day 4": [
+                                { 
+                                    title: "Bonjour, Nice!", 
+                                    image: "images/france-4-1-1.HEIC", 
+                                    location: "Le Rossini", 
+                                    description: "Off to the French Riviera on the TGV! After dropping our bags at the Airbnb, we rushed to a cozy corner restaurant—and we loved the waitress. She was fun, super attentive, and made us feel right at home. Oh, and we happened to catch a bit of a protest nearby—never a dull moment!",
+                                    images: ["images/france-4-1-1.HEIC", "images/france-4-1-2.mp4", "images/france-4-1-3.HEIC", "images/france-4-1-4.HEIC", "images/france-4-1-5.HEIC", "images/france-4-1-6.HEIC", "images/france-4-1-7.HEIC"]
+                                },
+                                { 
+                                    title: "Pebble Beach Break", 
+                                    image: "images/france-4-2-10.HEIC", 
+                                    location: "Plage des Ponchettes", 
+                                    description: "After a quick nap, we walked to the beach—turns out it’s all pebbles, but honestly, they’re kind of better. No messy sand, just smooth stones and sea breeze. A perfect little break by the water.",
+                                    images: ["images/france-4-2-1.HEIC", "images/france-4-2-2.HEIC", "images/france-4-2-3.HEIC", "images/france-4-2-4.HEIC", "images/france-4-2-5.HEIC", "images/france-4-2-6.HEIC", "images/france-4-2-7.HEIC", "images/france-4-2-8.HEIC", "images/france-4-2-9.HEIC", "images/france-4-2-10.HEIC", "images/france-4-2-11.HEIC"]
+                                },
+                                { 
+                                    title: "Dinner in Old Nice", 
+                                    image: "images/france-4-3-2.HEIC", 
+                                    location: "Le Maquis", 
+                                    description: "Loved wandering through the narrow alleys of Old Nice—so many restaurants, with life buzzing around every corner. After a few rounds of indecision, we finally picked a spot we absolutely adored.",
+                                    images: ["images/france-4-3-1.HEIC", "images/france-4-3-2.HEIC", "images/france-4-3-3.HEIC", "images/france-4-3-4.HEIC", "images/france-4-3-5.HEIC", "images/france-4-3-6.HEIC", "images/france-4-3-7.HEIC", "images/france-4-3-8.HEIC", "images/france-4-3-9.HEIC"]
+                                }
+                            ],
+                            "Day 5": [
+                                { 
+                                    title: "Cannes You Believe It?", 
+                                    image: "images/france-5-1-4.HEIC", 
+                                    location: "Cannes", 
+                                    description: "Biggest hiccup of the trip—our Airbnb’s smoke detector started blaring after midnight. We ended up switching to a hotel, but no way that was going to slow us down. We’re off to Cannes! Stopped by our favorite corner restaurant again before the trip, and this time, there was a surprise military parade right outside.",
+                                    images: ["images/france-5-1-1.mp4", "images/france-5-1-2.HEIC", "images/france-5-1-3.HEIC", "images/france-5-1-4.HEIC"]
+                                },
+                                { 
+                                    title: "By the Cannes Shore", 
+                                    image: "images/france-5-2-5.HEIC", 
+                                    location: "Carlton Cannes", 
+                                    description: "We took a slow walk along the coast, wandered through the famous Carlton Hotel, and scoped out the best spots to chill by the beach later.",
+                                    images: ["images/france-5-2-1.HEIC", "images/france-5-2-2.HEIC", "images/france-5-2-3.HEIC", "images/france-5-2-4.HEIC", "images/france-5-2-5.HEIC", "images/france-5-2-6.HEIC", "images/france-5-2-7.HEIC"]
+                                },
+                                { 
+                                    title: "Laid-Back in Cannes", 
+                                    image: "images/france-5-3-1.HEIC", 
+                                    location: "La Plage du Martinez", 
+                                    description: "And there it was—our most laid-back moment of the whole trip. After the chaos with the smoke detector, we both agreed we deserved a little downtime.",
+                                    images: ["images/france-5-3-1.HEIC", "images/france-5-3-2.HEIC", "images/france-5-3-3.HEIC", "images/france-5-3-4.HEIC", "images/france-5-3-5.HEIC", "images/france-5-3-6.HEIC", "images/france-5-3-7.HEIC"]
+                                },
+                                { 
+                                    title: "Cannes Street Stroll", 
+                                    image: "images/france-5-4-5.HEIC", 
+                                    location: "Cannes", 
+                                    description: "Took a walk around Cannes to soak in the beauty of the city—and to get one last look at that stunning beach before heading out.",
+                                    images: ["images/france-5-4-1.HEIC", "images/france-5-4-2.HEIC", "images/france-5-4-3.HEIC", "images/france-5-4-4.HEIC", "images/france-5-4-5.HEIC", "images/france-5-4-6.HEIC", "images/france-5-4-7.mp4", "images/france-5-4-8.HEIC", "images/france-5-4-9.HEIC", "images/france-5-4-10.HEIC"]
+                                },
+                                { 
+                                    title: "Spice Break", 
+                                    image: "images/france-5-5-1.HEIC", 
+                                    location: "L'Elephant Bleu", 
+                                    description: "We decided to switch up our palette a bit with some Thai food for dinner, then made our way back to our base in Nice. Ended the night with a peaceful walk along the beach—Nice has its own kind of magic after dark.",
+                                    images: ["images/france-5-5-1.HEIC", "images/france-5-5-2.HEIC", "images/france-5-5-3.HEIC", "images/france-5-5-4.HEIC", "images/france-5-5-5.HEIC", "images/france-5-5-6.HEIC"]
+                                }
+                            ],
+                            "Day 6": [
+                                { 
+                                    title: "Nice from Above", 
+                                    image: "images/france-6-1-5.HEIC", 
+                                    location: "Colline du Château", 
+                                    description: "Big travel day ahead, but before heading out for our day trip, we made a stop at the mountaintop for the panoramic view of Nice. A perfect way to start the day!",
+                                    images: ["images/france-6-1-1.HEIC", "images/france-6-1-2.HEIC", "images/france-6-1-3.HEIC", "images/france-6-1-4.mp4", "images/france-6-1-5.HEIC", "images/france-6-1-6.HEIC", "images/france-6-1-7.HEIC", "images/france-6-1-8.HEIC", "images/france-6-1-9.HEIC"]
+                                },
+                                { 
+                                    title: "This Is Menton!", 
+                                    image: "images/france-6-2-2.HEIC", 
+                                    location: "Menton", 
+                                    description: "After a short train ride, we made it to Menton! What a beautiful town—just look at those colorful buildings. Absolutely picture-perfect.",
+                                    images: ["images/france-6-2-1.HEIC", "images/france-6-2-2.HEIC", "images/france-6-2-3.HEIC", "images/france-6-2-4.HEIC"]
+                                },
+                                { 
+                                    title: "Hillside Wanders", 
+                                    image: "images/france-6-3-2.HEIC", 
+                                    location: "Menton", 
+                                    description: "It was so fun exploring the winding, irregular alleys of Menton up on the hill—every turn revealed another charming little corner.",
+                                    images: ["images/france-6-3-1.HEIC", "images/france-6-3-2.HEIC", "images/france-6-3-3.HEIC", "images/france-6-3-4.HEIC", "images/france-6-3-5.HEIC", "images/france-6-3-6.HEIC", "images/france-6-3-7.HEIC", "images/france-6-3-8.HEIC", "images/france-6-3-9.HEIC", "images/france-6-3-10.HEIC"]
+                                },
+                                { 
+                                    title: "Hot Climb, Cool View", 
+                                    image: "images/france-6-4-5.HEIC", 
+                                    location: "Menton", 
+                                    description: "This is what happens when you climb a hill on a hot day! But once we made it to the top, it was time to head back down to the train station—next stop: Monaco.",
+                                    images: ["images/france-6-4-1.HEIC", "images/france-6-4-2.HEIC", "images/france-6-4-3.HEIC", "images/france-6-4-4.HEIC", "images/france-6-4-5.HEIC", "images/france-6-4-6.HEIC", "images/france-6-4-7.HEIC", "images/france-6-4-8.HEIC", "images/france-6-4-9.HEIC"]
+                                },
+                                { 
+                                    title: "Mini Monaco", 
+                                    image: "images/france-6-5-1.HEIC", 
+                                    location: "Monaco", 
+                                    description: "Arrived in Monaco! It’s a tiny country, densely built into the hillside—kind of like a Mediterranean version of Hong Kong.",
+                                    images: ["images/france-6-5-1.HEIC", "images/france-6-5-2.HEIC", "images/france-6-5-3.HEIC", "images/france-6-5-4.HEIC", "images/france-6-5-5.HEIC", "images/france-6-5-6.HEIC", "images/france-6-5-7.HEIC"]
+                                },
+                                { 
+                                    title: "Money! Money! Money!", 
+                                    image: "images/france-6-6-3.HEIC", 
+                                    location: "Casino de Monte-Carlo", 
+                                    description: "This might just be the highest concentration of wealth we've ever seen. Surprisingly though, our Italian meal right on the border of Monaco and France was super reasonable—great food without the Monaco price tag!",
+                                    images: ["images/france-6-6-1.HEIC", "images/france-6-6-2.HEIC", "images/france-6-6-3.HEIC", "images/france-6-6-4.HEIC", "images/france-6-6-5.HEIC", "images/france-6-6-6.HEIC", "images/france-6-6-7.HEIC", "images/france-6-6-8.HEIC", "images/france-6-6-9.HEIC"]
+                                },
+                                { 
+                                    title: "Back to Nice", 
+                                    image: "images/france-6-7-1.HEIC", 
+                                    location: "Nice", 
+                                    description: "We took the bus back to Nice, hoping to catch some scenic views along the way—but of course, we napped the whole ride! Late at night, we headed out to explore Nice’s nighttime food scene. Packed with people and full of life!",
+                                    images: ["images/france-6-7-1.HEIC", "images/france-6-7-2.HEIC", "images/france-6-7-3.mp4", "images/france-6-7-4.HEIC"]
+                                }
+                            ],
+                            "Day 7": [
+                                { 
+                                    title: "Exploring Éze", 
+                                    image: "images/france-7-1-5.HEIC", 
+                                    location: "Éze", 
+                                    description: "We spent the day in Éze, a postcard-perfect village perched high above the Côte d’Azur. We grabbed a quick lunch before setting off to explore its narrow stone alleys—every turn opened up to breathtaking views of the Mediterranean. Peaceful, scenic, and full of charm.",
+                                    images: ["images/france-7-1-1.HEIC", "images/france-7-1-2.HEIC", "images/france-7-1-3.HEIC", "images/france-7-1-4.HEIC", "images/france-7-1-5.HEIC", "images/france-7-1-6.HEIC", "images/france-7-1-7.HEIC", "images/france-7-1-8.HEIC"]
+                                },
+                                { 
+                                    title: "Stone Paths and Secret Corners", 
+                                    image: "images/france-7-2-2.HEIC", 
+                                    location: "Éze", 
+                                    description: "Éze is a maze of winding stone paths, ivy-covered walls, and charming little shops tucked into centuries-old buildings. Every corner felt like a secret waiting to be found. The village is perched so high it almost feels like walking through a fairytale above the sea.",
+                                    images: ["images/france-7-2-1.mp4", "images/france-7-2-2.HEIC", "images/france-7-2-3.HEIC", "images/france-7-2-4.HEIC", "images/france-7-2-5.HEIC", "images/france-7-2-6.HEIC", "images/france-7-2-7.HEIC", "images/france-7-2-8.HEIC"]
+                                },
+                                { 
+                                    title: "The Exotic Garden", 
+                                    image: "images/france-7-3-1.HEIC", 
+                                    location: "Jardin Exotique d’Èze", 
+                                    description: "Perched at the village’s peak, the Exotic Garden felt like the crown of Éze—lush plants, sea views, and a peaceful moment above it all.",
+                                    images: ["images/france-7-3-1.HEIC", "images/france-7-3-2.HEIC", "images/france-7-3-3.HEIC", "images/france-7-3-4.HEIC", "images/france-7-3-5.HEIC", "images/france-7-3-6.HEIC", "images/france-7-3-7.HEIC", "images/france-7-3-8.HEIC"]
+                                },
+                                { 
+                                    title: "Hot at the Top", 
+                                    image: "images/france-7-4-1.HEIC", 
+                                    location: "Jardin Exotique d’Èze", 
+                                    description: "Sunburn, sweat, and spectacular views—Éze doesn’t mess around, but the view from the top made it all worth it. That panorama is something we’ll remember forever.",
+                                    images: ["images/france-7-4-1.HEIC", "images/france-7-4-2.HEIC", "images/france-7-4-3.HEIC", "images/france-7-4-4.HEIC", "images/france-7-4-5.HEIC", "images/france-7-4-6.HEIC", "images/france-7-4-7.HEIC", "images/france-7-4-8.HEIC", "images/france-7-4-9.HEIC", "images/france-7-4-10.HEIC"]
+                                },
+                                { 
+                                    title: "Candy and Closures", 
+                                    image: "images/france-7-5-1.HEIC", 
+                                    location: "Château Eza", 
+                                    description: "After coming down from the garden, we wandered the small paths again and popped into some shops. Keith somehow spent $200 on candies… and yeah, we probably trashed most of it after the trip! Tried to grab a quick drink at Château Eza, but it was closed off for a private event. Oh well, next time!",
+                                    images: ["images/france-7-5-1.HEIC", "images/france-7-5-2.HEIC", "images/france-7-5-3.HEIC", "images/france-7-5-4.HEIC", "images/france-7-5-5.HEIC", "images/france-7-5-6.HEIC", "images/france-7-5-7.HEIC", "images/france-7-5-8.HEIC", ]
+                                },
+                                { 
+                                    title: "Farewell, Côte d’Azur", 
+                                    image: "images/france-7-7-2.HEIC", 
+                                    location: "Casino de Monte-Carlo", 
+                                    description: "With a bit of time to spare before catching our train back to Paris, we climbed the hilltop one last time to soak in the view of Nice.",
+                                    images: ["images/france-7-7-1.HEIC", "images/france-7-7-2.HEIC", "images/france-7-7-3.HEIC", "images/france-7-7-4.HEIC", "images/france-7-7-5.HEIC"]
+                                },
+                                { 
+                                    title: "Hello Again, Paris", 
+                                    image: "images/france-7-8-5.HEIC", 
+                                    location: "Gare de Lyon", 
+                                    description: "The train was slightly delayed, but eventually, we rolled into Paris late at night—tired, but grateful. Chris was smart to book us into a charming historic boutique hotel just steps from Gare de Lyon—super convenient and full of character.",
+                                    images: ["images/france-7-8-1.HEIC", "images/france-7-8-2.HEIC", "images/france-7-8-3.HEIC", "images/france-7-8-4.HEIC", "images/france-7-8-5.HEIC"]
+                                }
+                            ],
+                            "Day 8": [
+                                { 
+                                    title: "Para Archery", 
+                                    image: "images/france-8-1-8.HEIC", 
+                                    location: "Invalides", 
+                                    description: "Gotta give it to Chris for the dedication—refreshing like a champ and scoring last-minute Paralympics tickets! No idea why Keith had Chris grumpy that morning, but whatever he did to fix it clearly worked. Our first event was para archery at the historic Hôtel des Invalides, once a veterans’ hospital—pretty epic setting for a competition.",
+                                    images: ["images/france-8-1-1.HEIC", "images/france-8-1-2.mp4", "images/france-8-1-3.HEIC", "images/france-8-1-4.HEIC", "images/france-8-1-5.HEIC", "images/france-8-1-6.HEIC", "images/france-8-1-7.HEIC", "images/france-8-1-8.HEIC", "images/france-8-1-9.HEIC", "images/france-8-1-10.HEIC"]
+                                },
+                                { 
+                                    title: "Para Taekwondo", 
+                                    image: "images/france-8-2-2.HEIC", 
+                                    location: "Grand Palais", 
+                                    description: "We rushed over to our second overlapping event—Para Taekwondo at the Grand Palais! What an epic venue for such an intense competition.",
+                                    images: ["images/france-8-2-1.HEIC", "images/france-8-2-2.HEIC", "images/france-8-2-3.HEIC", "images/france-8-2-4.HEIC", "images/france-8-2-5.HEIC", "images/france-8-2-6.HEIC", "images/france-8-2-7.HEIC"]
+                                },
+                                { 
+                                    title: "Merch, Lunch, and a Reset", 
+                                    image: "images/france-8-3-2.HEIC", 
+                                    location: "The Kitchen", 
+                                    description: "We went a little wild with the discounted Olympics merch—who could blame us? After a solid lunch to recharge, we were ready to get back to exploring Paris.",
+                                    images: ["images/france-8-3-1.HEIC", "images/france-8-3-2.HEIC", "images/france-8-3-3.HEIC", "images/france-8-3-4.HEIC", "images/france-8-3-5.HEIC", "images/france-8-3-6.HEIC", "images/france-8-3-7.HEIC"]
+                                },
+                                { 
+                                    title: "Macaron in the Garden", 
+                                    image: "images/france-8-4-1.HEIC", 
+                                    location: "Jardin du Luxembourg", 
+                                    description: "We found the best macarons in Paris—just look at that presentation! Even better, we enjoyed them right in the beautiful Luxembourg Garden. A sweet moment in every way.",
+                                    images: ["images/france-8-4-1.HEIC", "images/france-8-4-2.HEIC", "images/france-8-4-3.HEIC", "images/france-8-4-4.HEIC", "images/france-8-4-5.HEIC", "images/france-8-4-6.HEIC", "images/france-8-4-7.HEIC", "images/france-8-4-8.HEIC", "images/france-8-4-9.HEIC", "images/france-8-4-10.HEIC"]
+                                },
+                                { 
+                                    title: "The Cauldron That Never Rose", 
+                                    image: "images/france-8-5-1.HEIC", 
+                                    location: "Jardin du Carrousel", 
+                                    description: "We waited for the rise of the Olympic cauldron—our one chance to catch the magic moment. The crowd was huge, the energy was high... and then came the delays. More waiting, more hunger, and eventually, we had to give up. Sometimes, the moment just doesn’t rise with you.",
+                                    images: ["images/france-8-5-1.HEIC", "images/france-8-5-2.mp4", "images/france-8-5-3.HEIC", "images/france-8-5-4.HEIC", "images/france-8-5-5.HEIC", "images/france-8-5-6.HEIC"]
+                                },
+                                { 
+                                    title: "Soaked but Smiling", 
+                                    image: "images/france-8-6-5.HEIC", 
+                                    location: "Café de la Régence", 
+                                    description: "Our last dinner! We chose a nice restaurant to make up for the disappointment—street-side seating, soaking in the Paris vibes. Then the storm hit. It poured so hard that some raindrops even landed in our food. No wonder the Olympic cauldron lift was canceled—Paris had other plans.",
+                                    images: ["images/france-8-6-1.HEIC", "images/france-8-6-2.mp4", "images/france-8-6-3.HEIC", "images/france-8-6-4.HEIC", "images/france-8-6-5.HEIC"]
+                                }
+                            ],
+                            "Day 9": [
+                                { 
+                                    title: "Vintage Lift, Mixed Reviews", 
+                                    image: "images/france-9-1-2.HEIC", 
+                                    location: "Hotel Camille Paris", 
+                                    description: "Chris adored the charming old elevator they preserved in the hotel—full of vintage character. Keith, of course, rolled his eyes and dismissed the whole thing as 'just old.'",
+                                    images: ["images/france-9-1-1.mp4", "images/france-9-1-2.HEIC", "images/france-9-1-3.HEIC", "images/france-9-1-4.HEIC", "images/france-9-1-5.HEIC", "images/france-9-1-6.HEIC"]
+                                },
+                                { 
+                                    title: "Final Walk Along the Seine", 
+                                    image: "images/france-9-2-4.HEIC", 
+                                    location: "Passerelle Simone-de-Beauvoir", 
+                                    description: "We took one last walk along the Seine before our final Paralympics event. Peaceful, scenic... except for the bridge part—guess who <i>still</i> hates walking on bridges?",
+                                    images: ["images/france-9-2-1.HEIC", "images/france-9-2-2.HEIC", "images/france-9-2-3.HEIC", "images/france-9-2-4.HEIC", "images/france-9-2-5.HEIC", "images/france-9-2-6.HEIC", "images/france-9-2-7.HEIC"]
+                                },
+                                { 
+                                    title: "Blind Football", 
+                                    image: "images/france-9-3-3.HEIC", 
+                                    location: "Stade Tour Eiffel", 
+                                    description: "Wow—we never expected blind football to be so intense and entertaining. It truly felt like a high-level competitive sport, and watching it in a stadium right beneath the Eiffel Tower made it all the more surreal. A once-in-a-lifetime experience, and the perfect way to end our France trip.",
+                                    images: ["images/france-9-3-1.mp4", "images/france-9-3-2.HEIC", "images/france-9-3-3.HEIC", "images/france-9-3-4.HEIC", "images/france-9-3-5.HEIC", "images/france-9-3-6.HEIC", "images/france-9-3-7.HEIC", "images/france-9-3-8.HEIC"]
+                                },
+                                { 
+                                    title: "Au Revoir, France!", 
+                                    image: "images/france-9-4-1.HEIC", 
+                                    location: "Charles de Gaulle Airport", 
+                                    description: "Flying back! The private sauna in the Air France lounge was a fun little surprise—what a way to end things. We had an amazing trip, full of memories we’ll be talking about for a long time!",
+                                    images: ["images/france-9-4-1.HEIC", "images/france-9-4-2.HEIC", "images/france-9-4-3.HEIC", "images/france-9-4-4.HEIC", "images/france-9-4-5.HEIC", "images/france-9-4-6.HEIC", "images/france-9-4-7.HEIC", "images/france-9-4-8.HEIC"]
+                                }
+                            ]
+                        }
+                    },
+                    philly: {
+                        subtitle: "Memorial Day Weekend, 2025",
+						backgroundImage: "bg-philly",
+                        events: {
+                            "Day 1": [
+                                { 
+                                    title: "Started High School", 
+                                    image: "images/2011-1.JPG", 
+                                    location: "My Hometown", 
+                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                                    images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
+                                },
+                                { 
+                                    title: "First Vacation", 
                                     image: "images/2011-2.JPG", 
                                     location: "Somewhere Fun", 
                                     description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
                                     images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
                                 }
                             ],
-                            "Day 1": [
+                            "Day 2": [
                                 { 
-                                    title: "Graduated High School", 
-                                    image: "images/2015-1.JPG", 
-                                    location: "School", 
-                                    description: "Graduating high school in 2015 was a huge milestone. After years of hard work, I walked across the stage with pride, surrounded by friends and family.",
-                                    images: ["images/2015-1.JPG", "images/2015-1-extra1.JPG", "images/2015-1-extra2.JPG"]
+                                    title: "Moved to a New City", 
+                                    image: "images/2020-1.JPG", 
+                                    location: "New City", 
+                                    description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
+                                    images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
                                 },
                                 { 
-                                    title: "Got My First Job", 
-                                    image: "images/2015-2.JPG", 
-                                    location: "Workplace", 
-                                    description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
-                                    images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
-                                },
-                                { 
-                                    title: "Got My First Job", 
-                                    image: "images/2015-2.JPG", 
-                                    location: "Workplace", 
-                                    description: "Landing my first job in 2015 was a big step toward independence. I learned the ropes quickly, met great coworkers, and started earning my own money.",
-                                    images: ["images/2015-2.JPG", "images/2015-2-extra1.JPG", "images/2015-2-extra2.JPG"]
+                                    title: "Adopted a Pet", 
+                                    image: "images/2020-2.JPG", 
+                                    location: "Home", 
+                                    description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
+                                    images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
                                 }
                             ],
                             "Day 3": [
@@ -493,15 +1143,16 @@
                             ]
                         }
                     },
-                    philly: {
-                        subtitle: "Keith & Chris, July 2025",
+                    europe: {
+                        subtitle: "Denmark, Germany & Czechia, June 2025",
+						backgroundImage: "bg-europe",
                         events: {
                             "Day 1": [
                                 { 
                                     title: "Started High School", 
                                     image: "images/2011-1.JPG", 
                                     location: "My Hometown", 
-                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
+                                    description: "<p>Denmark: 	&#128515;</p>This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
                                     images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
                                 },
                                 { 
@@ -530,48 +1181,79 @@
                             ]
                         }
                     },
-                    europe: {
-                        subtitle: "Keith & Chris, August 2025",
-                        events: {
-                            "Day 1": [
-                                { 
-                                    title: "Started High School", 
-                                    image: "images/2011-1.JPG", 
-                                    location: "My Hometown", 
-                                    description: "This was the beginning of an exciting chapter in my life. I started high school in 2011, meeting new friends and discovering my interests. The first day was nerve-wracking but unforgettable.",
-                                    images: ["images/2011-1.JPG", "images/IMG_2500.mp4", "images/2011-1-2.JPG", "images/2011-1-3.JPG", "images/2011-1-4.JPG", "images/2011-1-5.JPG", "images/2011-1-6.JPG"]
-                                },
-                                { 
-                                    title: "First Vacation", 
-                                    image: "images/2011-2.JPG", 
-                                    location: "Somewhere Fun", 
-                                    description: "My first vacation in 2011 was a blast! We traveled to a fun destination, enjoying sunny beaches and new adventures. It was my first taste of exploring beyond my hometown.",
-                                    images: ["images/2011-2.JPG", "images/2011-2-extra1.JPG", "images/2011-2-extra2.JPG"]
-                                }
-                            ],
-                            "Day 2": [
-                                { 
-                                    title: "Moved to a New City", 
-                                    image: "images/2020-1.JPG", 
-                                    location: "New City", 
-                                    description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
-                                    images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
-                                },
-                                { 
-                                    title: "Adopted a Pet", 
-                                    image: "images/2020-2.JPG", 
-                                    location: "Home", 
-                                    description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
-                                    images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
-                                }
-                            ]
-                        }
-                    }
+	                italy: {
+	                    subtitle: "Rome & Amalfi, July 2025",
+	                    backgroundImage: "bg-italy",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Rome", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                japan: {
+	                    subtitle: "Tokyo & Kyoto, Aug. 2025",
+	                    backgroundImage: "bg-japan",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Tokyo", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                australia: {
+	                    subtitle: "Sydney & Great Barrier Reef, Sept. 2025",
+	                    backgroundImage: "bg-australia",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Sydney", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                canada: {
+	                    subtitle: "Vancouver & Banff, Oct. 2025",
+	                    backgroundImage: "bg-canada",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Vancouver", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                brazil: {
+	                    subtitle: "Rio & Amazon, Nov. 2025",
+	                    backgroundImage: "bg-brazil",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Rio", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                iceland: {
+	                    subtitle: "Reykjavik & Blue Lagoon, Dec. 2025",
+	                    backgroundImage: "bg-iceland",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Reykjavik", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                },
+	                thailand: {
+	                    subtitle: "Bangkok & Phuket, Jan. 2026",
+	                    backgroundImage: "bg-thailand",
+	                    events: { "Day 1": [{ title: "Placeholder", image: "images/placeholder.jpg", location: "Bangkok", description: "TBD", images: ["images/placeholder.jpg"] }] }
+	                }
                 };
+				
+            if (enablePassword) {
+                const userPassword = prompt("Please enter the password to view this website:");
+                if (userPassword === correctPassword) {
+                    contentDiv.style.display = "block";
+                    loadTimeline('france');
+                } else {
+                    accessDeniedDiv.style.display = "block";
+					document.body.className = "bg-default";
+                    backgroundLayer.style.display = "none";
+                    document.querySelector('.fade-layer').style.display = "none";
+                }
+            } else {
+                contentDiv.style.display = "block";
+                loadTimeline('france');
+            }
+
+            const tripButtons = document.querySelectorAll('.trip-btn');
+            tripButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tripButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    loadTimeline(this.dataset.trip);
+                });
+            });
+
+            function loadTimeline(trip) {
+                const timeline = document.querySelector(".timeline");
+                timeline.innerHTML = ""; // Clear existing timeline
 
                 const tripData = tripsData[trip];
-                document.getElementById("trip-subtitle").textContent = tripData.subtitle;
-
+                typewriterEffect(document.getElementById("trip-subtitle"), tripData.subtitle);
+	
+				// Update background image
+                backgroundLayer.className = `background-layer ${tripData.backgroundImage}`;
+                document.body.className = ""; // Clear body classes
+				
                 const eventsData = tripData.events;
                 let yearIndex = 0;
                 for (let year in eventsData) {
@@ -587,9 +1269,9 @@
                         eventDiv.className = "event";
                         eventDiv.innerHTML = `
                             <h3>${event.title}</h3>
-                            <img src="${event.image}" alt="${year} Event" onclick="showModal('${year}', ${index}, '${trip}')">
-                            <p>Location: ${event.location}</p>
-                            <a onclick="showModal('${year}', ${index}, '${trip}')">View More</a>
+                            <img src="${event.image}" alt="${year} Event" loading="lazy" onclick="showModal('${year}', ${index}, '${trip}')">
+                            <p>地点: ${event.location}</p>
+                            <a onclick="showModal('${year}', ${index}, '${trip}')">更多</a>
                         `;
                         yearBlock.appendChild(eventDiv);
                     });
@@ -597,7 +1279,12 @@
                     timeline.appendChild(yearBlock);
                     yearIndex++;
                 }
-
+				
+				let theEnd = document.createElement("div");
+				theEnd.className = "the-end";
+				theEnd.textContent = "The End";
+				timeline.appendChild(theEnd);
+				
                 window.tripsData = tripsData;
 
                 function checkVisibility() {
@@ -623,7 +1310,18 @@
             });
 
             backToTopButton.addEventListener("click", () => {
+                backToTopButton.classList.add("active");
                 window.scrollTo({ top: 0, behavior: "smooth" });
+                setTimeout(() => {
+                    backToTopButton.classList.remove("active");
+                }, 200);
+            });
+			
+			backToTopButton.addEventListener("touchend", () => {
+                setTimeout(() => {
+                    backToTopButton.classList.remove("active");
+                    backToTopButton.style.opacity = "0.7";
+                }, 300);
             });
         });
 
@@ -631,70 +1329,117 @@
         let currentImages = [];
         let currentTrip = 'france';
 
+		function positionSlideshowButtons() {
+            const slideshow = document.querySelector('.slideshow');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            if (slideshow && prevBtn && nextBtn) {
+                const slideshowRect = slideshow.getBoundingClientRect();
+                const modalContent = document.querySelector('.modal-content');
+                const modalRect = modalContent.getBoundingClientRect();
+                const slideshowTop = slideshowRect.top - modalRect.top + (slideshowRect.height / 2);
+                prevBtn.style.top = `${slideshowTop}px`;
+                nextBtn.style.top = `${slideshowTop}px`;
+                prevBtn.style.transform = 'translateY(-50%)';
+                nextBtn.style.transform = 'translateY(-50%)';
+                console.log('Buttons positioned at top:', slideshowTop);
+            } else {
+                console.error('Slideshow or buttons not found for positioning');
+            }
+        }
+		
         function showModal(year, index, trip) {
-            const event = window.tripsData[trip].events[year][index];
-            const modal = document.getElementById("modal");
-            const modalTitle = document.getElementById("modal-title");
-            const modalLocation = document.getElementById("modal-location");
-            const modalDescription = document.getElementById("modal-description");
-            const slideshow = document.querySelector(".slideshow");
-
-            modalTitle.textContent = event.title;
-            modalLocation.textContent = `Location: ${event.location}`;
-            modalDescription.textContent = event.description;
-            currentImages = event.images;
-            currentSlide = 0;
-            currentTrip = trip;
-
-            slideshow.innerHTML = "";
-            currentImages.forEach((src, i) => {
-                let element;
-                if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MOV')) {
-                    element = document.createElement("video");
-                    element.src = src;
-                    element.controls = true;
-                    element.autoplay = (i === 0);
-                    element.muted = true;
-                    element.loop = true;
-                } else {
-                    element = document.createElement("img");
-                    element.src = src;
-                }
-                element.alt = `${event.title} Slide ${i + 1}`;
-                if (i === 0) element.classList.add("active");
-                slideshow.appendChild(element);
-            });
+            console.log('showModal called:', { year, index, trip });
+            try {
 			
-			// Add swipe functionality
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const minSwipeDistance = 50;
+				const event = window.tripsData[trip].events[year][index];
+				const modal = document.getElementById("modal");
+				const modalTitle = document.getElementById("modal-title");
+				const modalLocation = document.getElementById("modal-location");
+				const modalDescription = document.getElementById("modal-description");
+				const slideshow = document.querySelector(".slideshow");
 
-            slideshow.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
+				modalTitle.textContent = event.title;
+				modalLocation.textContent = `Location: ${event.location}`;
+				modalDescription.innerHTML = event.description;
+				currentImages = event.images;
+				currentSlide = 0;
+				currentTrip = trip;
 
-            slideshow.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
-                if (Math.abs(swipeDistance) >= minSwipeDistance) {
-                    if (swipeDistance < 0) {
-                        changeSlide(1); // Swipe left -> next slide
-                    } else {
-                        changeSlide(-1); // Swipe right -> previous slide
-                    }
-                }
-            });
+				slideshow.innerHTML = "";
+				currentImages.forEach((src, i) => {
+					let element;
+					if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MOV')) {
+						element = document.createElement("video");
+						element.src = src;
+						element.controls = true;
+						element.autoplay = (i === 0);
+						element.muted = false;
+						element.loop = true;
+					} else {
+						element = document.createElement("img");
+						element.src = src;
+					}
+					element.alt = `${event.title} Slide ${i + 1}`;
+					if (i === 0) element.classList.add("active");
+					slideshow.appendChild(element);
+				});
+				
+				// Initialize slide indicator
+				document.getElementById("slide-indicator").textContent = `Slide 1 of ${currentImages.length}`;
+				
+				// Add accessibility to buttons
+				const prevBtn = document.querySelector('.prev-btn');
+				const nextBtn = document.querySelector('.next-btn');
+				if (prevBtn && nextBtn) {
+					prevBtn.setAttribute('aria-label', 'Previous slide');
+					nextBtn.setAttribute('aria-label', 'Next slide');
+				} else {
+					console.error('Slideshow buttons not found');
+				}
+				
+				// Position buttons after layout render
+				requestAnimationFrame(() => {
+					positionSlideshowButtons();
+				});
+							
+				// Add swipe functionality
+				let touchStartX = 0;
+				let touchEndX = 0;
+				const minSwipeDistance = 50;
 
-            modal.style.display = "flex";
-            document.body.style.overflow = "hidden";
+				slideshow.addEventListener('touchstart', (e) => {
+					touchStartX = e.changedTouches[0].screenX;
+				});
+
+				slideshow.addEventListener('touchend', (e) => {
+					touchEndX = e.changedTouches[0].screenX;
+					const swipeDistance = touchEndX - touchStartX;
+					if (Math.abs(swipeDistance) >= minSwipeDistance) {
+						if (swipeDistance < 0) {
+							changeSlide(1); // Swipe left -> next slide
+						} else {
+							changeSlide(-1); // Swipe right -> previous slide
+						}
+					}
+				});
+
+				modal.classList.add('modal-open');
+				document.body.style.overflow = "hidden";
+				
+				console.log('Modal opened successfully');
+            } catch (error) {
+                console.error('Error in showModal:', error);
+            }
         }
 
         function closeModal() {
             const modal = document.getElementById("modal");
-            modal.style.display = "none";
+            modal.classList.remove('modal-open');
             document.body.style.overflow = "auto";
             document.querySelectorAll(".slideshow video").forEach(video => video.pause());
+            clearInterval(autoSlideInterval);
+            console.log('Modal closed');
         }
 
         function changeSlide(direction) {
@@ -707,11 +1452,19 @@
             const nextElement = slides[currentSlide];
             nextElement.classList.add("active");
             if (nextElement.tagName === "VIDEO") nextElement.play();
+			
+			// Update slide indicator
+            document.getElementById("slide-indicator").textContent = `Slide ${currentSlide + 1} of ${currentImages.length}`;
         }
 
         document.getElementById("modal").addEventListener("click", function(e) {
             if (e.target === this) closeModal();
         });
+		
+		// Reposition buttons on window resize
+        window.addEventListener('resize', positionSlideshowButtons);
+		
+		
     </script>
 </body>
 </html>
