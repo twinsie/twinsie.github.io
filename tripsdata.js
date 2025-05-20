@@ -3,43 +3,43 @@ const tripsData = {
 		subtitle: "新西兰南北岛, 2018年11月",
 		backgroundImage: "bg-nz",
 		events: {
-			"第一天": [
+			"Day 1": [
 				{ 
-					title: "奥克兰汇合", 
+					title: "Reunion in Auckland", 
 					image: "images/nz-1-1-1.HEIC", 
 					location: "Auckland Airport", 
-					description: "儿子从美国先行抵达奥克兰，爸妈随后从中国飞来汇合。趁着这段时间，儿子已经熟悉了新西兰的右舵驾驶，为我们的自驾之旅做好了准备。",
+					description: "I arrived in Auckland first, flying in from the U.S., while my parents came later from China to meet up. In the meantime, I got familiar with driving on the right-hand side, getting us ready for the road trip ahead in New Zealand.",
 					images: ["images/nz-1-1-1.HEIC", "images/nz-1-1-2.HEIC", "images/nz-1-1-3.HEIC", "images/nz-1-1-4.HEIC", "images/nz-1-1-5.HEIC"]
 				},
 				{ 
-					title: "一个人的晚餐", 
+					title: "Dinner Alone", 
 					image: "images/nz-1-2-1.HEIC", 
-					location: "Over the Atlantic Ocean", 
-					description: "test",
+					location: "Depot", 
+					description: "While waiting for my parents to arrive, I had my first solo meal in New Zealand. Simple, but unexpectedly delicious.",
 					images: ["images/nz-1-2-1.HEIC", "images/nz-1-2-2.HEIC"]
 				}
 			],
-			"Day 1": [
+			"Day 2": [
 				{ 
-					title: "Hello, Paris!", 
-					image: "images/france-1-1-1.HEIC", 
-					location: "Au Père Fouettard", 
-					description: "We made it to Paris! A little jetlagged, a lot hungry—so of course, our first stop was food. Let the adventure begin!",
-					images: ["images/france-1-1-1.HEIC", "images/france-1-1-2.HEIC", "images/france-1-1-3.HEIC", "images/france-1-1-4.HEIC"]
+					title: "Hello, South Island!", 
+					image: "images/nz-2-1-5.HEIC", 
+					location: "Lake Tekapo", 
+					description: "Our journey begins on the South Island. After a quick flight into Christchurch, we hit the road toward Lake Tekapo — and to our surprise, it's snowing! November in New Zealand feels like winter wonderland.",
+					images: ["images/nz-2-1-1.HEIC", "images/nz-2-1-2.HEIC", "images/nz-2-1-3.HEIC", "images/nz-2-1-4.HEIC", "images/nz-2-1-5.HEIC", "images/nz-2-1-6.HEIC", "images/nz-2-1-7.HEIC", "images/nz-2-1-8.mp4", "images/nz-2-1-9.HEIC", "images/nz-2-1-10.HEIC"]
 				},
 				{ 
-					title: "Olympics Party!", 
-					image: "images/france-1-2-4.HEIC", 
-					location: "Hôtel de Ville", 
-					description: "We stumbled upon an Olympics block party—such a fun surprise! So much energy and excitement!",
-					images: ["images/france-1-2-1.mp4", "images/france-1-2-2.HEIC", "images/france-1-2-3.mp4", "images/france-1-2-4.HEIC"]
+					title: "From Snow to Sunshine", 
+					image: "images/nz-2-2-3.HEIC", 
+					location: "Lake Pukaki", 
+					description: "We were a little disappointed at first, but New Zealand weather surprised us — it changed in an instant. Just a 30-minute drive brought us from snow to sunshine. At Lake Pukaki, the water sparkled under the sun. This is the postcard-perfect New Zealand we had imagined.",
+					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.HEIC", "images/nz-2-2-3.HEIC", "images/nz-2-2-4.HEIC", "images/nz-2-2-5.HEIC", "images/nz-2-2-6.HEIC"]
 				},
 				{ 
-					title: "Evening Along the Seine", 
-					image: "images/france-1-3-3.HEIC", 
-					location: "The Right Bank", 
-					description: "After the Olympics party, we took a stroll along the Seine—just in time for a beautiful sunset.",
-					images: ["images/france-1-3-1.HEIC", "images/france-1-3-2.HEIC", "images/france-1-3-3.HEIC", "images/france-1-3-4.HEIC", "images/france-1-3-5.HEIC", "images/france-1-3-6.HEIC", "images/france-1-3-7.HEIC", "images/france-1-3-8.HEIC", "images/france-1-3-9.HEIC", "images/france-1-3-10.HEIC"]
+					title: "Snow Peaks", 
+					image: "images/nz-2-3-1.HEIC", 
+					location: "Aoraki / Mount Cook", 
+					description: "AA short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
+					images: ["images/nz-2-3-1.HEIC", "images/nz-2-3-2.JPG", "images/nz-2-3-3.HEIC", "images/nz-2-3-4.HEIC", "images/nz-2-3-5.JPG", "images/nz-2-3-5.mp4", "images/nz-2-3-6.HEIC", "images/nz-2-3-7.JPG", "images/nz-2-3-8.JPG"]
 				},
 				{ 
 					title: "Ice Cream Finale", 
@@ -48,51 +48,7 @@ const tripsData = {
 					description: "Wrapped up the night with a <i>massive</i> ice cream we had zero chance of finishing. No surprise—we’d been eating all day!",
 					images: ["images/france-1-4-1.HEIC", "images/france-1-4-2.HEIC"]
 				}
-			],
-			"Day 2": [
-				{ 
-					title: "First Morning in Paris!", 
-					image: "images/france-2-1-1.HEIC", 
-					location: "A. Lacroix Pâtissier", 
-					description: "Our Airbnb is in a beautiful spot. We grabbed a quick bite at a charming patisserie on the Left Bank before heading to the train station for Versailles.",
-					images: ["images/france-2-1-1.HEIC", "images/france-2-1-2.HEIC", "images/france-2-1-3.HEIC", "images/france-2-1-4.HEIC"]
-				},
-				{ 
-					title: "Stunning Versailles", 
-					image: "images/france-2-2-2.HEIC", 
-					location: "Versailles", 
-					description: "Versailles was absolutely massive and stunning—every hallway, chandelier, and fountain felt like something out of a dream. The sheer scale of it all was hard to believe, and we couldn’t stop saying 'wow' around every corner.",
-					images: ["images/france-2-2-1.HEIC", "images/france-2-2-2.HEIC", "images/france-2-2-3.HEIC", "images/france-2-2-4.HEIC", "images/france-2-2-5.HEIC", "images/france-2-2-6.HEIC", "images/france-2-2-7.HEIC", "images/france-2-2-8.HEIC", "images/france-2-2-9.HEIC", "images/france-2-2-10.HEIC", "images/france-2-2-11.HEIC", "images/france-2-2-12.HEIC", "images/france-2-2-13.HEIC"]
-				},
-				{ 
-					title: "Beyond the Palace", 
-					image: "images/france-2-3-5.HEIC", 
-					location: "Jardins du Versailles", 
-					description: "The Gardens of Versailles is huge—way too much to cover on foot, and all the golf carts were already rented out! We grabbed a bite, took a quick nap in the shade, and then made our way back to Paris.",
-					images: ["images/france-2-3-1.HEIC", "images/france-2-3-2.HEIC", "images/france-2-3-3.HEIC", "images/france-2-3-4.HEIC", "images/france-2-3-5.HEIC", "images/france-2-3-6.HEIC", "images/france-2-3-7.HEIC", "images/france-2-3-8.HEIC"]
-				},
-				{ 
-					title: "Posing at the Eiffel", 
-					image: "images/france-2-4-1.HEIC", 
-					location: "Rue Buenos-Ayres", 
-					description: "We got off at the Tour Eiffel station—because striking a pose at that viral photo spot is basically mandatory, right? Chris made Keith to crouch way down to get the perfect low-angle shot… now his back’s paying the price. Oops—but the pics turned out great!",
-					images: ["images/france-2-4-1.HEIC", "images/france-2-4-2.HEIC", "images/france-2-4-3.mp4", "images/france-2-4-4.HEIC", "images/france-2-4-5.HEIC", "images/france-2-4-6.HEIC", "images/france-2-4-7.HEIC", "images/france-2-4-8.HEIC"]
-				},
-				{ 
-					title: "Street-Side Dinner", 
-					image: "images/france-2-5-2.HEIC", 
-					location: "La Fontaine de Mars", 
-					description: "After a long day, it was finally time for a proper dinner. There’s just something so enjoyable about dining streetside in Europe—this is what life’s all about. Fun fact: 99% of the time Keith’s holding a drink for a photo… it’s actually Chris’s. He’s all about the prop, not the sip!",
-					images: ["images/france-2-5-0.HEIC", "images/france-2-5-1.HEIC", "images/france-2-5-2.HEIC", "images/france-2-5-3.HEIC", "images/france-2-5-4.HEIC", "images/france-2-5-5.HEIC", "images/france-2-5-6.HEIC"]
-				},
-				{ 
-					title: "Paris After Dark", 
-					image: "images/france-2-6-3.HEIC", 
-					location: "Av. des Champs-Élysées", 
-					description: "A quiet night stroll—time to slow the pace, breathe deep, and let Paris work its magic under the lights.",
-					images: ["images/france-2-6-1.HEIC", "images/france-2-6-2.HEIC", "images/france-2-6-3.HEIC", "images/france-2-6-4.HEIC", "images/france-2-6-5.HEIC", "images/france-2-6-6.HEIC", "images/france-2-6-7.HEIC", "images/france-2-6-8.HEIC", "images/france-2-6-9.HEIC", "images/france-2-6-10.HEIC"]
-				}
-			],
+			],			
 			"Day 3": [
 				{ 
 					title: "Trip Favorite", 
