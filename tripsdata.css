@@ -1,0 +1,20 @@
+.background-layer.bg-nz {
+	background-image: url('images/icon/nz-bg.HEIC');
+}
+.background-layer.bg-iran {
+	background-image: url('images/icon/iran-bg.jpg');
+}
+.background-layer.bg-europe {
+	background-image: url('images/icon/europe-bg.jpg');
+}
+
+#nz-btn { background-image: url('images/icon/nz-icon.png'); animation-delay: 0.2s; }
+#iran-btn { background-image: url('images/icon/iran-icon.jpg'); animation-delay: 0.4s; }
+#europe-btn { background-image: url('images/icon/europe.png'); animation-delay: 0.6s; }
+#italy-btn { background-image: url('images/icon/italy.png'); animation-delay: 0.8s; }
+#japan-btn { background-image: url('images/icon/japan.png'); animation-delay: 1.0s; }
+#australia-btn { background-image: url('images/icon/australia.png'); animation-delay: 1.2s; }
+#canada-btn { background-image: url('images/icon/canada.png'); animation-delay: 1.4s; }
+#brazil-btn { background-image: url('images/icon/brazil.png'); animation-delay: 1.6s; }
+#iceland-btn { background-image: url('images/icon/iceland.png'); animation-delay: 1.8s; }
+#thailand-btn { background-image: url('images/icon/thailand.png'); animation-delay: 2.0s; }
