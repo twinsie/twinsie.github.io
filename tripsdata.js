@@ -6,40 +6,40 @@ const tripsData = {
 			"Day 1": [
 				{ 
 					title: "Reunion in Auckland", 
-					image: "images/nz-1-1-1.HEIC", 
+					image: "images/nz-1-1-1.jpg", 
 					location: "Auckland Airport", 
 					description: "I arrived in Auckland first, flying in from the U.S., while my parents came later from China to meet up. In the meantime, I got familiar with driving on the right-hand side, getting us ready for the road trip ahead in New Zealand.",
-					images: ["images/nz-1-1-1.HEIC", "images/nz-1-1-2.HEIC", "images/nz-1-1-3.HEIC", "images/nz-1-1-4.HEIC", "images/nz-1-1-5.HEIC"]
+					images: ["images/nz-1-1-1.jpg", "images/nz-1-1-2.HEIC", "images/nz-1-1-3.jpg", "images/nz-1-1-4.jpg", "images/nz-1-1-5.jpg"]
 				},
 				{ 
 					title: "Dinner Alone", 
-					image: "images/nz-1-2-1.HEIC", 
+					image: "images/nz-1-2-1.jpg", 
 					location: "Depot", 
 					description: "While waiting for my parents to arrive, I had my first solo meal in New Zealand. Simple, but unexpectedly delicious.",
-					images: ["images/nz-1-2-1.HEIC", "images/nz-1-2-2.HEIC"]
+					images: ["images/nz-1-2-1.jpg", "images/nz-1-2-2.jpg"]
 				}
 			],
 			"Day 2": [
 				{ 
 					title: "Hello, South Island!", 
-					image: "images/nz-2-1-5.HEIC", 
+					image: "images/nz-2-1-5.jpg", 
 					location: "Lake Tekapo", 
 					description: "Our journey begins on the South Island. After a quick flight into Christchurch, we hit the road toward Lake Tekapo — and to our surprise, it's snowing! November in New Zealand feels like winter wonderland.",
-					images: ["images/nz-2-1-1.HEIC", "images/nz-2-1-2.HEIC", "images/nz-2-1-3.HEIC", "images/nz-2-1-4.HEIC", "images/nz-2-1-5.HEIC", "images/nz-2-1-6.HEIC", "images/nz-2-1-7.HEIC", "images/nz-2-1-8.mp4", "images/nz-2-1-9.HEIC", "images/nz-2-1-10.HEIC"]
+					images: ["images/nz-2-1-1.jpg", "images/nz-2-1-2.HEIC", "images/nz-2-1-3.jpg", "images/nz-2-1-4.HEIC", "images/nz-2-1-5.jpg", "images/nz-2-1-6.jpg", "images/nz-2-1-7.HEIC", "images/nz-2-1-8.mp4", "images/nz-2-1-9.HEIC", "images/nz-2-1-10.HEIC"]
 				},
 				{ 
 					title: "From Snow to Sunshine", 
 					image: "images/nz-2-2-3.HEIC", 
 					location: "Lake Pukaki", 
 					description: "We were a little disappointed at first, but New Zealand weather surprised us — it changed in an instant. Just a 30-minute drive brought us from snow to sunshine. At Lake Pukaki, the water sparkled under the sun. This is the postcard-perfect New Zealand we had imagined.",
-					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.HEIC", "images/nz-2-2-3.HEIC", "images/nz-2-2-4.HEIC", "images/nz-2-2-5.HEIC", "images/nz-2-2-6.HEIC"]
+					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.jpg", "images/nz-2-2-3.HEIC", "images/nz-2-2-4.HEIC", "images/nz-2-2-5.HEIC", "images/nz-2-2-6.HEIC"]
 				},
 				{ 
 					title: "Snow Peaks", 
 					image: "images/nz-2-3-1.HEIC", 
 					location: "Aoraki / Mount Cook", 
 					description: "AA short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
-					images: ["images/nz-2-3-1.HEIC", "images/nz-2-3-2.JPG", "images/nz-2-3-3.HEIC", "images/nz-2-3-4.HEIC", "images/nz-2-3-5.JPG", "images/nz-2-3-5.mp4", "images/nz-2-3-6.HEIC", "images/nz-2-3-7.JPG", "images/nz-2-3-8.JPG"]
+					images: ["images/nz-2-3-1.HEIC", "images/nz-2-3-2.JPG", "images/nz-2-3-3.HEIC", "images/nz-2-3-4.HEIC", "images/nz-2-3-5.JPG", "images/nz-2-3-5.mp4", "images/nz-2-3-6.HEIC", "images/nz-2-3-7.jpg", "images/nz-2-3-8.JPG"]
 				},
 				{ 
 					title: "Ice Cream Finale", 
@@ -405,20 +405,55 @@ const tripsData = {
 					images: ["images/iran-1-2-1.jpg", "images/iran-1-2-2.jpg", "images/iran-1-2-3.jpg"]
 				}
 			],
-			"Day 2": [
+			"第2/3/4天": [
 				{ 
-					title: "Moved to a New City", 
-					image: "images/2020-1.JPG", 
-					location: "New City", 
-					description: "Moving to a new city in 2020 was a bold move. I packed up my life, found a new place, and started exploring a whole new world.",
-					images: ["images/2020-1.JPG", "images/2020-1-extra1.JPG", "images/2020-1-extra2.JPG"]
+					title: "卡尚", 
+					image: "images/iran-2-1-5.jpg", 
+					location: "Saraye Ameriha Hotel", 
+					description: "在伊朗的第2、3、4天，我们停留在卡尚——一座古老的沙漠城市，以多座保存完好的传统富商宅邸闻名。我们入住的萨拉耶阿梅利哈酒店（Saraye Ameriha），正是其中最大、最具代表性的一座。卡尚的老宅以精美的波斯建筑风格著称，多建于18至19世纪，屋内雕花精致、庭院错落有致，还有高高的风塔用于通风降温。阿梅利哈宅邸不仅规模庞大，更保留了许多原始细节，住在这里，就像穿越回了旧时波斯的富贵人家。",
+					images: ["images/iran-2-1-1.jpg", "images/iran-2-1-2.jpg", "images/iran-2-1-3.jpg", "images/iran-2-1-4.jpg", "images/iran-2-1-5.jpg", "images/iran-2-1-6.jpg", "images/iran-2-1-7.jpg", "images/iran-2-1-8.jpg"]
 				},
 				{ 
-					title: "Adopted a Pet", 
-					image: "images/2020-2.JPG", 
-					location: "Home", 
-					description: "Adopting a pet in 2020 brought so much joy to my life. I welcomed a furry friend into my home, and it’s been a whirlwind of love and chaos ever since.",
-					images: ["images/2020-2.JPG", "images/2020-2-extra1.JPG", "images/2020-2-extra2.JPG"]
+					title: "塔巴塔巴依大宅", 
+					image: "images/iran-2-2-6.jpg", 
+					location: "Tabatabaei House", 
+					description: "另一座著名的富商宅邸是塔巴塔巴依大宅（Tabatabaei House），以其精致复杂的灰泥雕刻和玻璃镶嵌艺术闻名。整座宅院布局典雅、细节考究，墙面上繁复的浮雕装饰展现了当时工匠的高超技艺，而房间内的彩色玻璃窗则在阳光照射下折射出斑斓光影，美不胜收。塔巴塔巴依宅院被认为是卡尚最具艺术美感的历史住宅之一。",
+					images: ["images/iran-2-2-1.jpg", "images/iran-2-2-2.jpg", "images/iran-2-2-3.jpg", "images/iran-2-2-4.jpg", "images/iran-2-2-5.jpg", "images/iran-2-2-6.jpg"]
+				},
+				{ 
+					title: "布鲁杰迪大宅", 
+					image: "images/iran-2-3-1.jpg", 
+					location: "Borujerdi House", 
+					description: "我们还参观了布鲁杰迪大宅（Borujerdi House），这是当年一位年轻而时尚的富商为迎娶阿梅利哈家族的女儿所建。整座宅院融合了传统波斯建筑与大胆的艺术表达，尤其特别的是，它的雕刻装饰元素在题材上突破了伊斯兰建筑一贯的限制，内容更加丰富、生动，细节中透露着主人的品味与个性。",
+					images: ["images/iran-2-3-1.jpg", "images/iran-2-3-2.jpg", "images/iran-2-3-3.jpg", "images/iran-2-3-4.jpg", "images/iran-2-3-5.jpg", "images/iran-2-3-6.jpg"]
+				},
+				{ 
+					title: "阿巴斯大宅", 
+					image: "images/iran-2-4-3.jpg", 
+					location: "Abbasian House", 
+					description: "第四座宅邸是阿巴斯大宅（Abbasian House），它的最大特点是巧妙设计的下沉式庭院。通过降低庭院地面高度，不仅增强了私密性，还改善了室内的温度调节与通风效果。在干燥炎热的卡尚，这种顺应自然、充分利用日照方向的设计，为居住者带来了更加舒适的生活环境。宅院本身结构复杂、空间层次丰富，是波斯住宅建筑智慧的又一典范。",
+					images: ["images/iran-2-4-1.jpg", "images/iran-2-4-2.jpg", "images/iran-2-4-3.jpg", "images/iran-2-4-4.jpg"]
+				},
+				{ 
+					title: "苏丹阿米尔艾哈迈德浴室", 
+					image: "images/iran-2-5-6.jpg", 
+					location: "Sultan Amir Ahmad Bathhouse", 
+					description: "除了几座著名的古宅，卡尚还有一座历史悠久的公共浴室——苏丹阿米尔艾哈迈德浴室（Sultan Amir Ahmad Bathhouse），已有两百多年的历史。它采用传统的土耳其式结构布局，内部装饰非常精美，蓝色与金色的瓷砖交织成几何与花卉图案，穹顶上布满彩色玻璃小窗，光线透过时，营造出神秘而静谧的氛围。如今这里已不再作为浴室使用，但依然完整保留着当年洗浴与社交的重要空间，成为游客了解波斯生活方式的独特窗口。",
+					images: ["images/iran-2-5-1.jpg", "images/iran-2-5-2.jpg", "images/iran-2-5-3.jpg", "images/iran-2-5-4.jpg", "images/iran-2-5-5.jpg", "images/iran-2-5-6.jpg", "images/iran-2-5-7.jpg", "images/iran-2-5-8.jpg"]
+				},
+				{ 
+					title: "费恩花园", 
+					image: "images/iran-2-6-6.jpg", 
+					location: "Fin Garden", 
+					description: "卡尚还有一座举世闻名的波斯花园——费恩花园（Fin Garden），是伊朗现存最古老的波斯花园之一，也被列为联合国教科文组织的世界文化遗产。波斯花园的最大特色在于其水系设计：水池与水渠纵横交错，巧妙地将水从山中引入，形成丰富的流动与对称美感。花园中心是一条狭长的水池，尽头便是一座精致典雅的宫殿，倒映在水面之上，宛如仙境。作为当时的皇家花园，费恩花园在装饰上也较为自由，部分墙面上甚至可以看到人物画像。不过受伊斯兰教义的影响，这些画像仍有所保留，例如皇后的面容是没有五官的，象征对宗教禁忌的尊重与妥协。",
+					images: ["images/iran-2-6-1.jpg", "images/iran-2-6-2.jpg", "images/iran-2-6-3.jpg", "images/iran-2-6-4.jpg", "images/iran-2-6-5.jpg", "images/iran-2-6-6.jpg", "images/iran-2-6-7.jpg"]
+				},
+				{ 
+					title: "巴扎", 
+					image: "images/iran-2-7-3.jpg", 
+					location: "Bazaar of Kashan", 
+					description: "卡尚的巴扎（Kashan Bazaar）同样值得一游。作为城市的商业与文化中心，这座拥有数百年历史的传统市集不仅热闹非凡，建筑装饰也别具一格。巴扎内部拱顶高挑，穹顶上有精美的砖雕与天窗，光线透过洒落在地面上，营造出一种古朴而庄严的氛围。其中最著名的部分是提姆切·阿米尔·艾哈迈德（Timche-ye Amin od-Dowleh）穹顶大厅，被认为是波斯传统市集建筑的代表之一。",
+					images: ["images/iran-2-7-1.jpg", "images/iran-2-7-2.jpg", "images/iran-2-7-3.jpg", "images/iran-2-7-4.jpg", "images/iran-2-7-5.jpg"]
 				}
 			]
 		}
