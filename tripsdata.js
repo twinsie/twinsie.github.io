@@ -40,57 +40,22 @@ const tripsData = {
 					location: "Aoraki / Mount Cook", 
 					description: "AA short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
 					images: ["images/nz-2-3-1.HEIC", "images/nz-2-3-2.JPG", "images/nz-2-3-3.HEIC", "images/nz-2-3-4.HEIC", "images/nz-2-3-5.JPG", "images/nz-2-3-5.mp4", "images/nz-2-3-6.HEIC", "images/nz-2-3-7.jpg", "images/nz-2-3-8.JPG"]
-				},
-				{ 
-					title: "Ice Cream Finale", 
-					image: "images/france-1-4-2.HEIC", 
-					location: "Glace Bachir", 
-					description: "Wrapped up the night with a <i>massive</i> ice cream we had zero chance of finishing. No surprise—we’d been eating all day!",
-					images: ["images/france-1-4-1.HEIC", "images/france-1-4-2.HEIC"]
 				}
 			],			
 			"Day 3": [
 				{ 
-					title: "Trip Favorite", 
-					image: "images/france-3-1-6.HEIC", 
-					location: "Le Petit Bouillon Pharamond", 
+					title: "Morning in Oamaru", 
+					image: "images/nz-3-1-6.jpg", 
+					location: "Oamaru", 
 					description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
-					images: ["images/france-3-1-1.HEIC", "images/france-3-1-2.HEIC", "images/france-3-1-3.HEIC", "images/france-3-1-4.HEIC", "images/france-3-1-5.HEIC", "images/france-3-1-6.HEIC"]
+					images: ["images/nz-3-1-1.jpg", "images/nz-3-1-2.jpg", "images/nz-3-1-3.jpg", "images/nz-3-1-4.jpg", "images/nz-3-1-5.jpg", "images/nz-3-1-6.jpg", "images/nz-3-1-7.jpg", "images/nz-3-1-8.jpg", "images/nz-3-1-9.jpg", "images/nz-3-1-10.jpg"]
 				},
 				{ 
-					title: "LV Dream", 
-					image: "images/france-3-2-3.HEIC", 
-					location: "LV DREAM", 
-					description: "Visited the Louis Vuitton exhibition. Not really our thing, but it was free and we had time to kill—so hey, why not?",
-					images: ["images/france-3-2-1.HEIC", "images/france-3-2-2.HEIC", "images/france-3-2-3.HEIC", "images/france-3-2-4.HEIC"]
-				},
-				{ 
-					title: "Stained Glass Wonder", 
-					image: "images/france-3-3-3.HEIC", 
-					location: "Sainte-Chapelle", 
-					description: "Keith’s favorite spot—he insisted we go, insisted on covering the fare… and honestly, it was absolutely stunning. We also stopped by the Palais de Justice de Paris next door—there wasn’t much to see inside, so we just snapped a few photos and moved on.",
-					images: ["images/france-3-3-1.mp4", "images/france-3-3-2.HEIC", "images/france-3-3-3.HEIC", "images/france-3-3-4.HEIC", "images/france-3-3-5.HEIC", "images/france-3-3-6.HEIC", "images/france-3-3-7.HEIC", "images/france-3-3-8.HEIC", "images/france-3-3-9.HEIC", "images/france-3-3-10.HEIC", "images/france-3-3-11.HEIC"]
-				},
-				{ 
-					title: "Rooftop Views", 
-					image: "images/france-3-4-3.HEIC", 
-					location: "Galeries Lafayette Haussmann", 
-					description: "The rooftop at Galeries Lafayette is one of the best hangout spots—unbeatable views and the perfect place to snack and chill.",
-					images: ["images/france-3-4-1.HEIC", "images/france-3-4-2.HEIC", "images/france-3-4-3.HEIC", "images/france-3-4-4.mp4", "images/france-3-4-5.HEIC", "images/france-3-4-6.HEIC", "images/france-3-4-7.HEIC", "images/france-3-4-8.HEIC"]
-				},
-				{ 
-					title: "Montmartre at Sunset", 
-					image: "images/france-3-5-2.HEIC", 
-					location: "Basilique du Sacré-Cœur de Montmartre", 
-					description: "As sunset approached, we made our way up to Montmartre for the perfect view. The church is beautiful, and the crowd up there—so eclectic and full of character.",
-					images: ["images/france-3-5-1.HEIC", "images/france-3-5-2.HEIC", "images/france-3-5-3.HEIC", "images/france-3-5-4.HEIC", "images/france-3-5-5.mp4", "images/france-3-5-6.mp4", "images/france-3-5-7.HEIC", "images/france-3-5-8.HEIC"]
-				},
-				{ 
-					title: "Late Night Dinner", 
-					image: "images/france-3-6-6.HEIC", 
-					location: "Montmartre", 
-					description: "Didn’t expect the mountaintop to be this alive on a work night! Keith had to take a long work call, and Chris got a little <i>hangry</i>—but luckily, Keith always knows how to crack him up. Walking down to the Metro Line 4 was a bit sketchy—definitely a 'never again' moment!",
-					images: ["images/france-3-6-1.mp4", "images/france-3-6-2.HEIC", "images/france-3-6-3.HEIC", "images/france-3-6-4.HEIC", "images/france-3-6-5.HEIC", "images/france-3-6-6.HEIC", "images/france-3-6-7.HEIC", "images/france-3-6-8.HEIC"]
+					title: "Sealions", 
+					image: "images/nz-3-2-1.jpg", 
+					location: "Bushy Beach Scenic Reserve", 
+					description: "On our way to Dunedin, we took a small detour along the coast, hoping to catch a glimpse of penguins. While the penguins remained elusive, we were rewarded with something just as special—a close encounter with sea lions lounging on the beach. Watching them up close in their natural habitat was both thrilling and humbling. Sometimes the surprises make the best memories.",
+					images: ["images/nz-3-2-1.jpg", "images/nz-3-2-2.jpg", "images/nz-3-2-3.mov"]
 				}
 			],
 			"Day 4": [
@@ -393,15 +358,15 @@ const tripsData = {
 				{ 
 					title: "库姆", 
 					image: "images/iran-1-1-1.jpg", 
-					location: "Qom", 
-					description: "宗教氛围很浓的城市，因为这里有一座伊斯兰什叶派的圣陵，即第八伊玛目的妹妹法蒂玛的陵墓。在库姆主要就是这一个景点。",
+					location: "Fatima Masumeh Shrine", 
+					description: "库姆（Qom）是一座宗教氛围浓厚的城市，是伊朗什叶派最重要的朝圣地之一。这里最著名的景点是法蒂玛圣陵（Fatima Masumeh Shrine），这位圣人是第八代伊玛目礼萨的妹妹，被什叶派信徒尊为圣女。整座圣陵建筑群庄严宏伟，金色圆顶在阳光下熠熠生辉，四周环绕着精美的瓷砖与伊斯兰书法装饰。这里每天都吸引着成千上万的朝圣者前来膜拜。对非穆斯林游客来说，虽然部分区域不可进入，但仍可在导游陪同下参观特定区域，感受这座圣地独有的庄严与宁静。在库姆，几乎所有人的生活都围绕着这座圣陵展开，因此整个城市也因它而充满了宗教色彩。",
 					images: ["images/iran-1-1-1.jpg", "images/iran-1-1-2.jpg", "images/iran-1-1-3.jpg", "images/iran-1-1-4.jpg", "images/iran-1-1-5.jpg", "images/iran-1-1-6.jpg", "images/iran-1-1-7.jpg", "images/iran-1-1-8.jpg"]
 				},
 				{ 
 					title: "巴扎", 
 					image: "images/iran-1-2-1.jpg", 
 					location: "Qom Old Bazar", 
-					description: "里面很热闹",
+					description: "虽然库姆是一座以宗教著称的城市，但它的传统巴扎同样值得一逛。库姆巴扎（Qom Bazaar）位于圣陵附近，是一条历史悠久的传统市场街区。与伊朗其他城市的巴扎相比，这里显得更朴素宁静，却也更贴近当地人的真实生活。虽然没有伊斯法罕或设拉子的巴扎那样华丽，但在这里漫步，能感受到库姆作为信仰之地背后质朴、低调的市井氛围。",
 					images: ["images/iran-1-2-1.jpg", "images/iran-1-2-2.jpg", "images/iran-1-2-3.jpg"]
 				}
 			],
