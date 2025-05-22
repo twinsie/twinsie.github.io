@@ -21,87 +21,93 @@ const tripsData = {
 			],
 			"Day 2": [
 				{ 
-					title: "Hello, South Island!", 
+					title: "From Rainbow to Snow", 
 					image: "images/nz-2-1-5.jpg", 
 					location: "Lake Tekapo", 
-					description: "Our journey begins on the South Island. After a quick flight into Christchurch, we hit the road toward Lake Tekapo — and to our surprise, it's snowing! November in New Zealand feels like winter wonderland.",
-					images: ["images/nz-2-1-1.jpg", "images/nz-2-1-2.HEIC", "images/nz-2-1-3.jpg", "images/nz-2-1-4.HEIC", "images/nz-2-1-5.jpg", "images/nz-2-1-6.jpg", "images/nz-2-1-7.HEIC", "images/nz-2-1-8.mp4", "images/nz-2-1-9.HEIC", "images/nz-2-1-10.HEIC"]
+					description: "We caught a morning flight with Air New Zealand to Christchurch, and the day started with a beautiful surprise—a rainbow stretching across the sky. After landing, we picked up our rental car and drove straight toward Lake Tekapo. To our amazement, it started snowing as we arrived! Snow in November—only in the Southern Hemisphere. A magical welcome to the South Island.",
+					images: ["images/nz-2-1-1.jpg", "images/nz-2-1-2.jpg", "images/nz-2-1-3.jpg", "images/nz-2-1-4.jpg", "images/nz-2-1-5.jpg"]
 				},
 				{ 
-					title: "From Snow to Sunshine", 
-					image: "images/nz-2-2-3.HEIC", 
+					title: "Snow Shelter", 
+					image: "images/nz-2-2-1.HEIC", 
+					location: "The Godley Hotel", 
+					description: "We have to admit—we were a bit disappointed by the gloomy weather when we arrived. But that’s part of the journey, right? You take it all in, sunshine or snow. The good news is we’re staying put for the night—our hotel is right by Lake Tekapo, so we can just relax, watch the snowfall, and soak in the peaceful atmosphere.",
+					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.HEIC", "images/nz-2-2-3.jpg", "images/nz-2-2-4.jpg", "images/nz-2-2-5.MOV"]
+				}
+			],
+			"Day 3": [	
+				{ 
+					title: "A Brighter Morning", 
+					image: "images/nz-3-1-1.HEIC", 
 					location: "Lake Pukaki", 
-					description: "We were a little disappointed at first, but New Zealand weather surprised us — it changed in an instant. Just a 30-minute drive brought us from snow to sunshine. At Lake Pukaki, the water sparkled under the sun. This is the postcard-perfect New Zealand we had imagined.",
-					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.jpg", "images/nz-2-2-3.HEIC", "images/nz-2-2-4.HEIC", "images/nz-2-2-5.HEIC", "images/nz-2-2-6.HEIC"]
+					description: "The next morning, the clouds began to lift and patches of blue sky peeked through. It looks like we’re in for a beautiful day. Spirits are high, the bags are packed, and we’re ready to hit the road again—refreshed and recharged.",
+					images: ["images/nz-3-1-1.HEIC", "images/nz-3-1-2.jpg", "images/nz-3-1-3.jpg", "images/nz-3-1-4.mp4", "images/nz-3-1-5.HEIC", "images/nz-3-1-6.HEIC"]
+				},{ 
+					title: "From Snow to Sunshine", 
+					image: "images/nz-3-2-3.HEIC", 
+					location: "Lake Pukaki", 
+					description: "We were a little disappointed yesterday, but New Zealand weather surprised us. At Lake Pukaki, the water sparkled under the sun. This is the postcard-perfect New Zealand we had imagined.",
+					images: ["images/nz-3-2-1.HEIC", "images/nz-3-2-2.jpg", "images/nz-3-2-3.HEIC", "images/nz-3-2-4.HEIC", "images/nz-3-2-5.HEIC", "images/nz-3-2-6.HEIC"]
 				},
 				{ 
 					title: "Snow Peaks", 
-					image: "images/nz-2-3-1.HEIC", 
+					image: "images/nz-3-3-1.HEIC", 
 					location: "Aoraki / Mount Cook", 
-					description: "AA short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
-					images: ["images/nz-2-3-1.HEIC", "images/nz-2-3-2.JPG", "images/nz-2-3-3.HEIC", "images/nz-2-3-4.HEIC", "images/nz-2-3-5.JPG", "images/nz-2-3-5.mp4", "images/nz-2-3-6.HEIC", "images/nz-2-3-7.jpg", "images/nz-2-3-8.JPG"]
+					description: "A short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
+					images: ["images/nz-3-3-1.HEIC", "images/nz-3-3-2.JPG", "images/nz-3-3-3.HEIC", "images/nz-3-3-4.HEIC", "images/nz-3-3-5.JPG", "images/nz-3-3-5.mp4", "images/nz-3-3-6.HEIC", "images/nz-3-3-7.jpg", "images/nz-3-3-8.JPG"]
 				}
 			],			
-			"Day 3": [
-				{ 
-					title: "Morning in Oamaru", 
-					image: "images/nz-3-1-6.jpg", 
-					location: "Oamaru", 
-					description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
-					images: ["images/nz-3-1-1.jpg", "images/nz-3-1-2.jpg", "images/nz-3-1-3.jpg", "images/nz-3-1-4.jpg", "images/nz-3-1-5.jpg", "images/nz-3-1-6.jpg", "images/nz-3-1-7.jpg", "images/nz-3-1-8.jpg", "images/nz-3-1-9.jpg", "images/nz-3-1-10.jpg"]
-				},
-				{ 
-					title: "Sealions", 
-					image: "images/nz-3-2-1.jpg", 
-					location: "Bushy Beach Scenic Reserve", 
-					description: "On our way to Dunedin, we took a small detour along the coast, hoping to catch a glimpse of penguins. While the penguins remained elusive, we were rewarded with something just as special—a close encounter with sea lions lounging on the beach. Watching them up close in their natural habitat was both thrilling and humbling. Sometimes the surprises make the best memories.",
-					images: ["images/nz-3-2-1.jpg", "images/nz-3-2-2.jpg", "images/nz-3-2-3.mov"]
-				}
-			],
 			"Day 4": [
 				{ 
-					title: "Bonjour, Nice!", 
-					image: "images/france-4-1-1.HEIC", 
-					location: "Le Rossini", 
-					description: "Off to the French Riviera on the TGV! After dropping our bags at the Airbnb, we rushed to a cozy corner restaurant—and we loved the waitress. She was fun, super attentive, and made us feel right at home. Oh, and we happened to catch a bit of a protest nearby—never a dull moment!",
-					images: ["images/france-4-1-1.HEIC", "images/france-4-1-2.mp4", "images/france-4-1-3.HEIC", "images/france-4-1-4.HEIC", "images/france-4-1-5.HEIC", "images/france-4-1-6.HEIC", "images/france-4-1-7.HEIC"]
+					title: "Morning in Oamaru", 
+					image: "images/nz-4-1-6.jpg", 
+					location: "Oamaru", 
+					description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
+					images: ["images/nz-4-1-1.jpg", "images/nz-4-1-2.jpg", "images/nz-4-1-3.jpg", "images/nz-4-1-4.jpg", "images/nz-4-1-5.jpg", "images/nz-4-1-6.jpg", "images/nz-4-1-7.jpg", "images/nz-4-1-8.jpg", "images/nz-4-1-9.jpg", "images/nz-4-1-10.jpg"]
 				},
 				{ 
-					title: "Pebble Beach Break", 
-					image: "images/france-4-2-10.HEIC", 
-					location: "Plage des Ponchettes", 
-					description: "After a quick nap, we walked to the beach—turns out it’s all pebbles, but honestly, they’re kind of better. No messy sand, just smooth stones and sea breeze. A perfect little break by the water.",
-					images: ["images/france-4-2-1.HEIC", "images/france-4-2-2.HEIC", "images/france-4-2-3.HEIC", "images/france-4-2-4.HEIC", "images/france-4-2-5.HEIC", "images/france-4-2-6.HEIC", "images/france-4-2-7.HEIC", "images/france-4-2-8.HEIC", "images/france-4-2-9.HEIC", "images/france-4-2-10.HEIC", "images/france-4-2-11.HEIC"]
+					title: "Sealion Detour", 
+					image: "images/nz-4-2-1.jpg", 
+					location: "Bushy Beach Scenic Reserve", 
+					description: "On our way to Dunedin, we took a small detour along the coast, hoping to catch a glimpse of penguins. While the penguins remained elusive, we were rewarded with something just as special—a close encounter with sea lions lounging on the beach. Watching them up close in their natural habitat was both thrilling and humbling. Sometimes the surprises make the best memories.",
+					images: ["images/nz-4-2-1.jpg", "images/nz-4-2-2.jpg", "images/nz-4-2-3.mov"]
 				},
 				{ 
-					title: "Dinner in Old Nice", 
-					image: "images/france-4-3-2.HEIC", 
-					location: "Le Maquis", 
-					description: "Loved wandering through the narrow alleys of Old Nice—so many restaurants, with life buzzing around every corner. After a few rounds of indecision, we finally picked a spot we absolutely adored.",
-					images: ["images/france-4-3-1.HEIC", "images/france-4-3-2.HEIC", "images/france-4-3-3.HEIC", "images/france-4-3-4.HEIC", "images/france-4-3-5.HEIC", "images/france-4-3-6.HEIC", "images/france-4-3-7.HEIC", "images/france-4-3-8.HEIC", "images/france-4-3-9.HEIC"]
+					title: "The Famous Boulders", 
+					image: "images/nz-4-3-1.jpg", 
+					location: "Moeraki", 
+					description: "No joke—these perfectly round boulders scattered along the beach are actually a scenic attraction. They're called the Moeraki Boulders, and while we weren’t sure what to expect, they are oddly fascinating up close. Nature has a quirky sense of design!",
+					images: ["images/nz-4-3-1.jpg", "images/nz-4-3-2.jpg", "images/nz-4-3-3.jpg"]
+				},
+				{ 
+					title: "Hello, Dunedin", 
+					image: "images/nz-4-4-4.JPG", 
+					location: "Dunedin", 
+					description: "Dunedin is a beautiful city with a unique charm. Our first stop? Baldwin Street—the steepest residential street in the world. We walked up instead of driving (didn’t quite have the courage to test our car on that incline!). The view from the top made the climb totally worth it.",
+					images: ["images/nz-4-4-1.jpg", "images/nz-4-4-2.JPG", "images/nz-4-4-3.JPG", "images/nz-4-4-4.JPG", "images/nz-4-4-5.jpg", "images/nz-4-4-6.JPG", "images/nz-4-4-7.JPG", "images/nz-4-4-8.JPG", "images/nz-4-4-9.jpg"]
 				}
 			],
 			"Day 5": [
 				{ 
-					title: "Cannes You Believe It?", 
-					image: "images/france-5-1-4.HEIC", 
-					location: "Cannes", 
-					description: "Biggest hiccup of the trip—our Airbnb’s smoke detector started blaring after midnight. We ended up switching to a hotel, but no way that was going to slow us down. We’re off to Cannes! Stopped by our favorite corner restaurant again before the trip, and this time, there was a surprise military parade right outside.",
-					images: ["images/france-5-1-1.mp4", "images/france-5-1-2.HEIC", "images/france-5-1-3.HEIC", "images/france-5-1-4.HEIC"]
+					title: "Morning Excursion", 
+					image: "images/nz-5-1-3.JPG", 
+					location: "Sandfly Bay", 
+					description: "We took a morning excursion to Sandfly Bay, and it was everything we hoped for—rolling grasslands, sheep grazing peacefully, a quiet beach, and the endless sea beyond. This view will never get old. It’s the kind of place that makes you slow down and just breathe it all in.",
+					images: ["images/nz-5-1-1.JPG", "images/nz-5-1-2.jpg", "images/nz-5-1-3.JPG", "images/nz-5-1-4.JPG", "images/nz-5-1-5.JPG", "images/nz-5-1-6.JPG", "images/nz-5-1-7.JPG", "images/nz-5-1-8.jpg"]
 				},
 				{ 
-					title: "By the Cannes Shore", 
-					image: "images/france-5-2-5.HEIC", 
-					location: "Carlton Cannes", 
-					description: "We took a slow walk along the coast, wandered through the famous Carlton Hotel, and scoped out the best spots to chill by the beach later.",
-					images: ["images/france-5-2-1.HEIC", "images/france-5-2-2.HEIC", "images/france-5-2-3.HEIC", "images/france-5-2-4.HEIC", "images/france-5-2-5.HEIC", "images/france-5-2-6.HEIC", "images/france-5-2-7.HEIC"]
+					title: "Back in Town", 
+					image: "images/nz-5-2-4.JPG", 
+					location: "Toitū Otago Settlers Museum", 
+					description: "After our peaceful morning at Sandfly Bay, we returned to Dunedin and spent some time at the Toitū Otago Settlers Museum. It’s a well-curated space that traces the stories of early settlers and the cultural history of the Otago region. A fascinating stop that gave us a deeper appreciation for the city’s past.",
+					images: ["images/nz-5-2-1.jpg", "images/nz-5-2-2.jpg", "images/nz-5-2-3.JPG", "images/nz-5-2-4.JPG", "images/nz-5-2-5.jpg", "images/nz-5-2-6.jpg", "images/nz-5-2-7.jpg", "images/nz-5-2-8.JPG"]
 				},
 				{ 
-					title: "Laid-Back in Cannes", 
-					image: "images/france-5-3-1.HEIC", 
-					location: "La Plage du Martinez", 
-					description: "And there it was—our most laid-back moment of the whole trip. After the chaos with the smoke detector, we both agreed we deserved a little downtime.",
-					images: ["images/france-5-3-1.HEIC", "images/france-5-3-2.HEIC", "images/france-5-3-3.HEIC", "images/france-5-3-4.HEIC", "images/france-5-3-5.HEIC", "images/france-5-3-6.HEIC", "images/france-5-3-7.HEIC"]
+					title: "Penguin Spotting at Last", 
+					image: "images/nz-5-3-6.JPG", 
+					location: "Nugget Point", 
+					description: "From Dunedin, we continued our journey to Nugget Point—and finally spotted wild penguins! It was likely our first time seeing them in their natural habitat, and the experience felt almost surreal. Watching them waddle along the shore against the dramatic coastal backdrop was a moment we won’t forget.",
+					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.MOV"]
 				},
 				{ 
 					title: "Cannes Street Stroll", 
