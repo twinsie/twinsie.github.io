@@ -9,7 +9,7 @@ const tripsData = {
 					image: "images/nz-1-1-1.jpg", 
 					location: "Auckland Airport", 
 					description: "I arrived in Auckland first, flying in from the U.S., while my parents came later from China to meet up. In the meantime, I got familiar with driving on the right-hand side, getting us ready for the road trip ahead in New Zealand.",
-					images: ["images/nz-1-1-1.jpg", "images/nz-1-1-2.HEIC", "images/nz-1-1-3.jpg", "images/nz-1-1-4.jpg", "images/nz-1-1-5.jpg"]
+					images: ["images/nz-1-1-1.jpg", "images/nz-1-1-2.HEIC", "images/nz-1-1-3.jpg", "images/nz-1-1-4.jpg"]
 				},
 				{ 
 					title: "Dinner Alone", 
