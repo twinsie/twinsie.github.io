@@ -103,6 +103,13 @@ const tripsData = {
 					images: ["images/nz-5-2-1.jpg", "images/nz-5-2-2.jpg", "images/nz-5-2-3.JPG", "images/nz-5-2-4.JPG", "images/nz-5-2-5.jpg", "images/nz-5-2-6.jpg", "images/nz-5-2-7.jpg", "images/nz-5-2-8.JPG"]
 				},
 				{ 
+					title: "Walk Through Campus", 
+					image: "images/nz-5-4-1.JPG", 
+					location: "University of Otago", 
+					description: "Later, we took a slow stroll through the University of Otago. With its ivy-covered stone buildings and peaceful atmosphere, the campus felt like a quiet retreat in the middle of the city. It was a lovely place to unwind and take in a different side of Dunedin.",
+					images: ["images/nz-5-4-1.JPG", "images/nz-5-4-2.JPG", "images/nz-5-4-3.JPG", "images/nz-5-4-4.JPG", "images/nz-5-4-5.JPG"]
+				},
+				{ 
 					title: "Penguin Spotting at Last", 
 					image: "images/nz-5-3-6.JPG", 
 					location: "Nugget Point", 
@@ -110,18 +117,11 @@ const tripsData = {
 					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.MOV"]
 				},
 				{ 
-					title: "Cannes Street Stroll", 
-					image: "images/france-5-4-5.HEIC", 
-					location: "Cannes", 
-					description: "Took a walk around Cannes to soak in the beauty of the city—and to get one last look at that stunning beach before heading out.",
-					images: ["images/france-5-4-1.HEIC", "images/france-5-4-2.HEIC", "images/france-5-4-3.HEIC", "images/france-5-4-4.HEIC", "images/france-5-4-5.HEIC", "images/france-5-4-6.HEIC", "images/france-5-4-7.mp4", "images/france-5-4-8.HEIC", "images/france-5-4-9.HEIC", "images/france-5-4-10.HEIC"]
-				},
-				{ 
-					title: "Spice Break", 
-					image: "images/france-5-5-1.HEIC", 
-					location: "L'Elephant Bleu", 
-					description: "We decided to switch up our palette a bit with some Thai food for dinner, then made our way back to our base in Nice. Ended the night with a peaceful walk along the beach—Nice has its own kind of magic after dark.",
-					images: ["images/france-5-5-1.HEIC", "images/france-5-5-2.HEIC", "images/france-5-5-3.HEIC", "images/france-5-5-4.HEIC", "images/france-5-5-5.HEIC", "images/france-5-5-6.HEIC"]
+					title: "Seaside Stay in Bluff", 
+					image: "images/nz-5-6-1.jpg", 
+					location: "Bluff", 
+					description: "We’re staying at the cutest Airbnb in Bluff, perched on a hill with sweeping views of the sea. The best part? There’s a friendly pet sheep roaming the yard! It doesn’t get more New Zealand than this—coastal serenity and a fluffy local to greet us.",
+					images: ["images/nz-5-6-1.jpg", "images/nz-5-6-2.jpg", "images/nz-5-6-3.jpg", "images/nz-5-6-4.JPG", "images/nz-5-6-5.JPG", "images/nz-5-6-6.JPG"]
 				}
 			],
 			"Day 6": [
