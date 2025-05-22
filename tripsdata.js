@@ -32,7 +32,7 @@ const tripsData = {
 					image: "images/nz-2-2-1.HEIC", 
 					location: "The Godley Hotel", 
 					description: "We have to admit—we were a bit disappointed by the gloomy weather when we arrived. But that’s part of the journey, right? You take it all in, sunshine or snow. The good news is we’re staying put for the night—our hotel is right by Lake Tekapo, so we can just relax, watch the snowfall, and soak in the peaceful atmosphere.",
-					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.HEIC", "images/nz-2-2-3.jpg", "images/nz-2-2-4.jpg", "images/nz-2-2-5.MOV"]
+					images: ["images/nz-2-2-1.HEIC", "images/nz-2-2-2.HEIC", "images/nz-2-2-3.jpg", "images/nz-2-2-4.JPG", "images/nz-2-2-5.MOV"]
 				}
 			],
 			"Day 3": [	
@@ -63,7 +63,7 @@ const tripsData = {
 					image: "images/nz-4-1-6.jpg", 
 					location: "Oamaru", 
 					description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
-					images: ["images/nz-4-1-1.jpg", "images/nz-4-1-2.jpg", "images/nz-4-1-3.jpg", "images/nz-4-1-4.jpg", "images/nz-4-1-5.jpg", "images/nz-4-1-6.jpg", "images/nz-4-1-7.jpg", "images/nz-4-1-8.jpg", "images/nz-4-1-9.jpg", "images/nz-4-1-10.jpg"]
+					images: ["images/nz-4-1-1.jpg", "images/nz-4-1-2.jpg", "images/nz-4-1-3.jpg", "images/nz-4-1-4.jpg", "images/nz-4-1-5.jpg", "images/nz-4-1-6.jpg", "images/nz-4-1-7.jpg", "images/nz-4-1-8.JPG", "images/nz-4-1-9.jpg", "images/nz-4-1-10.jpg"]
 				},
 				{ 
 					title: "Sealion Detour", 

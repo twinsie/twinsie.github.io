@@ -605,12 +605,12 @@
 		/* New styles for description toggle */
 		.description-container {
 			position: relative;
-			max-height: 96px; /* 5 lines at 24px line-height */
+			max-height: 168px; /* 5 lines at 24px line-height */
 			overflow: hidden;
 			transition: max-height 0.3s ease;
 		}
 		.description-container.truncated {
-			-webkit-line-clamp: 4;
+			-webkit-line-clamp: 6;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
 		}
@@ -650,7 +650,7 @@
 				padding: 15px;
 			}
 			.description-container {
-				max-height: 80px; /* Adjust for smaller screens */
+				max-height: 140px; /* Adjust for smaller screens */
 			}
 			.description-fade {
 				height: 20px;
@@ -963,8 +963,8 @@
 				const showMoreBtn = modalDescription.querySelector('.show-more');
 				const showLessBtn = modalDescription.querySelector('.show-less');
 				const lineHeight = parseFloat(getComputedStyle(descContainer).lineHeight) || 24; // Default to 24px if NaN
-				const maxHeight = lineHeight * 5;
-				const minHeightForFiveLines = lineHeight * 5 + lineHeight * 0.1; // Buffer to ensure 5+ lines
+				const maxHeight = lineHeight * 7;
+				const minHeightForFiveLines = lineHeight * 7 + lineHeight * 0.1; // Buffer to ensure 5+ lines
 
 				// Measure height to determine if truncation is needed
 				const descHeight = descContainer.scrollHeight;
