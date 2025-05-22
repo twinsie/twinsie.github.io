@@ -297,7 +297,7 @@
             z-index: 0;
         }
         .year-block {
-            margin: -360px 0 20px;
+            margin: -260px 0 20px;
             width: 45%;
             position: relative;
             display: flex;
@@ -601,6 +601,63 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+		/* New styles for description toggle */
+		.description-container {
+			position: relative;
+			max-height: 96px; /* 5 lines at 24px line-height */
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+		}
+		.description-container.truncated {
+			-webkit-line-clamp: 4;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+		}
+		.description-container.expanded {
+			max-height: 1000px; /* Large enough for any description */
+		}
+		.description-fade {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 24px; /* Matches 1 line */
+			background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+			pointer-events: none;
+		}
+		.description-container.expanded .description-fade {
+			display: none;
+		}
+		.show-more, .show-less {
+			display: none;
+			margin: 8px 0;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 0.85em;
+			color: #7E102C;
+			text-decoration: underline;
+			background: none;
+			border: none;
+			cursor: pointer;
+			transition: color 0.3s ease;
+		}
+		.show-more:hover, .show-less:hover {
+			color: #9b1c3a;
+		}
+		@media (max-width: 600px) {
+			.modal-content {
+				margin: 10% 5%;
+				padding: 15px;
+			}
+			.description-container {
+				max-height: 80px; /* Adjust for smaller screens */
+			}
+			.description-fade {
+				height: 20px;
+			}
+			.show-more, .show-less {
+				font-size: 0.8em;
+			}
+		}
     </style>
 </head>
 <body>
@@ -888,7 +945,53 @@
 
 				modalTitle.textContent = event.title;
 				modalLocation.textContent = `Location: ${event.location}`;
-				modalDescription.innerHTML = event.description;
+			//	modalDescription.innerHTML = event.description;
+				
+				// Create description container with fade and buttons
+				modalDescription.innerHTML = `
+					<div class="description-container">
+						<p lang="en">${event.description}</p>
+						<div class="description-fade"></div>
+					</div>
+					<button class="show-more" style="display: none;">Show More</button>
+					<button class="show-less" style="display: none;">Show Less</button>
+				`;
+
+				// Check if description exceeds 5 lines
+				const descContainer = modalDescription.querySelector('.description-container');
+				const showMoreBtn = modalDescription.querySelector('.show-more');
+				const showLessBtn = modalDescription.querySelector('.show-less');
+				const lineHeight = parseFloat(getComputedStyle(descContainer).lineHeight) || 24; // Default to 24px if NaN
+				const maxHeight = lineHeight * 5;
+				const minHeightForFiveLines = lineHeight * 5 + lineHeight * 0.1; // Buffer to ensure 5+ lines
+
+				// Measure height to determine if truncation is needed
+				const descHeight = descContainer.scrollHeight;
+				if (descHeight > minHeightForFiveLines) {
+					descContainer.classList.add('truncated');
+					showMoreBtn.style.display = 'block';
+				} else {
+					descContainer.classList.remove('truncated');
+					descContainer.classList.add('expanded');
+				}
+
+				// Show More/Show Less toggle
+				showMoreBtn.addEventListener('click', () => {
+					descContainer.classList.remove('truncated');
+					descContainer.classList.add('expanded');
+					showMoreBtn.style.display = 'none';
+					showLessBtn.style.display = 'block';
+				});
+
+				showLessBtn.addEventListener('click', () => {
+					descContainer.classList.remove('expanded');
+					descContainer.classList.add('truncated');
+					showLessBtn.style.display = 'none';
+					showMoreBtn.style.display = 'block';
+				});
+
+				
+				
 				currentImages = event.images;
 				currentSlide = 0;
 				currentTrip = trip;
