@@ -1,0 +1,382 @@
+document.addEventListener("DOMContentLoaded", function() {
+	const enablePassword = false;
+	const correctPassword = "123";
+	const contentDiv = document.getElementById("content");
+	const accessDeniedDiv = document.getElementById("access-denied");
+	const backgroundLayer = document.querySelector('.background-layer');
+	const tripSelector = document.querySelector('.trip-selector');
+	const leftBtn = document.querySelector('.scroll-btn.left-btn');
+	const rightBtn = document.querySelector('.scroll-btn.right-btn');
+	const siteTitle = document.getElementById('site-title');
+	let currentTrip = 'nz';
+	
+	// Sticky title, year title, and gradient scroll handler
+	function handleTitleScroll() {
+		const isShrunk = window.scrollY > 0;
+		siteTitle.classList.toggle('shrunk', isShrunk);
+		document.querySelectorAll('.year-title').forEach(yearTitle => {
+			yearTitle.classList.toggle('shrunk', isShrunk);
+		});
+		// Apply gradient only when shrunk and no trip is selected
+		document.body.classList.toggle('bg-default', isShrunk && !currentTrip);
+	}
+	
+	// Debounce scroll event
+	let scrollTimeout;
+	window.addEventListener('scroll', () => {
+		clearTimeout(scrollTimeout);
+		scrollTimeout = setTimeout(handleTitleScroll, 10);
+	});
+	
+	// Initial check
+	handleTitleScroll();
+
+	// Scroll arrow and fade functionality
+	function updateScrollButtons() {
+		const isAtStart = tripSelector.scrollLeft <= 1;
+		const isAtEnd = tripSelector.scrollLeft + tripSelector.clientWidth >= tripSelector.scrollWidth - 1;
+		const isScrollable = tripSelector.scrollWidth > tripSelector.clientWidth + 2;
+		leftBtn.classList.toggle('visible', !isAtStart && isScrollable);
+		rightBtn.classList.toggle('visible', !isAtEnd && isScrollable);
+		document.querySelector('.fade-left').classList.toggle('visible', !isAtStart && isScrollable);
+		document.querySelector('.fade-right').classList.toggle('visible', !isAtEnd && isScrollable);
+		tripSelector.style.justifyContent = isScrollable ? 'flex-start' : 'center';
+		console.log('isScrollable:', isScrollable, 'scrollWidth:', tripSelector.scrollWidth, 'clientWidth:', tripSelector.clientWidth);
+		console.log('Arrow visibility:', leftBtn.classList.contains('visible'), rightBtn.classList.contains('visible'));
+		console.log('Fade visibility:', document.querySelector('.fade-left').classList.contains('visible'), document.querySelector('.fade-right').classList.contains('visible'));
+		console.log('Justify-content:', tripSelector.style.justifyContent || getComputedStyle(tripSelector).justifyContent);
+	}
+	
+	leftBtn.addEventListener('click', () => {
+		tripSelector.scrollBy({ left: -200, behavior: 'smooth' });
+		setTimeout(updateScrollButtons, 300);
+	});
+
+	rightBtn.addEventListener('click', () => {
+		tripSelector.scrollBy({ left: 200, behavior: 'smooth' });
+		setTimeout(updateScrollButtons, 300);
+	});
+	
+	tripSelector.addEventListener('scroll', updateScrollButtons);
+	window.addEventListener('resize', updateScrollButtons);
+	setTimeout(updateScrollButtons, 100); // Initial check after load
+
+	// Keyboard support for arrows
+	tripSelector.addEventListener('keydown', (e) => {
+		if (e.key === 'ArrowLeft') {
+			tripSelector.scrollBy({ left: -200, behavior: 'smooth' });
+			setTimeout(updateScrollButtons, 300);
+		} else if (e.key === 'ArrowRight') {
+			tripSelector.scrollBy({ left: 200, behavior: 'smooth' });
+			setTimeout(updateScrollButtons, 300);
+		}
+	});
+	
+	function typewriterEffect(element, text, speed = 100) {
+		element.innerHTML = '';
+		let i = 0;
+		const type = () => {
+			if (i < text.length) {
+				element.innerHTML = text.slice(0, i + 1) + '<span class="typing-cursor">_</span>';
+				i++;
+				setTimeout(type, speed);
+			} else {
+				element.innerHTML = text + '<span class="typing-cursor">_</span>';
+			}
+		};
+		type();
+	}
+	
+	
+		
+	if (enablePassword) {
+		const userPassword = prompt("Please enter the password to view this website:");
+		if (userPassword === correctPassword) {
+			contentDiv.style.display = "block";
+			loadTimeline('nz');
+		} else {
+			accessDeniedDiv.style.display = "block";
+			document.body.className = "bg-default";
+			backgroundLayer.style.display = "none";
+			document.querySelector('.fade-layer').style.display = "none";
+		}
+	} else {
+		contentDiv.style.display = "block";
+		loadTimeline('nz');
+	}
+
+	const tripButtons = document.querySelectorAll('.trip-btn');
+	tripButtons.forEach(button => {
+		button.addEventListener('click', function() {
+			tripButtons.forEach(btn => btn.classList.remove('active'));
+			this.classList.add('active');
+			loadTimeline(this.dataset.trip);
+		});
+	});
+
+	function loadTimeline(trip) {
+		const timeline = document.querySelector(".timeline");
+		timeline.innerHTML = ""; // Clear existing timeline
+		currentTrip = trip;
+		const tripData = tripsData[trip];
+		typewriterEffect(document.getElementById("trip-subtitle"), tripData.subtitle);
+
+		// Update background image
+		backgroundLayer.className = `background-layer ${tripData.backgroundImage}`;
+		document.body.className = ""; // Clear body classes
+		
+		const eventsData = tripData.events;
+		let yearIndex = 0;
+		for (let year in eventsData) {
+			let yearBlock = document.createElement("div");
+			yearBlock.className = "year-block";
+			let yearTitle = document.createElement("div");
+			yearTitle.className = "year-title";
+			yearTitle.textContent = year;
+			yearBlock.appendChild(yearTitle);
+			
+			eventsData[year].forEach((event, index) => {
+				let eventDiv = document.createElement("div");
+				eventDiv.className = "event";
+				eventDiv.innerHTML = `
+					<h3>${event.title}</h3>
+					<img src="${event.image}" alt="${year} Event" loading="lazy" onclick="showModal('${year}', ${index}, '${trip}')">
+					<p>地点: ${event.location}</p>
+					<a onclick="showModal('${year}', ${index}, '${trip}')">更多</a>
+				`;
+				yearBlock.appendChild(eventDiv);
+			});
+			
+			timeline.appendChild(yearBlock);
+			yearIndex++;
+		}
+		
+		let theEnd = document.createElement("div");
+		theEnd.className = "the-end";
+		theEnd.textContent = "The End";
+		timeline.appendChild(theEnd);
+		
+		window.tripsData = tripsData;
+
+		function checkVisibility() {
+			document.querySelectorAll(".event").forEach(event => {
+				const rect = event.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.8) {
+					event.classList.add("show");
+				}
+			});
+		}
+		window.addEventListener("scroll", checkVisibility);
+		checkVisibility();
+	}
+	
+	// Back to Top Button Logic
+	const backToTopButton = document.getElementById("back-to-top");
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 100) {
+			backToTopButton.classList.add("show");
+		} else {
+			backToTopButton.classList.remove("show");
+		}
+	});
+
+	backToTopButton.addEventListener("click", () => {
+		backToTopButton.classList.add("active");
+		window.scrollTo({ top: 0, behavior: "smooth" });
+		setTimeout(() => {
+			backToTopButton.classList.remove("active");
+		}, 200);
+	});
+	
+	backToTopButton.addEventListener("touchend", () => {
+		setTimeout(() => {
+			backToTopButton.classList.remove("active");
+			backToTopButton.style.opacity = "0.7";
+		}, 300);
+	});
+});
+
+let currentSlide = 0;
+let currentImages = [];
+let currentTrip = 'nz';
+
+function positionSlideshowButtons() {
+	const slideshow = document.querySelector('.slideshow');
+	const prevBtn = document.querySelector('.prev-btn');
+	const nextBtn = document.querySelector('.next-btn');
+	if (slideshow && prevBtn && nextBtn) {
+		const slideshowRect = slideshow.getBoundingClientRect();
+		const modalContent = document.querySelector('.modal-content');
+		const modalRect = modalContent.getBoundingClientRect();
+		const slideshowTop = slideshowRect.top - modalRect.top + (slideshowRect.height / 2);
+		prevBtn.style.top = `${slideshowTop}px`;
+		nextBtn.style.top = `${slideshowTop}px`;
+		prevBtn.style.transform = 'translateY(-50%)';
+		nextBtn.style.transform = 'translateY(-50%)';
+		console.log('Buttons positioned at top:', slideshowTop);
+	} else {
+		console.error('Slideshow or buttons not found for positioning');
+	}
+}
+
+function showModal(year, index, trip) {
+	console.log('showModal called:', { year, index, trip });
+	try {
+	
+		const event = window.tripsData[trip].events[year][index];
+		const modal = document.getElementById("modal");
+		const modalTitle = document.getElementById("modal-title");
+		const modalLocation = document.getElementById("modal-location");
+		const modalDescription = document.getElementById("modal-description");
+		const slideshow = document.querySelector(".slideshow");
+
+		modalTitle.textContent = event.title;
+		modalLocation.textContent = `Location: ${event.location}`;
+	//	modalDescription.innerHTML = event.description;
+		
+		// Create description container with fade and buttons
+		modalDescription.innerHTML = `
+			<div class="description-container">
+				<p lang="en">${event.description}</p>
+				<div class="description-fade"></div>
+			</div>
+			<button class="show-more" style="display: none;">Show More</button>
+			<button class="show-less" style="display: none;">Show Less</button>
+		`;
+
+		// Check if description exceeds 5 lines
+		const descContainer = modalDescription.querySelector('.description-container');
+		const showMoreBtn = modalDescription.querySelector('.show-more');
+		const showLessBtn = modalDescription.querySelector('.show-less');
+		const lineHeight = parseFloat(getComputedStyle(descContainer).lineHeight) || 24; // Default to 24px if NaN
+		const maxHeight = lineHeight * 7;
+		const minHeightForFiveLines = lineHeight * 7 + lineHeight * 0.1; // Buffer to ensure 5+ lines
+
+		// Measure height to determine if truncation is needed
+		const descHeight = descContainer.scrollHeight;
+		if (descHeight > minHeightForFiveLines) {
+			descContainer.classList.add('truncated');
+			showMoreBtn.style.display = 'block';
+		} else {
+			descContainer.classList.remove('truncated');
+			descContainer.classList.add('expanded');
+		}
+
+		// Show More/Show Less toggle
+		showMoreBtn.addEventListener('click', () => {
+			descContainer.classList.remove('truncated');
+			descContainer.classList.add('expanded');
+			showMoreBtn.style.display = 'none';
+			showLessBtn.style.display = 'block';
+		});
+
+		showLessBtn.addEventListener('click', () => {
+			descContainer.classList.remove('expanded');
+			descContainer.classList.add('truncated');
+			showLessBtn.style.display = 'none';
+			showMoreBtn.style.display = 'block';
+		});
+
+		
+		
+		currentImages = event.images;
+		currentSlide = 0;
+		currentTrip = trip;
+
+		slideshow.innerHTML = "";
+		currentImages.forEach((src, i) => {
+			let element;
+			if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MOV')) {
+				element = document.createElement("video");
+				element.src = src;
+				element.controls = true;
+				element.autoplay = (i === 0);
+				element.muted = false;
+				element.loop = true;
+			} else {
+				element = document.createElement("img");
+				element.src = src;
+			}
+			element.alt = `${event.title} Slide ${i + 1}`;
+			if (i === 0) element.classList.add("active");
+			slideshow.appendChild(element);
+		});
+		
+		// Initialize slide indicator
+		document.getElementById("slide-indicator").textContent = `Slide 1 of ${currentImages.length}`;
+		
+		// Add accessibility to buttons
+		const prevBtn = document.querySelector('.prev-btn');
+		const nextBtn = document.querySelector('.next-btn');
+		if (prevBtn && nextBtn) {
+			prevBtn.setAttribute('aria-label', 'Previous slide');
+			nextBtn.setAttribute('aria-label', 'Next slide');
+		} else {
+			console.error('Slideshow buttons not found');
+		}
+		
+		// Position buttons after layout render
+		requestAnimationFrame(() => {
+			positionSlideshowButtons();
+		});
+					
+		// Add swipe functionality
+		let touchStartX = 0;
+		let touchEndX = 0;
+		const minSwipeDistance = 50;
+
+		slideshow.addEventListener('touchstart', (e) => {
+			touchStartX = e.changedTouches[0].screenX;
+		});
+
+		slideshow.addEventListener('touchend', (e) => {
+			touchEndX = e.changedTouches[0].screenX;
+			const swipeDistance = touchEndX - touchStartX;
+			if (Math.abs(swipeDistance) >= minSwipeDistance) {
+				if (swipeDistance < 0) {
+					changeSlide(1); // Swipe left -> next slide
+				} else {
+					changeSlide(-1); // Swipe right -> previous slide
+				}
+			}
+		});
+
+		modal.classList.add('modal-open');
+		document.body.style.overflow = "hidden";
+		
+		console.log('Modal opened successfully');
+	} catch (error) {
+		console.error('Error in showModal:', error);
+	}
+}
+
+function closeModal() {
+	const modal = document.getElementById("modal");
+	modal.classList.remove('modal-open');
+	document.body.style.overflow = "auto";
+	document.querySelectorAll(".slideshow video").forEach(video => video.pause());
+	clearInterval(autoSlideInterval);
+	console.log('Modal closed');
+}
+
+function changeSlide(direction) {
+	const slides = document.querySelectorAll(".slideshow img, .slideshow video");
+	const currentElement = slides[currentSlide];
+	currentElement.classList.remove("active");
+	if (currentElement.tagName === "VIDEO") currentElement.pause();
+
+	currentSlide = (currentSlide + direction + currentImages.length) % currentImages.length;
+	const nextElement = slides[currentSlide];
+	nextElement.classList.add("active");
+	if (nextElement.tagName === "VIDEO") nextElement.play();
+	
+	// Update slide indicator
+	document.getElementById("slide-indicator").textContent = `Slide ${currentSlide + 1} of ${currentImages.length}`;
+}
+
+document.getElementById("modal").addEventListener("click", function(e) {
+	if (e.target === this) closeModal();
+});
+
+// Reposition buttons on window resize
+window.addEventListener('resize', positionSlideshowButtons);

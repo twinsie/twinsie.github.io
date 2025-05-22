@@ -54,7 +54,7 @@ const tripsData = {
 					image: "images/nz-3-3-1.HEIC", 
 					location: "Aoraki / Mount Cook", 
 					description: "A short drive brought us to Aoraki/Mount Cook National Park, where snow-covered peaks rose around us in every direction — absolutely breathtaking.",
-					images: ["images/nz-3-3-1.HEIC", "images/nz-3-3-2.JPG", "images/nz-3-3-3.HEIC", "images/nz-3-3-4.HEIC", "images/nz-3-3-5.JPG", "images/nz-3-3-5.mp4", "images/nz-3-3-6.HEIC", "images/nz-3-3-7.jpg", "images/nz-3-3-8.JPG"]
+					images: ["images/nz-3-3-1.HEIC", "images/nz-3-3-2.JPG", "images/nz-3-3-3.HEIC", "images/nz-3-3-4.HEIC", "images/nz-3-3-5.JPG", "images/nz-3-3-5.mp4", "images/nz-3-3-6.HEIC", "images/nz-3-3-7.JPG", "images/nz-3-3-8.JPG"]
 				}
 			],			
 			"Day 4": [
@@ -62,7 +62,7 @@ const tripsData = {
 					title: "Morning in Oamaru", 
 					image: "images/nz-4-1-6.jpg", 
 					location: "Oamaru", 
-					description: "Began our day with our favorite restaurant of the whole trip—everything was absolutely delicious <i>and</i> reasonably priced.",
+					description: "We spent the morning wandering through Oamaru under perfect blue skies. The town’s historic charm really shines in this kind of weather—stone buildings, quiet streets, and lots of photo-worthy corners. We had a great time just walking around and snapping pictures along the way.",
 					images: ["images/nz-4-1-1.jpg", "images/nz-4-1-2.jpg", "images/nz-4-1-3.jpg", "images/nz-4-1-4.jpg", "images/nz-4-1-5.jpg", "images/nz-4-1-6.jpg", "images/nz-4-1-7.jpg", "images/nz-4-1-8.JPG", "images/nz-4-1-9.jpg", "images/nz-4-1-10.jpg"]
 				},
 				{ 

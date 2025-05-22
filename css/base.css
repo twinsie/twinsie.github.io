@@ -1,0 +1,89 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	padding: 20px;
+	/*background-color: #f4f4f4;*/
+	margin: 0;
+	background-color: #f2f2f2; /* Solid background when image disappears */
+	position: relative;
+	opacity: 1; /* Ensure content is fully opaque */
+	z-index: 0;
+}
+/* Default background (gradient animation) */
+body.bg-default {
+	background: linear-gradient(45deg, #f2f2f2, #cccccc, #f2f2f2, #cccccc, #f2f2f2, #cccccc, #f2f2f2, #cccccc);
+	background-size: 400%;
+	animation: gradientShift 15s ease infinite;
+}
+/* Background image layer (scrolls with page, transparent) */
+.background-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 500px; /* Covers header; adjust if needed */
+	background-size: cover;
+	background-position: center;
+	opacity: 0.6; /* Transparent/muted background image */
+	z-index: -2;
+	transition: background-image 500ms ease-in-out;
+}        
+/* Fade-out gradient at bottom of background layer */
+.fade-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 500px; /* Matches background-layer */
+	background-image: linear-gradient(
+		to bottom,
+		rgba(242, 242, 242, 0) 0%,
+		rgba(242, 242, 242, 0.5) 50%,
+		rgba(242, 242, 242, 1) 100%
+	);
+	z-index: -1;
+}
+h1 {
+	font-family: 'Long Cang', cursive;
+	font-weight: 700;
+	color: #7E102C;
+	font-size: 3.5em;
+	opacity: 1;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	transition: font-size 0.3s ease;
+}
+h1.shrunk {
+	font-size: 2.0em;
+	background: rgba(242, 242, 242, 0.8);
+}
+@media (max-width: 600px) {
+	h1 {
+		font-size: 3em;
+	}
+	h1.shrunk {
+		font-size: 1.2em;
+	}
+	.background-layer,
+	.fade-layer {
+		height: 250px;
+		top: 0;
+	}
+}
+h2{
+	font-family: 'Ma Shan Zheng', serif;
+	font-weight: 400;
+	color: #58423F;
+}
+h3 {
+	font-family: 'Noto Serif SC', serif;
+	font-weight: 700;
+	color: #58423F;
+	font-size: 1.0em;
+}
+h2#trip-subtitle {
+	font-size: 1.5em;
+	font-weight: 400;
+	margin: 15px 0 20px;
+}
