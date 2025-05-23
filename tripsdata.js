@@ -114,7 +114,7 @@ const tripsData = {
 					image: "images/nz-5-3-6.JPG", 
 					location: "Nugget Point", 
 					description: "From Dunedin, we continued our journey to Nugget Point—and finally spotted wild penguins! It was likely our first time seeing them in their natural habitat, and the experience felt almost surreal. Watching them waddle along the shore against the dramatic coastal backdrop was a moment we won’t forget.",
-					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.MP4"]
+					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.mp4"]
 				},
 				{ 
 					title: "Seaside Stay in Bluff", 
