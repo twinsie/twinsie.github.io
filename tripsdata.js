@@ -66,7 +66,7 @@ const tripsData = {
 					images: ["images/nz-4-1-1.jpg", "images/nz-4-1-2.jpg", "images/nz-4-1-3.jpg", "images/nz-4-1-4.jpg", "images/nz-4-1-5.jpg", "images/nz-4-1-6.jpg", "images/nz-4-1-7.jpg", "images/nz-4-1-8.JPG", "images/nz-4-1-9.jpg", "images/nz-4-1-10.jpg"]
 				},
 				{ 
-					title: "Sealion Detour", 
+					title: "Sea Lion Detour", 
 					image: "images/nz-4-2-1.jpg", 
 					location: "Bushy Beach Scenic Reserve", 
 					description: "On our way to Dunedin, we took a small detour along the coast, hoping to catch a glimpse of penguins. While the penguins remained elusive, we were rewarded with something just as special—a close encounter with sea lions lounging on the beach. Watching them up close in their natural habitat was both thrilling and humbling. Sometimes the surprises make the best memories.",
@@ -114,7 +114,7 @@ const tripsData = {
 					image: "images/nz-5-3-6.JPG", 
 					location: "Nugget Point", 
 					description: "From Dunedin, we continued our journey to Nugget Point—and finally spotted wild penguins! It was likely our first time seeing them in their natural habitat, and the experience felt almost surreal. Watching them waddle along the shore against the dramatic coastal backdrop was a moment we won’t forget.",
-					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.mp4", "images/MAH00532.mp4"]
+					images: ["images/nz-5-3-1.JPG", "images/nz-5-3-2.jpg", "images/nz-5-3-3.jpg", "images/nz-5-3-4.jpg", "images/nz-5-3-5.jpg", "images/nz-5-3-6.JPG", "images/nz-5-3-7.mp4"]
 				},
 				{ 
 					title: "Seaside Stay in Bluff", 
@@ -126,148 +126,92 @@ const tripsData = {
 			],
 			"Day 6": [
 				{ 
-					title: "Nice from Above", 
-					image: "images/france-6-1-5.HEIC", 
-					location: "Colline du Château", 
-					description: "Big travel day ahead, but before heading out for our day trip, we made a stop at the mountaintop for the panoramic view of Nice. A perfect way to start the day!",
-					images: ["images/france-6-1-1.HEIC", "images/france-6-1-2.HEIC", "images/france-6-1-3.HEIC", "images/france-6-1-4.mp4", "images/france-6-1-5.HEIC", "images/france-6-1-6.HEIC", "images/france-6-1-7.HEIC", "images/france-6-1-8.HEIC", "images/france-6-1-9.HEIC"]
+					title: "On the Road to Milford Sound", 
+					image: "images/nz-6-1-1.JPG", 
+					location: "State Highway 94", 
+					description: "We drove about four hours today to catch our cruise in Milford Sound—and honestly, it didn’t feel long at all. In New Zealand, even the drive is part of the adventure. Winding roads, mountain views, mirror-like lakes… it’s endlessly beautiful. Every turn feels like a postcard.",
+					images: ["images/nz-6-1-1.JPG", "images/nz-6-1-2.JPG", "images/nz-6-1-3.JPG", "images/nz-6-1-4.JPG", "images/nz-6-1-5.JPG", "images/nz-6-1-6.JPG"]
 				},
 				{ 
-					title: "This Is Menton!", 
-					image: "images/france-6-2-2.HEIC", 
-					location: "Menton", 
-					description: "After a short train ride, we made it to Menton! What a beautiful town—just look at those colorful buildings. Absolutely picture-perfect.",
-					images: ["images/france-6-2-1.HEIC", "images/france-6-2-2.HEIC", "images/france-6-2-3.HEIC", "images/france-6-2-4.HEIC"]
+					title: "Into the Mist and Waterfalls", 
+					image: "images/nz-6-2-1.JPG", 
+					location: "Milford Sound", 
+					description: "As we drove deeper into the mountains toward Milford Sound, the landscape began to feel almost otherworldly. Rain had soaked the cliffs, creating thousands of waterfalls cascading down both sides of the road. It was absolutely magical—something that only happens in wet weather, and we were lucky to witness it. To top it off, we spotted a Kea, New Zealand’s famously curious alpine parrot, right by the roadside. What a welcome to Fiordland.",
+					images: ["images/nz-6-2-1.JPG", "images/nz-6-2-2.JPG", "images/nz-6-2-3.mp4", "images/nz-6-2-4.JPG", "images/nz-6-2-5.MP4"]
 				},
 				{ 
-					title: "Hillside Wanders", 
-					image: "images/france-6-3-2.HEIC", 
-					location: "Menton", 
-					description: "It was so fun exploring the winding, irregular alleys of Menton up on the hill—every turn revealed another charming little corner.",
-					images: ["images/france-6-3-1.HEIC", "images/france-6-3-2.HEIC", "images/france-6-3-3.HEIC", "images/france-6-3-4.HEIC", "images/france-6-3-5.HEIC", "images/france-6-3-6.HEIC", "images/france-6-3-7.HEIC", "images/france-6-3-8.HEIC", "images/france-6-3-9.HEIC", "images/france-6-3-10.HEIC"]
+					title: "Cruising Through Milford Sound", 
+					image: "images/nz-6-3-2.JPG", 
+					location: "Milford Sound", 
+					description: "Finally, we boarded our cruise through the breathtaking Milford Sound. The weather stayed gloomy, but it only added to the mystique—mist swirling around towering cliffs, waterfalls tumbling straight from the sky, and dark waters reflecting it all. It felt like sailing through a dream. Milford Sound is part of Fiordland National Park and a UNESCO World Heritage Site, often called the “eighth wonder of the world” for its dramatic beauty. Every moment on the water was pure aesthetic magic.",
+					images: ["images/nz-6-3-1.JPG", "images/nz-6-3-2.JPG", "images/nz-6-3-3.JPG", "images/nz-6-3-4.JPG", "images/nz-6-3-5.MOV", "images/nz-6-3-6.MP4", "images/nz-6-3-7.JPG", "images/nz-6-3-8.JPG"]
 				},
 				{ 
-					title: "Hot Climb, Cool View", 
-					image: "images/france-6-4-5.HEIC", 
-					location: "Menton", 
-					description: "This is what happens when you climb a hill on a hot day! But once we made it to the top, it was time to head back down to the train station—next stop: Monaco.",
-					images: ["images/france-6-4-1.HEIC", "images/france-6-4-2.HEIC", "images/france-6-4-3.HEIC", "images/france-6-4-4.HEIC", "images/france-6-4-5.HEIC", "images/france-6-4-6.HEIC", "images/france-6-4-7.HEIC", "images/france-6-4-8.HEIC", "images/france-6-4-9.HEIC"]
-				},
-				{ 
-					title: "Mini Monaco", 
-					image: "images/france-6-5-1.HEIC", 
-					location: "Monaco", 
-					description: "Arrived in Monaco! It’s a tiny country, densely built into the hillside—kind of like a Mediterranean version of Hong Kong.",
-					images: ["images/france-6-5-1.HEIC", "images/france-6-5-2.HEIC", "images/france-6-5-3.HEIC", "images/france-6-5-4.HEIC", "images/france-6-5-5.HEIC", "images/france-6-5-6.HEIC", "images/france-6-5-7.HEIC"]
-				},
-				{ 
-					title: "Money! Money! Money!", 
-					image: "images/france-6-6-3.HEIC", 
-					location: "Casino de Monte-Carlo", 
-					description: "This might just be the highest concentration of wealth we've ever seen. Surprisingly though, our Italian meal right on the border of Monaco and France was super reasonable—great food without the Monaco price tag!",
-					images: ["images/france-6-6-1.HEIC", "images/france-6-6-2.HEIC", "images/france-6-6-3.HEIC", "images/france-6-6-4.HEIC", "images/france-6-6-5.HEIC", "images/france-6-6-6.HEIC", "images/france-6-6-7.HEIC", "images/france-6-6-8.HEIC", "images/france-6-6-9.HEIC"]
-				},
-				{ 
-					title: "Back to Nice", 
-					image: "images/france-6-7-1.HEIC", 
-					location: "Nice", 
-					description: "We took the bus back to Nice, hoping to catch some scenic views along the way—but of course, we napped the whole ride! Late at night, we headed out to explore Nice’s nighttime food scene. Packed with people and full of life!",
-					images: ["images/france-6-7-1.HEIC", "images/france-6-7-2.HEIC", "images/france-6-7-3.mp4", "images/france-6-7-4.HEIC"]
+					title: "Te Anau", 
+					image: "images/nz-6-4-1.JPG", 
+					location: "Te Anau", 
+					description: "After our Milford Sound adventure, we returned to our hotel in Te Anau. One thing we’ve noticed—every hotel here seems to come with a view. Whether it’s the lake, the mountains, or the open sky, there’s always something beautiful just outside the window. A perfect place to unwind and reflect on the day.",
+					images: ["images/nz-6-4-1.JPG", "images/nz-6-4-2.JPG", "images/nz-6-4-3.JPG"]
 				}
 			],
 			"Day 7": [
 				{ 
-					title: "Exploring Éze", 
-					image: "images/france-7-1-5.HEIC", 
-					location: "Éze", 
-					description: "We spent the day in Éze, a postcard-perfect village perched high above the Côte d’Azur. We grabbed a quick lunch before setting off to explore its narrow stone alleys—every turn opened up to breathtaking views of the Mediterranean. Peaceful, scenic, and full of charm.",
-					images: ["images/france-7-1-1.HEIC", "images/france-7-1-2.HEIC", "images/france-7-1-3.HEIC", "images/france-7-1-4.HEIC", "images/france-7-1-5.HEIC", "images/france-7-1-6.HEIC", "images/france-7-1-7.HEIC", "images/france-7-1-8.HEIC"]
+					title: "Cruising to Queenstown", 
+					image: "images/nz-7-1-5.JPG", 
+					location: "Lake Wakatipu", 
+					description: "We took a laid-back drive to Queenstown today, and once again, the scenery did not disappoint. Rolling hills, shimmering lakes, snow-capped peaks—every stretch of road in New Zealand feels like a scenic route. It’s hard to keep your eyes on the road when everything around you looks like a postcard.",
+					images: ["images/nz-7-1-1.JPG", "images/nz-7-1-2.JPG", "images/nz-7-1-3.JPG", "images/nz-7-1-4.JPG", "images/nz-7-1-5.JPG"]
 				},
 				{ 
-					title: "Stone Paths and Secret Corners", 
-					image: "images/france-7-2-2.HEIC", 
-					location: "Éze", 
-					description: "Éze is a maze of winding stone paths, ivy-covered walls, and charming little shops tucked into centuries-old buildings. Every corner felt like a secret waiting to be found. The village is perched so high it almost feels like walking through a fairytale above the sea.",
-					images: ["images/france-7-2-1.mp4", "images/france-7-2-2.HEIC", "images/france-7-2-3.HEIC", "images/france-7-2-4.HEIC", "images/france-7-2-5.HEIC", "images/france-7-2-6.HEIC", "images/france-7-2-7.HEIC", "images/france-7-2-8.HEIC"]
-				},
-				{ 
-					title: "The Exotic Garden", 
-					image: "images/france-7-3-1.HEIC", 
-					location: "Jardin Exotique d’Èze", 
-					description: "Perched at the village’s peak, the Exotic Garden felt like the crown of Éze—lush plants, sea views, and a peaceful moment above it all.",
-					images: ["images/france-7-3-1.HEIC", "images/france-7-3-2.HEIC", "images/france-7-3-3.HEIC", "images/france-7-3-4.HEIC", "images/france-7-3-5.HEIC", "images/france-7-3-6.HEIC", "images/france-7-3-7.HEIC", "images/france-7-3-8.HEIC"]
-				},
-				{ 
-					title: "Hot at the Top", 
-					image: "images/france-7-4-1.HEIC", 
-					location: "Jardin Exotique d’Èze", 
-					description: "Sunburn, sweat, and spectacular views—Éze doesn’t mess around, but the view from the top made it all worth it. That panorama is something we’ll remember forever.",
-					images: ["images/france-7-4-1.HEIC", "images/france-7-4-2.HEIC", "images/france-7-4-3.HEIC", "images/france-7-4-4.HEIC", "images/france-7-4-5.HEIC", "images/france-7-4-6.HEIC", "images/france-7-4-7.HEIC", "images/france-7-4-8.HEIC", "images/france-7-4-9.HEIC", "images/france-7-4-10.HEIC"]
-				},
-				{ 
-					title: "Candy and Closures", 
-					image: "images/france-7-5-1.HEIC", 
-					location: "Château Eza", 
-					description: "After coming down from the garden, we wandered the small paths again and popped into some shops. Keith somehow spent $200 on candies… and yeah, we probably trashed most of it after the trip! Tried to grab a quick drink at Château Eza, but it was closed off for a private event. Oh well, next time!",
-					images: ["images/france-7-5-1.HEIC", "images/france-7-5-2.HEIC", "images/france-7-5-3.HEIC", "images/france-7-5-4.HEIC", "images/france-7-5-5.HEIC", "images/france-7-5-6.HEIC", "images/france-7-5-7.HEIC", "images/france-7-5-8.HEIC", ]
-				},
-				{ 
-					title: "Farewell, Côte d’Azur", 
-					image: "images/france-7-7-2.HEIC", 
-					location: "Casino de Monte-Carlo", 
-					description: "With a bit of time to spare before catching our train back to Paris, we climbed the hilltop one last time to soak in the view of Nice.",
-					images: ["images/france-7-7-1.HEIC", "images/france-7-7-2.HEIC", "images/france-7-7-3.HEIC", "images/france-7-7-4.HEIC", "images/france-7-7-5.HEIC"]
-				},
-				{ 
-					title: "Hello Again, Paris", 
-					image: "images/france-7-8-5.HEIC", 
-					location: "Gare de Lyon", 
-					description: "The train was slightly delayed, but eventually, we rolled into Paris late at night—tired, but grateful. Chris was smart to book us into a charming historic boutique hotel just steps from Gare de Lyon—super convenient and full of character.",
-					images: ["images/france-7-8-1.HEIC", "images/france-7-8-2.HEIC", "images/france-7-8-3.HEIC", "images/france-7-8-4.HEIC", "images/france-7-8-5.HEIC"]
+					title: "A Free Day in Queenstown", 
+					image: "images/nz-7-2-6.JPG", 
+					location: "Queenstown", 
+					description: "Today was our first unscheduled day—and it felt great. No plans, no timelines, just the freedom to wander. It was also nice to finally be in a lively town full of people and energy. We spent the day browsing shops, enjoying good food, and simply soaking up the Queenstown vibe.",
+					images: ["images/nz-7-2-1.jpg", "images/nz-7-2-2.jpg", "images/nz-7-2-3.JPG", "images/nz-7-2-4.jpg", "images/nz-7-2-5.JPG", "images/nz-7-2-6.JPG", "images/nz-7-2-7.JPG", "images/nz-7-2-8.jpg"]
 				}
 			],
 			"Day 8": [
 				{ 
-					title: "Para Archery", 
-					image: "images/france-8-1-8.HEIC", 
-					location: "Invalides", 
-					description: "Gotta give it to Chris for the dedication—refreshing like a champ and scoring last-minute Paralympics tickets! No idea why Keith had Chris grumpy that morning, but whatever he did to fix it clearly worked. Our first event was para archery at the historic Hôtel des Invalides, once a veterans’ hospital—pretty epic setting for a competition.",
-					images: ["images/france-8-1-1.HEIC", "images/france-8-1-2.mp4", "images/france-8-1-3.HEIC", "images/france-8-1-4.HEIC", "images/france-8-1-5.HEIC", "images/france-8-1-6.HEIC", "images/france-8-1-7.HEIC", "images/france-8-1-8.HEIC", "images/france-8-1-9.HEIC", "images/france-8-1-10.HEIC"]
+					title: "Breakfast with a View", 
+					image: "images/nz-8-1-1.jpg", 
+					location: "Rydges Lakeland Resort Queenstown", 
+					description: "This is the view from our hotel restaurant—absolutely stunning. Imagine starting every morning with breakfast here, looking out over the lake and mountains. It’s the kind of view that makes you linger a little longer over your coffee.",
+					images: ["images/nz-8-1-1.jpg", "images/nz-8-1-2.jpg", "images/nz-8-1-3.jpg"]
 				},
 				{ 
-					title: "Para Taekwondo", 
-					image: "images/france-8-2-2.HEIC", 
-					location: "Grand Palais", 
-					description: "We rushed over to our second overlapping event—Para Taekwondo at the Grand Palais! What an epic venue for such an intense competition.",
-					images: ["images/france-8-2-1.HEIC", "images/france-8-2-2.HEIC", "images/france-8-2-3.HEIC", "images/france-8-2-4.HEIC", "images/france-8-2-5.HEIC", "images/france-8-2-6.HEIC", "images/france-8-2-7.HEIC"]
+					title: "Ascend to Paradise", 
+					image: "images/nz-8-2-5.JPG", 
+					location: "Skyline Queenstown", 
+					description: "After breakfast, we headed up to Skyline Queenstown. The gondola ride alone was worth it, offering sweeping views over Lake Wakatipu and the Remarkables. At the top, the scenery was absolutely breathtaking—Queenstown laid out below us, surrounded by mountains. Whether you’re up for adventure or just taking in the views, it’s a must-do experience.",
+					images: ["images/nz-8-2-1.JPG", "images/nz-8-2-2.JPG", "images/nz-8-2-3.JPG", "images/nz-8-2-4.JPG", "images/nz-8-2-5.JPG", "images/nz-8-2-6.JPG", "images/nz-8-2-7.JPG", "images/nz-8-2-8.JPG"]
 				},
 				{ 
-					title: "Merch, Lunch, and a Reset", 
-					image: "images/france-8-3-2.HEIC", 
-					location: "The Kitchen", 
-					description: "We went a little wild with the discounted Olympics merch—who could blame us? After a solid lunch to recharge, we were ready to get back to exploring Paris.",
-					images: ["images/france-8-3-1.HEIC", "images/france-8-3-2.HEIC", "images/france-8-3-3.HEIC", "images/france-8-3-4.HEIC", "images/france-8-3-5.HEIC", "images/france-8-3-6.HEIC", "images/france-8-3-7.HEIC"]
+					title: "Into Middle-earth", 
+					image: "images/nz-8-3-2.jpg", 
+					location: "Glenorchy", 
+					description: "We took a scenic drive out to Glenorchy, and it felt like stepping straight into a fantasy world. Towering mountains, mirror-like lakes, and untouched wilderness everywhere you look. Fun fact—parts of The Lord of the Rings were filmed in and around Glenorchy, including scenes set in Isengard and Lothlórien. It’s easy to see why they chose this spot—absolutely magical.",
+					images: ["images/nz-8-3-1.jpg", "images/nz-8-3-2.jpg", "images/nz-8-3-3.JPG", "images/nz-8-3-4.JPG", "images/nz-8-3-5.JPG", "images/nz-8-3-6.JPG", "images/nz-8-3-7.JPG", "images/nz-8-3-8.JPG", "images/nz-8-3-9.JPG"]
 				},
 				{ 
-					title: "Macaron in the Garden", 
-					image: "images/france-8-4-1.HEIC", 
-					location: "Jardin du Luxembourg", 
+					title: "Arrow Junction Lookout", 
+					image: "images/nz-8-4-3.JPG", 
+					location: "Arrow Junction", 
 					description: "We found the best macarons in Paris—just look at that presentation! Even better, we enjoyed them right in the beautiful Luxembourg Garden. A sweet moment in every way.",
-					images: ["images/france-8-4-1.HEIC", "images/france-8-4-2.HEIC", "images/france-8-4-3.HEIC", "images/france-8-4-4.HEIC", "images/france-8-4-5.HEIC", "images/france-8-4-6.HEIC", "images/france-8-4-7.HEIC", "images/france-8-4-8.HEIC", "images/france-8-4-9.HEIC", "images/france-8-4-10.HEIC"]
+					images: ["images/nz-8-4-1.JPG", "images/nz-8-4-2.JPG", "images/nz-8-4-3.JPG", "images/nz-8-4-4.JPG"]
 				},
 				{ 
-					title: "The Cauldron That Never Rose", 
-					image: "images/france-8-5-1.HEIC", 
-					location: "Jardin du Carrousel", 
-					description: "We waited for the rise of the Olympic cauldron—our one chance to catch the magic moment. The crowd was huge, the energy was high... and then came the delays. More waiting, more hunger, and eventually, we had to give up. Sometimes, the moment just doesn’t rise with you.",
-					images: ["images/france-8-5-1.HEIC", "images/france-8-5-2.mp4", "images/france-8-5-3.HEIC", "images/france-8-5-4.HEIC", "images/france-8-5-5.HEIC", "images/france-8-5-6.HEIC"]
+					title: "The Wanaka Tree", 
+					image: "images/nz-8-5-2.JPG", 
+					location: "Lake Wānaka", 
+					description: "We made a stop to see the famous Wanaka Tree—standing alone in the lake, its twisted branches reaching out over the water. It's one of the most photographed trees in New Zealand, and it’s easy to see why. Serene, resilient, and perfectly framed by mountains, it’s a quiet symbol of nature’s beauty.",
+					images: ["images/nz-8-5-1.jpg", "images/nz-8-5-2.JPG", "images/nz-8-5-3.JPG", "images/nz-8-5-4.JPG", "images/nz-8-5-5.JPG", "images/nz-8-5-6.JPG", "images/nz-8-5-7.jpg"]
 				},
 				{ 
 					title: "Soaked but Smiling", 
-					image: "images/france-8-6-5.HEIC", 
-					location: "Café de la Régence", 
-					description: "Our last dinner! We chose a nice restaurant to make up for the disappointment—street-side seating, soaking in the Paris vibes. Then the storm hit. It poured so hard that some raindrops even landed in our food. No wonder the Olympic cauldron lift was canceled—Paris had other plans.",
-					images: ["images/france-8-6-1.HEIC", "images/france-8-6-2.mp4", "images/france-8-6-3.HEIC", "images/france-8-6-4.HEIC", "images/france-8-6-5.HEIC"]
+					image: "images/nz-8-6-5.JPG", 
+					location: "Lake Hāwea", 
+					description: "We’re spending the night at Lake Hāwea, and once again, the view is just stunning. No matter how many lakes or mountain ranges we’ve seen, it never gets old.",
+					images: ["images/nz-8-6-1.jpg", "images/nz-8-6-2.jpg", "images/nz-8-6-3.JPG", "images/nz-8-6-4.JPG", "images/nz-8-6-5.JPG"]
 				}
 			],
 			"Day 9": [
