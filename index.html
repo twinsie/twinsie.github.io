@@ -357,7 +357,7 @@
 				slideshow.innerHTML = "";
 				currentImages.forEach((src, i) => {
 					let element;
-					if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MOV')) {
+					if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.MP4') || src.endsWith('.mov') || src.endsWith('.MOV')) {
 						element = document.createElement("video");
 						element.src = src;
 						element.controls = true;
