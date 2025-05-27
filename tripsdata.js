@@ -216,32 +216,39 @@ const tripsData = {
 			],
 			"Day 9": [
 				{ 
-					title: "Vintage Lift, Mixed Reviews", 
-					image: "images/france-9-1-2.HEIC", 
-					location: "Hotel Camille Paris", 
-					description: "Chris adored the charming old elevator they preserved in the hotel—full of vintage character. Keith, of course, rolled his eyes and dismissed the whole thing as 'just old.'",
-					images: ["images/france-9-1-1.mp4", "images/france-9-1-2.HEIC", "images/france-9-1-3.HEIC", "images/france-9-1-4.HEIC", "images/france-9-1-5.HEIC", "images/france-9-1-6.HEIC"]
+					title: "A Scenic Journey to Franz Josef", 
+					image: "images/nz-9-1-1.JPG", 
+					location: "Lake Hāwea", 
+					description: "Today we’re driving to Franz Josef—about four hours on the map, but with no set schedule, we’re taking our time to enjoy the ride. The route winds through Te Wāhipounamu, a UNESCO World Heritage Area that covers some of the most spectacular and untouched landscapes in New Zealand. The scenery kept changing around every bend—dense rainforest, mirror-like lakes, rugged coastline, and snow-capped peaks all in one drive. ",
+					images: ["images/nz-9-1-1.JPG", "images/nz-9-1-2.JPG", "images/nz-9-1-3.JPG", "images/nz-9-1-4.jpg", "images/nz-9-1-5.JPG"]
 				},
 				{ 
-					title: "Final Walk Along the Seine", 
-					image: "images/france-9-2-4.HEIC", 
-					location: "Passerelle Simone-de-Beauvoir", 
-					description: "We took one last walk along the Seine before our final Paralympics event. Peaceful, scenic... except for the bridge part—guess who <i>still</i> hates walking on bridges?",
-					images: ["images/france-9-2-1.HEIC", "images/france-9-2-2.HEIC", "images/france-9-2-3.HEIC", "images/france-9-2-4.HEIC", "images/france-9-2-5.HEIC", "images/france-9-2-6.HEIC", "images/france-9-2-7.HEIC"]
+					title: "Te Wāhipounamu", 
+					image: "images/nz-9-2-4.JPG", 
+					location: "Haast Pass", 
+					description: "Te Wāhipounamu is one of those rare places where you feel like you’re traveling through multiple worlds in a single day. We stopped often just to breathe it in and snap some photos. Sometimes the journey really is the destination.",
+					images: ["images/nz-9-2-1.JPG", "images/nz-9-2-2.jpg", "images/nz-9-2-3.JPG", "images/nz-9-2-4.JPG", "images/nz-9-2-5.JPG", "images/nz-9-2-6.JPG", "images/nz-9-2-7.JPG", "images/nz-9-2-8.JPG", "images/nz-9-2-9.JPG"]
 				},
 				{ 
-					title: "Blind Football", 
-					image: "images/france-9-3-3.HEIC", 
-					location: "Stade Tour Eiffel", 
-					description: "Wow—we never expected blind football to be so intense and entertaining. It truly felt like a high-level competitive sport, and watching it in a stadium right beneath the Eiffel Tower made it all the more surreal. A once-in-a-lifetime experience, and the perfect way to end our France trip.",
-					images: ["images/france-9-3-1.mp4", "images/france-9-3-2.HEIC", "images/france-9-3-3.HEIC", "images/france-9-3-4.HEIC", "images/france-9-3-5.HEIC", "images/france-9-3-6.HEIC", "images/france-9-3-7.HEIC", "images/france-9-3-8.HEIC"]
+					title: "From Mountains to Sea", 
+					image: "images/nz-9-3-3.JPG", 
+					location: "Te Wāhipounamu", 
+					description: "As we descended from the mountains toward the coast, the landscape transformed once again—thick rainforest gave way to bright, glacial rivers and lagoons. The water was a stunning baby blue, almost glowing under the light. It’s that unique glacial melt—so pure, it looks like it’s been filtered by the sky itself. Absolutely breathtaking.",
+					images: ["images/nz-9-3-1.JPG", "images/nz-9-3-2.jpg", "images/nz-9-3-3.JPG", "images/nz-9-3-4.jpg", "images/nz-9-3-5.jpg", "images/nz-9-3-6.JPG", "images/nz-9-3-7.JPG", "images/nz-9-3-8.jpg"]
 				},
 				{ 
-					title: "Au Revoir, France!", 
-					image: "images/france-9-4-1.HEIC", 
-					location: "Charles de Gaulle Airport", 
-					description: "Flying back! The private sauna in the Air France lounge was a fun little surprise—what a way to end things. We had an amazing trip, full of memories we’ll be talking about for a long time!",
-					images: ["images/france-9-4-1.HEIC", "images/france-9-4-2.HEIC", "images/france-9-4-3.HEIC", "images/france-9-4-4.HEIC", "images/france-9-4-5.HEIC", "images/france-9-4-6.HEIC", "images/france-9-4-7.HEIC", "images/france-9-4-8.HEIC"]
+					title: "Touching the West Coast", 
+					image: "images/nz-9-4-1.jpg", 
+					location: "Haast Beach", 
+					description: "After winding through mountains, valleys, and glacier-fed rivers, we finally reached the wild west shoreline of New Zealand’s South Island. There’s something raw and untamed about this coast—crashing waves, dense forest right up to the water’s edge, and that feeling of standing at the edge of the world. It’s a dramatic contrast to the calm lakes and alpine peaks we’ve left behind.",
+					images: ["images/nz-9-4-1.jpg", "images/nz-9-4-2.jpg", "images/nz-9-4-3.jpg", "images/nz-9-4-4.jpg", "images/nz-9-4-5.JPG", "images/nz-9-4-6.JPG", "images/nz-9-4-7.JPG", "images/nz-9-4-8.JPG"]
+				},
+				{ 
+					title: "Night in the Trees", 
+					image: "images/nz-9-5-2.jpg", 
+					location: "Rainforest Retreat", 
+					description: "We’re so excited to be staying at the Rainforest Retreat tonight—our accommodation is a standalone treehouse nestled right in the forest! It’s cozy, charming, and surrounded by nature. Waking up to birdsong and the scent of the trees feels like something out of a storybook. Definitely one of the most unique and memorable stays on this trip.",
+					images: ["images/nz-9-5-1.MOV", "images/nz-9-5-2.jpg"]
 				}
 			]
 		}
