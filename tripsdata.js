@@ -219,7 +219,7 @@ const tripsData = {
 					title: "A Scenic Journey to Franz Josef", 
 					image: "images/nz-9-1-1.JPG", 
 					location: "Lake Hāwea", 
-					description: "Today we’re driving to Franz Josef—about four hours on the map, but with no set schedule, we’re taking our time to enjoy the ride. The route winds through Te Wāhipounamu, a UNESCO World Heritage Area that covers some of the most spectacular and untouched landscapes in New Zealand. The scenery kept changing around every bend—dense rainforest, mirror-like lakes, rugged coastline, and snow-capped peaks all in one drive. ",
+					description: "Today we’re driving to Franz Josef—about four hours on the map, but with no set schedule, we’re taking our time to enjoy the ride. The route winds through Te Wāhipounamu, a UNESCO World Heritage Area that covers some of the most spectacular and untouched landscapes in New Zealand. The scenery kept changing around every bend—dense rainforest, mirror-like lakes, rugged coastline, and snow-capped peaks all in one drive.",
 					images: ["images/nz-9-1-1.JPG", "images/nz-9-1-2.JPG", "images/nz-9-1-3.JPG", "images/nz-9-1-4.jpg", "images/nz-9-1-5.JPG"]
 				},
 				{ 
@@ -249,6 +249,36 @@ const tripsData = {
 					location: "Rainforest Retreat", 
 					description: "We’re so excited to be staying at the Rainforest Retreat tonight—our accommodation is a standalone treehouse nestled right in the forest! It’s cozy, charming, and surrounded by nature. Waking up to birdsong and the scent of the trees feels like something out of a storybook. Definitely one of the most unique and memorable stays on this trip.",
 					images: ["images/nz-9-5-1.MOV", "images/nz-9-5-2.jpg"]
+				}
+			],
+			"Day 10": [
+				{ 
+					title: "Above the Glaciers", 
+					image: "images/nz-10-1-3.JPG", 
+					location: "Franz Josef Glacier", 
+					description: "Today’s highlight was taking a helicopter ride over the stunning Fox and Franz Josef Glaciers. It was an unforgettable experience—soaring above the vast rivers of ice, with jagged peaks and deep crevasses stretching out below us. What surprised us most was the temperature. Despite being surrounded by thick, untouched snow, it was unexpectedly warm at the top.",
+					images: ["images/nz-10-1-1.MP4", "images/nz-10-1-2.JPG", "images/nz-10-1-3.JPG", "images/nz-10-1-4.MP4", "images/nz-10-1-5.JPG", "images/nz-10-1-6.JPG", "images/nz-10-1-7.JPG", "images/nz-10-1-8.JPG", "images/nz-10-1-9.JPG"]
+				},
+				{ 
+					title: "Heading North (Toward the Equator!)", 
+					image: "images/nz-10-2-1.JPG", 
+					location: "Okarito Trig", 
+					description: "After the incredible helicopter flight, we continued our journey north—yes, technically heading toward the equator! Our first stop was a short hike to a scenic overlook. It was a quick climb, but totally worth it for the sweeping views of the coastline and forests. The contrast between icy mountaintops and lush green hills in a single day still amazes us.",
+					images: ["images/nz-10-2-1.JPG", "images/nz-10-2-2.JPG", "images/nz-10-2-3.JPG", "images/nz-10-2-4.JPG", "images/nz-10-2-5.JPG", "images/nz-10-2-6.JPG"]
+				},
+				{ 
+					title: "Hokitika", 
+					image: "images/nz-10-3-1.jpg", 
+					location: "Hokitika", 
+					description: "We spent some time wandering through Hokitika, a charming little town on the West Coast. It has a laid-back, artsy vibe, with local craft shops, jade carving studios, and cozy cafés lining the streets. We loved just strolling around, taking in the ocean breeze and small-town charm. It was a perfect, easygoing stop along our journey.",
+					images: ["images/nz-10-3-1.jpg", "images/nz-10-3-2.JPG", "images/nz-10-3-3.JPG", "images/nz-10-3-4.JPG", "images/nz-10-3-5.JPG"]
+				},
+				{ 
+					title: "Stacked Wonders", 
+					image: "images/nz-10-4-1.jpg", 
+					location: "Punakaiki", 
+					description: "Our final stop for the day was the famous Pancake Rocks in Punakaiki—and what a way to end the day. These unique limestone formations really do look like stacks of pancakes, layered and weathered by time and tide. We walked the loop trail just before sunset, with the ocean crashing into the blowholes and sea spray rising into the air. Nature’s artistry at its finest.",
+					images: ["images/nz-10-4-1.jpg", "images/nz-10-4-2.JPG", "images/nz-10-4-3.JPG", "images/nz-10-4-4.JPG", "images/nz-10-4-5.JPG", "images/nz-10-4-6.JPG"]
 				}
 			]
 		}
