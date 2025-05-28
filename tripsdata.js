@@ -264,7 +264,7 @@ const tripsData = {
 					image: "images/nz-10-2-1.JPG", 
 					location: "Okarito Trig", 
 					description: "After the incredible helicopter flight, we continued our journey north—yes, technically heading toward the equator! Our first stop was a short hike to a scenic overlook. It was a quick climb, but totally worth it for the sweeping views of the coastline and forests. The contrast between icy mountaintops and lush green hills in a single day still amazes us.",
-					images: ["images/nz-10-2-1.JPG", "images/nz-10-2-2.JPG", "images/nz-10-2-3.JPG", "images/nz-10-2-4.JPG", "images/nz-10-2-5.JPG", "images/nz-10-2-6.JPG"]
+					images: ["images/nz-10-2-1.JPG", "images/nz-10-2-2.JPG", "images/nz-10-2-3.JPG", "images/nz-10-2-4.JPG", "images/nz-10-2-5.JPG", "images/nz-10-2-6.JPG", "images/nz-10-2-7.JPG"]
 				},
 				{ 
 					title: "Hokitika", 
@@ -279,6 +279,43 @@ const tripsData = {
 					location: "Punakaiki", 
 					description: "Our final stop for the day was the famous Pancake Rocks in Punakaiki—and what a way to end the day. These unique limestone formations really do look like stacks of pancakes, layered and weathered by time and tide. We walked the loop trail just before sunset, with the ocean crashing into the blowholes and sea spray rising into the air. Nature’s artistry at its finest.",
 					images: ["images/nz-10-4-1.jpg", "images/nz-10-4-2.JPG", "images/nz-10-4-3.JPG", "images/nz-10-4-4.JPG", "images/nz-10-4-5.JPG", "images/nz-10-4-6.JPG"]
+				}
+			],
+			"Day 11": [
+				{ 
+					title: "Crossing Arthur’s Pass", 
+					image: "images/nz-11-1-3.JPG", 
+					location: "Arthur’s Pass", 
+					description: "Today we crossed Arthur’s Pass, one of the most dramatic and scenic routes in New Zealand. The winding mountain road took us through alpine meadows, dense beech forests, and rugged peaks shrouded in mist.",
+					images: ["images/nz-11-1-1.JPG", "images/nz-11-1-2.JPG", "images/nz-11-1-3.JPG", "images/nz-11-1-4.JPG", "images/nz-11-1-5.JPG", "images/nz-11-1-6.jpg"]
+				},
+				{ 
+					title: "Waterfall", 
+					image: "images/nz-11-2-2.JPG", 
+					location: "Devils Punchbowl Waterfall", 
+					description: "One of the highlights along the way was a stop at Devil’s Punchbowl Waterfall. After a short walk through the trees, we reached the base of the waterfall, where water thunders down 131 meters into the gorge below.",
+					images: ["images/nz-11-2-1.jpg", "images/nz-11-2-2.JPG", "images/nz-11-2-3.jpg", "images/nz-11-2-4.MP4", "images/nz-11-2-5.JPG"]
+				},
+				{ 
+					title: "Rocks", 
+					image: "images/nz-11-3-2.JPG", 
+					location: "Castle Hill Rocks", 
+					description: "We stopped at Castle Hill Rocks, and it honestly felt like stepping onto another planet. Massive limestone boulders are scattered across rolling green hills, like nature’s own sculpture park. It’s no wonder this place is sacred to the Māori.",
+					images: ["images/nz-11-3-1.JPG", "images/nz-11-3-2.JPG", "images/nz-11-3-3.JPG", "images/nz-11-3-4.JPG", "images/nz-11-3-5.JPG", "images/nz-11-3-6.JPG", "images/nz-11-3-7.jpg", "images/nz-11-3-8.jpg", "images/nz-11-3-9.jpg"]
+				},
+				{ 
+					title: "Christchurch", 
+					image: "images/nz-11-4-3.jpg", 
+					location: "Christchurch", 
+					description: "We’ve finally reached Christchurch, the South Island’s largest city. It’s a beautiful place—filled with green spaces, elegant architecture, and a creative, resilient energy.",
+					images: ["images/nz-11-4-1.JPG", "images/nz-11-4-2.jpg", "images/nz-11-4-3.jpg", "images/nz-11-4-4.jpg", "images/nz-11-4-5.jpg", "images/nz-11-4-6.jpg", "images/nz-11-4-7.jpg", "images/nz-11-4-8.jpg", "images/nz-11-4-9.jpg"]
+				},
+				{ 
+					title: "Christchurch", 
+					image: "images/nz-11-5-3.JPG", 
+					location: "Christchurch", 
+					description: "As we explored the city, we could still see remnants of the devastating 2011 earthquake: crumbled walls, empty lots, and partially restored buildings. But alongside the ruins are signs of renewal—street art, modern structures, and a city very much in the process of rebuilding and reinventing itself. It’s inspiring to witness.",
+					images: ["images/nz-11-5-1.jpg", "images/nz-11-5-2.JPG", "images/nz-11-5-3.JPG", "images/nz-11-5-4.JPG", "images/nz-11-5-5.JPG", "images/nz-11-5-6.JPG", "images/nz-11-5-7.MOV", "images/nz-11-5-8.jpg", "images/nz-11-5-9.JPG", "images/nz-11-5-10.JPG"]
 				}
 			]
 		}
