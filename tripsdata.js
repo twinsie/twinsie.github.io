@@ -308,7 +308,7 @@ const tripsData = {
 					image: "images/nz-11-4-3.jpg", 
 					location: "Christchurch", 
 					description: "We’ve finally reached Christchurch, the South Island’s largest city. It’s a beautiful place—filled with green spaces, elegant architecture, and a creative, resilient energy.",
-					images: ["images/nz-11-4-1.JPG", "images/nz-11-4-2.jpg", "images/nz-11-4-3.jpg", "images/nz-11-4-4.jpg", "images/nz-11-4-5.jpg", "images/nz-11-4-6.jpg", "images/nz-11-4-7.jpg", "images/nz-11-4-8.jpg", "images/nz-11-4-9.jpg"]
+					images: ["images/nz-11-4-1.jpg", "images/nz-11-4-2.jpg", "images/nz-11-4-3.jpg", "images/nz-11-4-4.jpg", "images/nz-11-4-5.jpg", "images/nz-11-4-6.jpg", "images/nz-11-4-7.jpg", "images/nz-11-4-8.jpg", "images/nz-11-4-9.jpg"]
 				},
 				{ 
 					title: "Christchurch", 
@@ -316,6 +316,54 @@ const tripsData = {
 					location: "Christchurch", 
 					description: "As we explored the city, we could still see remnants of the devastating 2011 earthquake: crumbled walls, empty lots, and partially restored buildings. But alongside the ruins are signs of renewal—street art, modern structures, and a city very much in the process of rebuilding and reinventing itself. It’s inspiring to witness.",
 					images: ["images/nz-11-5-1.jpg", "images/nz-11-5-2.JPG", "images/nz-11-5-3.JPG", "images/nz-11-5-4.JPG", "images/nz-11-5-5.JPG", "images/nz-11-5-6.JPG", "images/nz-11-5-7.MOV", "images/nz-11-5-8.jpg", "images/nz-11-5-9.JPG", "images/nz-11-5-10.JPG"]
+				}
+			],
+			"Day 12": [
+				{ 
+					title: "Birthday in Wellington!", 
+					image: "images/nz-12-1-4.jpg", 
+					location: "Wellington", 
+					description: "We flew into Wellington this morning—and it’s a special day, because it’s my birthday! My first birthday ever in the Southern Hemisphere, and what a place to celebrate. The city greeted us with its coastal charm, creative vibe, and plenty of sunshine. Couldn’t ask for a better backdrop to mark another trip around the sun. Here's to new places, new memories, and many more adventures ahead!",
+					images: ["images/nz-12-1-1.jpg", "images/nz-12-1-2.JPG", "images/nz-12-1-3.JPG", "images/nz-12-1-4.jpg", "images/nz-12-1-5.JPG", "images/nz-12-1-6.jpg", "images/nz-12-1-7.jpg", "images/nz-12-1-8.jpg", "images/nz-12-1-9.jpg", "images/nz-12-1-10.jpg", "images/nz-12-1-11.JPG"]
+				},
+				{ 
+					title: "Exploring Te Papa", 
+					image: "images/nz-12-2-3.JPG", 
+					location: "Museum of New Zealand", 
+					description: "In Wellington, we visited the Museum of New Zealand Te Papa Tongarewa—an absolute must-see. The museum is beautifully curated and offers a deep dive into New Zealand’s history, culture, and natural environment.",
+					images: ["images/nz-12-2-1.JPG", "images/nz-12-2-2.jpg", "images/nz-12-2-3.JPG", "images/nz-12-2-4.jpg", "images/nz-12-2-5.jpg", "images/nz-12-2-6.jpg", "images/nz-12-2-7.jpg"]
+				},
+				{ 
+					title: "Tongariro", 
+					image: "images/nz-12-3-1.JPG", 
+					location: "Taupō", 
+					description: "In the afternoon, we made our way to Taupō, passing through the Tongariro National Park—another filming location for The Lord of the Rings. The dramatic volcanic landscape gave off a moody, mystical vibe, especially with the heavy clouds rolling in.",
+					images: ["images/nz-12-3-1.JPG", "images/nz-12-3-2.JPG", "images/nz-12-3-3.JPG", "images/nz-12-3-4.JPG"]
+				}
+			],
+			"Day 13": [
+				{ 
+					title: "Last Day in NZ!", 
+					image: "images/nz-13-1-5.JPG", 
+					location: "Hamilton Gardens", 
+					description: "We visited Hamilton Gardens under a cloudy, slightly gloomy sky—but even without sunshine, the place had a quiet charm. The gardens are unlike typical botanical parks; each section is themed to represent different cultures and historical styles.",
+					images: ["images/nz-13-1-1.JPG", "images/nz-13-1-2.jpg", "images/nz-13-1-3.JPG", "images/nz-13-1-4.JPG", "images/nz-13-1-5.JPG", "images/nz-13-1-6.JPG", "images/nz-13-1-7.JPG", "images/nz-13-1-8.JPG", "images/nz-13-1-9.JPG", "images/nz-13-1-10.jpg"]
+				},
+				{ 
+					title: "Dinner Above the City", 
+					image: "images/nz-13-2-1.jpg", 
+					location: "Sky Tower", 
+					description: "We’re back in Auckland for our final night in New Zealand, and we marked the occasion with a special dinner at the top of the Sky Tower. Dining high above the city, we watched the skyline light up as the sun set—what a way to wrap up this incredible trip.",
+					images: ["images/nz-13-2-1.jpg", "images/nz-13-2-2.jpg", "images/nz-13-2-3.jpg", "images/nz-13-2-4.jpg", "images/nz-13-2-5.jpg", "images/nz-13-2-6.jpg", "images/nz-13-2-7.jpg"]
+				}
+			],
+			"Day 14": [
+				{ 
+					title: "Farewell, New Zealand", 
+					image: "images/nz-14-1-4.jpg", 
+					location: "Auckland Airport", 
+					description: "And just like that, we’re flying back home. It’s hard to put into words what a wonderful vacation this has been—from snow-covered peaks to glowing beaches, penguins to waterfalls, quiet gardens to bustling cities. New Zealand has given us beauty, adventure, and unforgettable memories. We’ll miss the open roads, the wild landscapes, and the feeling of discovery around every corner. Until next time—kia ora and goodbye.",
+					images: ["images/nz-14-1-1.jpg", "images/nz-14-1-2.jpg", "images/nz-14-1-3.jpg", "images/nz-14-1-4.jpg", "images/nz-14-1-5.jpg"]
 				}
 			]
 		}
