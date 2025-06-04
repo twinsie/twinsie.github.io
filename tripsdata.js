@@ -426,7 +426,7 @@ const tripsData = {
 		subtitle: "3周伊朗行, 2025年3月",
 		backgroundImage: "bg-iran",
 		events: {
-			"第1天": [
+			"第1天 库姆": [
 				{ 
 					title: "库姆", 
 					image: "images/iran-1-1-1.jpg", 
@@ -442,7 +442,7 @@ const tripsData = {
 					images: ["images/iran-1-2-1.jpg", "images/iran-1-2-2.jpg", "images/iran-1-2-3.jpg"]
 				}
 			],
-			"第2/3/4天": [
+			"第2/3/4天 卡尚": [
 				{ 
 					title: "卡尚", 
 					image: "images/iran-2-1-5.jpg", 
@@ -491,6 +491,15 @@ const tripsData = {
 					location: "Bazaar of Kashan", 
 					description: "卡尚的巴扎（Kashan Bazaar）同样值得一游。作为城市的商业与文化中心，这座拥有数百年历史的传统市集不仅热闹非凡，建筑装饰也别具一格。巴扎内部拱顶高挑，穹顶上有精美的砖雕与天窗，光线透过洒落在地面上，营造出一种古朴而庄严的氛围。其中最著名的部分是提姆切·阿米尔·艾哈迈德（Timche-ye Amin od-Dowleh）穹顶大厅，被认为是波斯传统市集建筑的代表之一。",
 					images: ["images/iran-2-7-1.jpg", "images/iran-2-7-2.jpg", "images/iran-2-7-3.jpg", "images/iran-2-7-4.jpg", "images/iran-2-7-5.jpg"]
+				}
+			],
+			"第5天 伊斯法罕": [
+				{ 
+					title: "八重天宫", 
+					image: "images/iran-3-1-4.jpg", 
+					location: "Hasht Behesht", 
+					description: "今天我们来到了伊斯法罕，这是伊朗最著名的历史文化名城，地位相当于中国的西安——早在两千多年前，这里就曾是波斯帝国的都城之一，拥有悠久而辉煌的历史。我们的第一站是参观八重天宫。这座宫殿建于萨法维王朝时期，名字意为“八重天堂”，象征伊斯兰文化中的理想乐园。宫殿坐落在一片秀美的花园之中，建筑采用开放式结构，中央大厅由八根柱子支撑，周围是繁复精美的瓷砖、木雕与壁画装饰，处处彰显出波斯建筑的华丽与匠心。",
+					images: ["images/iran-3-1-1.png", "images/iran-3-1-2.jpg", "images/iran-3-1-3.jpg", "images/iran-3-1-4.jpg", "images/iran-3-1-5.jpg", "images/iran-3-1-6.jpg", "images/iran-3-1-7.jpg", "images/iran-3-1-8.jpg", "images/iran-3-1-9.jpg"]
 				}
 			]
 		}
