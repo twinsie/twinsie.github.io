@@ -422,7 +422,7 @@ const tripsData = {
 			]
 		}
 	},
-	iran: {
+	notiran: {
 		subtitle: "3周伊朗行, 2025年3月",
 		backgroundImage: "bg-iran",
 		events: {
