@@ -1,0 +1,435 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa-Free Travel Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #map { height: 600px; }
+        .leaflet-tooltip { 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-4">Visa-Free Travel Map for Chinese Passport with Schengen Visa and US Green Card</h1>
+        <div class="flex justify-center mb-4 space-x-4">
+            <label class="flex items-center">
+                <input type="checkbox" id="chinesePassport" checked class="mr-2">
+                <span>Chinese Passport</span>
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" id="schengen" checked class="mr-2">
+                <span>Schengen Visa</span>
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" id="greenCard" checked class="mr-2">
+                <span>US Green Card</span>
+            </label>
+        </div>
+        <div id="map" class="w-full rounded-lg shadow-lg"></div>
+        <p class="text-sm text-gray-600 mt-4 text-center">
+            Hover over a country to see visa-free travel details. Select options above to filter visa-free countries. Data is based on 2025 visa policies and may change. Always verify with official sources before travel.
+        </p>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([20, 0], 2);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Sample visa data
+        const visaData = {
+            "Afghanistan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Albania": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Algeria": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Andorra": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Angola": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Antigua and Barbuda": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Argentina": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Armenia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Austria": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Azerbaijan": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Bahrain": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Bangladesh": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Barbados": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Belarus": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Belgium": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Belize": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Benin": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Bhutan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Bolivia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Bosnia and Herz.": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Botswana": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Brazil": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Brunei": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Bulgaria": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Burkina Faso": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Burundi": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Cabo Verde": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Cambodia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Cameroon": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Canada": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Central African Republic": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Chad": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Channel Islands": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Chile": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"China": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Colombia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Comoros": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Congo": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Costa Rica": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Côte d'Ivoire": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Croatia": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Cuba": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Cyprus": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Czech Rep.": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Denmark": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Djibouti": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Dominica": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Dominican Republic": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"DR Congo": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Ecuador": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Egypt": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"El Salvador": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Equatorial Guinea": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Eritrea": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Estonia": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Eswatini": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Ethiopia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Faeroe Islands": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Finland": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"France": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"French Guiana": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Gabon": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Gambia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Georgia": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Germany": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Ghana": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Gibraltar": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Greece": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Grenada": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Guatemala": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Guinea": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Guinea-Bissau": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Guyana": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Haiti": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Holy See": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Honduras": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Hong Kong": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Hungary": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Iceland": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"India": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Indonesia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Iran": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Iraq": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Ireland": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Isle of Man": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Israel": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Italy": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Jamaica": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Japan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Jordan": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Kazakhstan": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Kenya": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Kuwait": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Kyrgyzstan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Laos": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Latvia": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Lebanon": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Lesotho": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Liberia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Libya": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Liechtenstein": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Lithuania": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Luxembourg": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Macao": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Madagascar": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Malawi": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Malaysia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Maldives": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Mali": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Malta": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Mauritania": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Mauritius": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Mayotte": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Mexico": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Moldova": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Monaco": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Mongolia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Montenegro": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Morocco": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Mozambique": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Myanmar": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Namibia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Nepal": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Netherlands": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Nicaragua": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Niger": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Nigeria": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"North Korea": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"North Macedonia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Norway": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Oman": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Pakistan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Panama": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Paraguay": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Peru": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Philippines": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Poland": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Portugal": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Qatar": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Réunion": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Romania": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Russia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Rwanda": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Saint Helena": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Saint Kitts and Nevis": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Saint Lucia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Saint Vincent and the Grenadines": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"San Marino": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Sao Tome & Principe": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Saudi Arabia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Senegal": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Serbia": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Seychelles": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Sierra Leone": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Singapore": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Slovakia": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Slovenia": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Somalia": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"South Africa": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"South Korea": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"South Sudan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Spain": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Sri Lanka": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"State of Palestine": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Sudan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Suriname": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Sweden": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Switzerland": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Syria": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Taiwan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Tajikistan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Tanzania": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Thailand": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"The Bahamas": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Timor-Leste": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Togo": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Trinidad and Tobago": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Tunisia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Turkey": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Turkmenistan": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Uganda": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Ukraine": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"United Arab Emirates": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"United Kingdom": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"United States": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Uruguay": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Uzbekistan": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Venezuela": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Vietnam": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Western Sahara": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Yemen": { greenCard: "No", schengen: "No", chinesePassport: "No", notes: ""},
+"Zambia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Zimbabwe": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Northern Mariana Islands": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Kiribati": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Micronesia": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Bahamas": { greenCard: "Yes", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Cook Islands": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Fiji": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Vanuatu": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Samoa": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Niue": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: ""},
+"Iceland": { greenCard: "No", schengen: "Yes", chinesePassport: "No", notes: ""},
+"Anguilla": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"British Virgin Islands": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Cayman Islands": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Bermuda": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Turks and Caicos": { greenCard: "Yes", schengen: "No", chinesePassport: "No", notes: ""},
+"Tuvalu": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Palau": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"},
+"Solomon Islands": { greenCard: "No", schengen: "No", chinesePassport: "Yes", notes: "Visa on Arrival"}
+
+
+
+            // Add more countries as needed
+        };
+
+        // Country name mapping for GeoJSON discrepancies
+        const countryNameMap = {
+            "United States of America": "United States",
+            "United Kingdom": "UK",
+            // Add more mappings as needed
+        };
+
+        // Reference to the GeoJSON layer for updating
+        let geoJsonLayer;
+
+        // Function to update map based on checkbox states
+        function updateMap() {
+            // Get checkbox states
+            const showChinesePassport = document.getElementById('chinesePassport').checked;
+            const showSchengen = document.getElementById('schengen').checked;
+            const showGreenCard = document.getElementById('greenCard').checked;
+
+            // Remove existing GeoJSON layer if it exists
+            if (geoJsonLayer) {
+                map.removeLayer(geoJsonLayer);
+            }
+
+            // Load GeoJSON data
+            fetch('https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries.geojson')
+                .then(response => response.json())
+                .then(data => {
+                    geoJsonLayer = L.geoJSON(data, {
+                        style: function(feature) {
+                            let countryName = feature.properties.name;
+                            countryName = countryNameMap[countryName] || countryName;
+
+                            // Default to grey
+                            const countryData = visaData[countryName];
+                            let isVisaFree = false;
+
+                            if (countryData) {
+                                isVisaFree = (showGreenCard && countryData.greenCard === "Yes") ||
+                                             (showSchengen && countryData.schengen === "Yes") ||
+                                             (showChinesePassport && countryData.chinesePassport === "Yes");
+                            }
+
+                            // Log unmatched countries for debugging
+                            if (!countryData) {
+                                console.log(`No visa data for: ${countryName}`);
+                            }
+
+                            return {
+                                fillColor: isVisaFree ? '#00ff00' : '#808080',
+                                weight: 1,
+                                opacity: 1,
+                                color: 'white',
+                                fillOpacity: 0.7
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            let countryName = feature.properties.name;
+                            countryName = countryNameMap[countryName] || countryName;
+
+                            const countryData = visaData[countryName] || {
+                                greenCard: "No",
+                                schengen: "No",
+                                chinesePassport: "No",
+                                notes: "No visa-free access with US Green Card, Schengen visa, or Chinese passport."
+                            };
+
+                            // Create tooltip content
+                            const tooltipContent = `
+                                <strong>${countryName}</strong><br>
+                                Visa-Free with US Green Card: ${countryData.greenCard}<br>
+                                Visa-Free with Schengen Visa: ${countryData.schengen}<br>
+                                Visa-Free with Chinese Passport: ${countryData.chinesePassport}<br>
+                                Notes: ${countryData.notes}
+                            `;
+
+                            // Bind tooltip to layer
+                            layer.bindTooltip(tooltipContent, {
+                                sticky: true,
+                                className: 'leaflet-tooltip'
+                            });
+
+                            // Highlight country on hover
+                            layer.on({
+                                mouseover: function(e) {
+                                    e.target.setStyle({
+                                        fillColor: '#ffdd00',
+                                        fillOpacity: 0.9
+                                    });
+                                },
+                                mouseout: function(e) {
+                                    let countryName = feature.properties.name;
+                                    countryName = countryNameMap[countryName] || countryName;
+                                    const countryData = visaData[countryName];
+                                    let isVisaFree = false;
+
+                                    if (countryData) {
+                                        isVisaFree = (showGreenCard && countryData.greenCard === "Yes") ||
+                                                     (showSchengen && countryData.schengen === "Yes") ||
+                                                     (showChinesePassport && countryData.chinesePassport === "Yes");
+                                    }
+
+                                    e.target.setStyle({
+                                        fillColor: isVisaFree ? '#00ff00' : '#808080',
+                                        fillOpacity: 0.7
+                                    });
+                                }
+                            });
+                        }
+                    }).addTo(map);
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+        }
+
+        // Initial map render
+        updateMap();
+
+        // Add event listeners to checkboxes
+        document.getElementById('chinesePassport').addEventListener('change', updateMap);
+        document.getElementById('schengen').addEventListener('change', updateMap);
+        document.getElementById('greenCard').addEventListener('change', updateMap);
+    </script>
+</body>
+</html>
