@@ -368,7 +368,7 @@ const tripsData = {
 			]
 		}
 	},
-	philly: {
+	egypt: {
 		subtitle: "Memorial Day Weekend, 2025",
 		backgroundImage: "bg-philly",
 		events: {
