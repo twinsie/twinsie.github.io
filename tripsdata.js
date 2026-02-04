@@ -421,14 +421,14 @@ const tripsData = {
 			"Day 3": [
 				{
 					title: "Saqqara: The Step Pyramid & Beyond",
-					image: "images/egypt/IMG_3798.HEIC",
+					image: "images/egypt/IMG_3794.HEIC",
 					location: "Saqqara Necropolis",
 					description: "Today we hired a private guide to explore Saqqara, one of Egypt's most important archaeological sites. The highlight was the Step Pyramid of Djoser—the world's oldest monumental stone structure, built over 4,700 years ago and marking the birth of pyramid architecture. We descended into the Pyramid of Unas, where the walls are covered with the famous Pyramid Texts—ancient spells meant to guide the pharaoh to the afterlife. We also visited a beautifully decorated princess tomb, its walls painted with vibrant scenes of daily life and offerings. With a knowledgeable guide leading the way, every corner of Saqqara came alive with stories from the ancient world.",
 					images: ["images/egypt/IMG_3789.HEIC", "images/egypt/IMG_3791.HEIC", "images/egypt/IMG_3794.HEIC", "images/egypt/IMG_3798.HEIC", "images/egypt/IMG_3805.HEIC", "images/egypt/IMG_3806.HEIC", "images/egypt/IMG_3826.HEIC", "images/egypt/IMG_3831.HEIC", "images/egypt/IMG_3835.HEIC"]
 				},
 				{
 					title: "The Bent Pyramid at Dahshur",
-					image: "images/egypt/IMG_3849.HEIC",
+					image: "images/egypt/IMG_3845.HEIC",
 					location: "Dahshur",
 					description: "Our next stop was Dahshur, home to the famous Bent Pyramid—one of Egypt's most unusual ancient monuments. This pyramid gets its name from its distinctive shape: halfway up, the angle suddenly changes from a steep 54° to a gentler 43°. Archaeologists believe the builders changed course mid-construction after noticing structural instability, making this pyramid a fascinating snapshot of ancient engineering trial and error. From here, we could also see the mysterious Black Pyramid in the distance, its dark mudbrick core standing in stark contrast to the golden limestone of its neighbors. Dahshur offered a quieter, more off-the-beaten-path experience compared to Giza—a chance to appreciate these ancient wonders without the crowds.",
 					images: ["images/egypt/IMG_3845.HEIC", "images/egypt/IMG_3849.HEIC", "images/egypt/IMG_3851.HEIC", "images/egypt/IMG_3858.HEIC", "images/egypt/IMG_3859.HEIC"]
