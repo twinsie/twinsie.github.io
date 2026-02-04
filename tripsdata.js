@@ -424,7 +424,7 @@ const tripsData = {
 					image: "images/egypt/IMG_3794.HEIC",
 					location: "Saqqara Necropolis",
 					description: "Today we hired a private guide to explore Saqqara, one of Egypt's most important archaeological sites. The highlight was the Step Pyramid of Djoser—the world's oldest monumental stone structure, built over 4,700 years ago and marking the birth of pyramid architecture. We descended into the Pyramid of Unas, where the walls are covered with the famous Pyramid Texts—ancient spells meant to guide the pharaoh to the afterlife. We also visited a beautifully decorated princess tomb, its walls painted with vibrant scenes of daily life and offerings. With a knowledgeable guide leading the way, every corner of Saqqara came alive with stories from the ancient world.",
-					images: ["images/egypt/IMG_3789.HEIC", "images/egypt/IMG_3791.HEIC", "images/egypt/IMG_3794.HEIC", "images/egypt/IMG_3798.HEIC", "images/egypt/IMG_3805.HEIC", "images/egypt/IMG_3806.HEIC", "images/egypt/IMG_3826.HEIC", "images/egypt/IMG_3831.HEIC", "images/egypt/IMG_3835.HEIC"]
+					images: ["images/egypt/IMG_3789.HEIC", "images/egypt/IMG_3791.HEIC", "images/egypt/IMG_3794.HEIC", "images/egypt/IMG_3798.HEIC", "images/egypt/IMG_3799.HEIC", "images/egypt/IMG_3805.HEIC", "images/egypt/IMG_3806.HEIC", "images/egypt/IMG_3826.HEIC", "images/egypt/IMG_3831.HEIC", "images/egypt/IMG_3835.HEIC"]
 				},
 				{
 					title: "The Bent Pyramid at Dahshur",
@@ -432,6 +432,20 @@ const tripsData = {
 					location: "Dahshur",
 					description: "Our next stop was Dahshur, home to the famous Bent Pyramid—one of Egypt's most unusual ancient monuments. This pyramid gets its name from its distinctive shape: halfway up, the angle suddenly changes from a steep 54° to a gentler 43°. Archaeologists believe the builders changed course mid-construction after noticing structural instability, making this pyramid a fascinating snapshot of ancient engineering trial and error. From here, we could also see the mysterious Black Pyramid in the distance, its dark mudbrick core standing in stark contrast to the golden limestone of its neighbors. Dahshur offered a quieter, more off-the-beaten-path experience compared to Giza—a chance to appreciate these ancient wonders without the crowds.",
 					images: ["images/egypt/IMG_3845.HEIC", "images/egypt/IMG_3849.HEIC", "images/egypt/IMG_3851.HEIC", "images/egypt/IMG_3858.HEIC", "images/egypt/IMG_3859.HEIC"]
+				},
+				{
+					title: "The Red Pyramid & Ruins of Memphis",
+					image: "images/egypt/IMG_3875.HEIC",
+					location: "Dahshur & Memphis",
+					description: "Our final stop of the day was the Red Pyramid—Egypt's first successful true pyramid and the third largest ever built. Known as the 'Perfect Pyramid,' it represents the culmination of lessons learned from earlier attempts like the Bent Pyramid. We descended deep into its interior through a long, narrow passage, emerging into the ancient burial chambers. The experience of standing inside this 4,600-year-old marvel was nothing short of amazing. We then visited the ruins of Memphis, once the capital of ancient Egypt for over 3,000 years. Though little remains of the great city today, the colossal fallen statue of Ramesses II and the alabaster Sphinx hint at the grandeur that once was.",
+					images: ["images/egypt/IMG_3860.HEIC", "images/egypt/IMG_3868.HEIC", "images/egypt/IMG_3871.HEIC", "images/egypt/IMG_3875.HEIC", "images/egypt/IMG_3876.HEIC", "images/egypt/IMG_3879.HEIC", "images/egypt/IMG_3881.HEIC", "images/egypt/IMG_3882.HEIC", "images/egypt/IMG_3885.HEIC"]
+				},
+				{
+					title: "Sunset Dinner at Al-Azhar Park",
+					image: "images/egypt/IMG_3899.HEIC",
+					location: "Al-Azhar Park, Cairo",
+					description: "To end a spectacular day exploring ancient Egypt, we headed to Al-Azhar Park—a beautiful green oasis in the heart of Cairo. We dined at the lakeside restaurant as the sun began to set, painting the sky in brilliant shades of orange and pink. The view was absolutely stunning: Cairo's skyline glowing in the fading light, with minarets and domes silhouetted against the colorful horizon. After a day spent in the company of pharaohs and pyramids, this peaceful sunset over the modern city felt like the perfect way to reflect on everything we'd seen.",
+					images: ["images/egypt/IMG_3890.HEIC", "images/egypt/IMG_3891.mp4", "images/egypt/IMG_3892.HEIC", "images/egypt/IMG_3895.HEIC", "images/egypt/IMG_3897.HEIC", "images/egypt/IMG_3899.HEIC", "images/egypt/IMG_3903.HEIC", "images/egypt/IMG_3907.HEIC"]
 				}
 			]
 		}
