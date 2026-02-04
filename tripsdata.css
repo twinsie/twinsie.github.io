@@ -1,6 +1,9 @@
 .background-layer.bg-nz {
 	background-image: url('images/icon/nz-bg.jpg');
 }
+.background-layer.bg-egypt {
+	background-image: url('images/icon/egypt-bg.png');
+}
 .background-layer.bg-iran {
 	background-image: url('images/icon/iran-bg.jpg');
 }
@@ -9,6 +12,7 @@
 }
 
 #nz-btn { background-image: url('images/icon/nz-icon.png'); animation-delay: 0.2s; }
+#egypt-btn { background-image: url('images/icon/egypt-icon.png'); animation-delay: 0.3s; }
 #iran-btn { background-image: url('images/icon/iran-icon.jpg'); animation-delay: 0.4s; }
 #europe-btn { background-image: url('images/icon/europe.png'); animation-delay: 0.6s; }
 #italy-btn { background-image: url('images/icon/italy.png'); animation-delay: 0.8s; }
