@@ -509,6 +509,66 @@ const tripsData = {
 					description: "We arrived in Luxor just as the sun was setting and headed straight to the magnificent Luxor Temple. Like Kom Ombo, experiencing this ancient monument illuminated at night was absolutely magical. The temple, dedicated to the rejuvenation of kingship, was built primarily by Amenhotep III and Ramesses II over 3,400 years ago. Walking through the grand colonnade, past colossal statues and towering obelisks bathed in golden light, felt like stepping back in time. The Avenue of Sphinxes—recently restored—once connected Luxor Temple to Karnak Temple nearly two miles away.",
 					images: ["images/egypt/IMG_4096.HEIC", "images/egypt/IMG_4099.HEIC", "images/egypt/IMG_4105.HEIC", "images/egypt/IMG_4108.HEIC", "images/egypt/IMG_4109.HEIC", "images/egypt/IMG_4111.HEIC", "images/egypt/IMG_4114.HEIC", "images/egypt/IMG_4117.HEIC", "images/egypt/3180FF9B-4181-42E1-8C9A-4F44406BD0D4.jpg"]
 				}
+			],
+			"Day 7": [
+				{
+					title: "Valley of the Kings",
+					image: "images/egypt/IMG_4142.HEIC",
+					location: "Valley of the Kings, Luxor",
+					description: "An early morning visit to the legendary Valley of the Kings—the ancient burial ground of Egypt's most powerful pharaohs. Hidden in the desert hills, this remote valley holds over 60 tombs, including the famous tomb of Tutankhamun. We descended into several tombs, marveling at the vivid wall paintings depicting the pharaohs' journey to the afterlife. The colors, preserved for over 3,000 years, were astonishingly vibrant.",
+					images: ["images/egypt/IMG_4124.HEIC", "images/egypt/IMG_4128.HEIC", "images/egypt/IMG_4131.HEIC", "images/egypt/IMG_4134.HEIC", "images/egypt/IMG_4140.HEIC", "images/egypt/IMG_4142.HEIC", "images/egypt/IMG_4146.HEIC", "images/egypt/IMG_4149.HEIC", "images/egypt/IMG_4151.HEIC", "images/egypt/IMG_4157.HEIC", "images/egypt/IMG_4160.HEIC"]
+				},
+				{
+					title: "Tomb of Seti I",
+					image: "images/egypt/IMG_4175.HEIC",
+					location: "Valley of the Kings, Luxor",
+					description: "We paid extra to visit the Tomb of Seti I—considered the most beautiful tomb in the valley. The walls are covered with incredibly detailed and colorful reliefs depicting scenes from the Book of Gates and the Amduat. Expensive, but worth it for a once-in-a-lifetime experience.",
+					images: ["images/egypt/IMG_4167.HEIC", "images/egypt/IMG_4169.HEIC", "images/egypt/IMG_4175.HEIC", "images/egypt/IMG_4176.HEIC", "images/egypt/IMG_4178.HEIC", "images/egypt/IMG_4181.HEIC", "images/egypt/IMG_4183.HEIC"]
+				},
+				{
+					title: "Temple of Hatshepsut",
+					image: "images/egypt/IMG_4201.HEIC",
+					location: "Deir el-Bahari, Luxor",
+					description: "The mortuary temple of Hatshepsut—Egypt's most famous female pharaoh—rises dramatically against the cliffs of Deir el-Bahari. Its terraced colonnades and elegant design make it one of the most striking monuments in Egypt.",
+					images: ["images/egypt/IMG_4188.HEIC", "images/egypt/IMG_4195.HEIC", "images/egypt/IMG_4201.HEIC", "images/egypt/IMG_4208.HEIC", "images/egypt/IMG_4212.HEIC"]
+				},
+				{
+					title: "Karnak Temple & Sound and Light Show",
+					image: "images/egypt/IMG_4247.HEIC",
+					location: "Karnak Temple, Luxor",
+					description: "We visited Karnak—the largest ancient religious complex ever built—and returned at night for the famous Sound and Light Show. Walking through the illuminated Great Hypostyle Hall with its 134 massive columns was absolutely magical.",
+					images: ["images/egypt/IMG_4218.HEIC", "images/egypt/IMG_4221.HEIC", "images/egypt/IMG_4224.HEIC", "images/egypt/IMG_4228.HEIC", "images/egypt/IMG_4232.HEIC", "images/egypt/IMG_4237.HEIC", "images/egypt/IMG_4243.mp4", "images/egypt/IMG_4247.HEIC", "images/egypt/IMG_4250.HEIC"]
+				}
+			],
+			"Day 8": [
+				{
+					title: "Medinet Habu",
+					image: "images/egypt/IMG_4257.HEIC",
+					location: "Medinet Habu, Luxor",
+					description: "Our last day in Egypt—and we explored on our own. First stop was Medinet Habu, the mortuary temple of Ramesses III. Less crowded than the more famous sites, its massive walls are covered with some of the best-preserved reliefs in Egypt, including vivid battle scenes.",
+					images: ["images/egypt/IMG_4254.HEIC", "images/egypt/IMG_4257.HEIC", "images/egypt/IMG_4260.HEIC", "images/egypt/IMG_4266.HEIC", "images/egypt/IMG_4275.HEIC", "images/egypt/IMG_4284.HEIC"]
+				},
+				{
+					title: "Tombs of the Artisans & Nobles",
+					image: "images/egypt/IMG_4289.HEIC",
+					location: "Deir el-Medina & Tombs of the Nobles, Luxor",
+					description: "We visited the tombs of ordinary Egyptians—the artisans who built the royal tombs and local nobles. These smaller tombs offer a fascinating contrast to the grand pharaonic burials, with intimate scenes of daily life, family, and the afterlife.",
+					images: ["images/egypt/IMG_4286.HEIC", "images/egypt/IMG_4288.HEIC", "images/egypt/IMG_4289.HEIC", "images/egypt/IMG_4291.HEIC", "images/egypt/IMG_4293.HEIC", "images/egypt/IMG_4294.HEIC"]
+				},
+				{
+					title: "The Ramesseum",
+					image: "images/egypt/IMG_4297.HEIC",
+					location: "Ramesseum, Luxor",
+					description: "Our final temple—and by this point, we'd honestly lost count. The Ramesseum, Ramesses II's mortuary temple, features a fallen colossal statue that once stood over 17 meters tall. Temple fatigue is real, but what a way to end the trip.",
+					images: ["images/egypt/IMG_4297.HEIC", "images/egypt/IMG_4298.HEIC", "images/egypt/IMG_4300.HEIC", "images/egypt/IMG_4303.HEIC", "images/egypt/IMG_4304.HEIC"]
+				},
+				{
+					title: "Farewell, Egypt",
+					image: "images/egypt/IMG_4314.HEIC",
+					location: "Luxor to Cairo",
+					description: "And just like that, our Egypt adventure comes to an end. We flew back to Cairo tonight—spotting the Step Pyramid from above was a perfect final goodbye. Staying at an airport hotel before our flight home tomorrow. What an incredible journey through 5,000 years of history.",
+					images: ["images/egypt/IMG_4309.HEIC", "images/egypt/IMG_4314.HEIC", "images/egypt/IMG_4317.HEIC", "images/egypt/IMG_4324.HEIC", "images/egypt/IMG_4326.JPG"]
+				}
 			]
 		}
 	},
