@@ -447,6 +447,68 @@ const tripsData = {
 					description: "To end a spectacular day exploring ancient Egypt, we headed to Al-Azhar Park—a beautiful green oasis in the heart of Cairo. We dined at the lakeside restaurant as the sun began to set, painting the sky in brilliant shades of orange and pink. The view was absolutely stunning: Cairo's skyline glowing in the fading light, with minarets and domes silhouetted against the colorful horizon. After a day spent in the company of pharaohs and pyramids, this peaceful sunset over the modern city felt like the perfect way to reflect on everything we'd seen.",
 					images: ["images/egypt/IMG_3890.HEIC", "images/egypt/IMG_3891.mp4", "images/egypt/IMG_3892.HEIC", "images/egypt/IMG_3895.HEIC", "images/egypt/IMG_3897.HEIC", "images/egypt/IMG_3899.HEIC", "images/egypt/IMG_3903.HEIC", "images/egypt/IMG_3907.HEIC"]
 				}
+			],
+			"Day 4": [
+				{
+					title: "Flying to Aswan",
+					image: "images/egypt/IMG_3918.HEIC",
+					location: "Aswan",
+					description: "We flew south to Aswan, entering the heart of Upper Egypt. The moment we stepped off the plane, the heat hit us—scorching and relentless, a reminder of how close we were to the Nubian desert. On our way into the city, we caught a glimpse of the famous Aswan High Dam, one of the most significant engineering achievements of the 20th century. Built in the 1960s with Soviet assistance, this massive dam tamed the Nile's annual floods and created Lake Nasser, one of the largest artificial lakes in the world. The sheer scale of the structure was impressive, even from a distance.",
+					images: ["images/egypt/IMG_3918.HEIC", "images/egypt/IMG_3919.HEIC", "images/egypt/IMG_3925.HEIC", "images/egypt/IMG_3926.HEIC"]
+				},
+				{
+					title: "Philae Temple & Setting Sail on the Nile",
+					image: "images/egypt/IMG_3930.HEIC",
+					location: "Philae Temple, Aswan",
+					description: "Our first stop in Aswan was the magnificent Philae Temple, dedicated to the goddess Isis. To reach it, we took small motorboats across the shimmering waters to Agilkia Island—the temple's current home after being relocated piece by piece to save it from the rising waters of Lake Nasser. The temple's towering columns and detailed reliefs were stunning against the bright Nubian sky. Afterward, we boarded our Nile cruise ship, marking the beginning of an unforgettable journey down Egypt's legendary river. As we settled into our floating hotel, we watched the palm-lined banks of Aswan drift past—a perfect start to our cruise adventure.",
+					images: ["images/egypt/IMG_3927.HEIC", "images/egypt/IMG_3930.HEIC", "images/egypt/IMG_3942.HEIC", "images/egypt/IMG_3943.HEIC", "images/egypt/IMG_3945.HEIC", "images/egypt/IMG_3947.HEIC"]
+				}
+			],
+			"Day 5": [
+				{
+					title: "Abu Simbel: Ramesses II's Greatest Monument",
+					image: "images/egypt/IMG_3951.HEIC",
+					location: "Abu Simbel",
+					description: "Today was brutal—but absolutely worth it. We woke up before dawn for a three-hour drive through the Nubian Desert to reach Abu Simbel, one of ancient Egypt's most awe-inspiring monuments. Carved directly into a mountainside over 3,000 years ago, the Great Temple of Ramesses II features four colossal statues of the pharaoh himself, each standing 20 meters tall, guarding the entrance. Despite the long journey through the desert heat, standing before these monuments made every minute worth it.",
+					images: ["images/egypt/IMG_3948.HEIC", "images/egypt/IMG_3951.HEIC", "images/egypt/IMG_3955.HEIC", "images/egypt/IMG_3957.HEIC", "images/egypt/IMG_3958.HEIC", "images/egypt/IMG_3961.HEIC", "images/egypt/IMG_3962.HEIC", "images/egypt/IMG_3966.HEIC", "images/egypt/IMG_3977.HEIC", "images/egypt/IMG_3979.HEIC"]
+				},
+				{
+					title: "Sunset on the Nile",
+					image: "images/egypt/IMG_3991.HEIC",
+					location: "Nile River",
+					description: "After an eight-hour excursion to Abu Simbel, we finally had some time to relax and truly enjoy our Nile cruise. As the ship glided along the grand river, we watched the sun slowly descend over the palm-lined banks and ancient landscapes that have remained virtually unchanged for millennia. The sunset over the Nile was absolutely magical—golden light reflecting off the water, silhouettes of feluccas drifting in the distance, and the timeless rhythm of life along the riverbanks. It felt ancient and sacred, as if we were witnessing the same scene that pharaohs and their courts had seen thousands of years ago.",
+					images: ["images/egypt/IMG_3981.HEIC", "images/egypt/IMG_3985.mp4", "images/egypt/IMG_3991.HEIC", "images/egypt/IMG_3999.HEIC", "images/egypt/IMG_4003.HEIC", "images/egypt/IMG_4009.HEIC"]
+				},
+				{
+					title: "Kom Ombo Temple by Night",
+					image: "images/egypt/IMG_4036.HEIC",
+					location: "Kom Ombo Temple",
+					description: "As our cruise ship docked at Kom Ombo under the starlit sky, we stepped into a truly magical experience—visiting the ancient temple illuminated against the darkness. Kom Ombo is unique among Egyptian temples: it's a perfectly symmetrical double temple dedicated to two gods—Sobek, the crocodile god, and Horus the Elder, the falcon-headed deity. Built during the Ptolemaic period, the temple's reliefs are remarkably well-preserved, depicting medical instruments, calendars, and offerings to the gods. Seeing it at night added an otherworldly dimension.",
+					images: ["images/egypt/IMG_4016.HEIC", "images/egypt/IMG_4017.HEIC", "images/egypt/IMG_4022.HEIC", "images/egypt/IMG_4023.HEIC", "images/egypt/IMG_4028.HEIC", "images/egypt/IMG_4036.HEIC", "images/egypt/IMG_4037.HEIC", "images/egypt/IMG_4041.HEIC", "images/egypt/IMG_4045.HEIC"]
+				}
+			],
+			"Day 6": [
+				{
+					title: "Edfu Temple",
+					image: "images/egypt/IMG_4062.HEIC",
+					location: "Edfu Temple",
+					description: "Early morning visit to the Temple of Horus at Edfu—one of the best-preserved ancient temples in all of Egypt. Dedicated to the falcon god Horus, this massive Ptolemaic temple features towering pylons, detailed hieroglyphic carvings, and an impressive inner sanctuary. Unfortunately, the experience was somewhat diminished by the sheer number of tourists; all the Nile cruise ships dock here at the same time, flooding the temple with crowds.",
+					images: ["images/egypt/IMG_4048.HEIC", "images/egypt/IMG_4050.HEIC", "images/egypt/IMG_4059.HEIC", "images/egypt/IMG_4061.HEIC", "images/egypt/IMG_4062.HEIC", "images/egypt/IMG_4063.HEIC"]
+				},
+				{
+					title: "Cruising to Luxor & The Esna Lock",
+					image: "images/egypt/IMG_4078.HEIC",
+					location: "Esna Lock, Nile River",
+					description: "Back on our cruise ship and bound for Luxor, we continued our journey north along the Nile. The highlight of the day was passing through the Esna Lock—an interesting experience that broke up the leisurely cruising. Watching our massive cruise ship slowly descend as the water drained from the lock chamber was surprisingly fascinating. Local vendors in small boats paddled alongside, tossing up goods for passengers to catch and haggle over from the upper decks—a unique Nile tradition that added to the atmosphere.",
+					images: ["images/egypt/IMG_4064.HEIC", "images/egypt/IMG_4067.mp4", "images/egypt/IMG_4078.HEIC", "images/egypt/IMG_4087.HEIC", "images/egypt/IMG_4094.HEIC"]
+				},
+				{
+					title: "Luxor Temple by Night",
+					image: "images/egypt/IMG_4117.HEIC",
+					location: "Luxor Temple",
+					description: "We arrived in Luxor just as the sun was setting and headed straight to the magnificent Luxor Temple. Like Kom Ombo, experiencing this ancient monument illuminated at night was absolutely magical. The temple, dedicated to the rejuvenation of kingship, was built primarily by Amenhotep III and Ramesses II over 3,400 years ago. Walking through the grand colonnade, past colossal statues and towering obelisks bathed in golden light, felt like stepping back in time. The Avenue of Sphinxes—recently restored—once connected Luxor Temple to Karnak Temple nearly two miles away.",
+					images: ["images/egypt/IMG_4096.HEIC", "images/egypt/IMG_4099.HEIC", "images/egypt/IMG_4105.HEIC", "images/egypt/IMG_4108.HEIC", "images/egypt/IMG_4109.HEIC", "images/egypt/IMG_4111.HEIC", "images/egypt/IMG_4114.HEIC", "images/egypt/IMG_4117.HEIC", "images/egypt/3180FF9B-4181-42E1-8C9A-4F44406BD0D4.jpg"]
+				}
 			]
 		}
 	},
