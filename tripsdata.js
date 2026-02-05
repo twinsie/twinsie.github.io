@@ -523,7 +523,7 @@ const tripsData = {
 					image: "images/egypt/IMG_4175.HEIC",
 					location: "Valley of the Kings, Luxor",
 					description: "We paid extra to visit the Tomb of Seti I—considered the most beautiful tomb in the valley. The walls are covered with incredibly detailed and colorful reliefs depicting scenes from the Book of Gates and the Amduat. Expensive, but worth it for a once-in-a-lifetime experience.",
-					images: ["images/egypt/IMG_4167.HEIC", "images/egypt/IMG_4169.HEIC", "images/egypt/IMG_4175.HEIC", "images/egypt/IMG_4176.HEIC", "images/egypt/IMG_4178.HEIC", "images/egypt/IMG_4181.HEIC", "images/egypt/IMG_4183.HEIC"]
+					images: ["images/egypt/IMG_4167.jpg", "images/egypt/IMG_4169.HEIC", "images/egypt/IMG_4175.HEIC", "images/egypt/IMG_4176.HEIC", "images/egypt/IMG_4178.HEIC", "images/egypt/IMG_4181.HEIC", "images/egypt/IMG_4183.HEIC"]
 				},
 				{
 					title: "Temple of Hatshepsut",

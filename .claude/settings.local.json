@@ -1,12 +1,14 @@
 {
   "permissions": {
-    "additionalDirectories": [
-      "c:\\Users\\qluo\\Documents\\GitHub\\twinsie.github.io\\images\\temp"
-    ],
     "allow": [
       "Bash(move \"c:\\\\Users\\\\qluo\\\\Documents\\\\GitHub\\\\twinsie.github.io\\\\images\\\\temp\\\\IMG_3845.HEIC\" \"c:\\\\Users\\\\qluo\\\\Documents\\\\GitHub\\\\twinsie.github.io\\\\images\\\\egypt\"\" && move \"c:UsersqluoDocumentsGitHubtwinsie.github.ioimagestempIMG_3849.HEIC\" \"c:UsersqluoDocumentsGitHubtwinsie.github.ioimagesegypt\"\")",
       "Bash(move \"c:\\\\Users\\\\qluo\\\\Documents\\\\GitHub\\\\twinsie.github.io\\\\images\\\\temp\\\\IMG_3851.HEIC\" \"c:\\\\Users\\\\qluo\\\\Documents\\\\GitHub\\\\twinsie.github.io\\\\images\\\\egypt\"\" && move \"c:UsersqluoDocumentsGitHubtwinsie.github.ioimagestempIMG_3858.HEIC\" \"c:UsersqluoDocumentsGitHubtwinsie.github.ioimagesegypt\"\")",
-      "Bash(move:*)"
+      "Bash(move:*)",
+      "Bash(magick:*)",
+      "Bash(ffmpeg:*)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\qluo\\Documents\\GitHub\\twinsie.github.io\\images\\temp"
     ]
   }
 }
